@@ -1,10 +1,12 @@
-" .vimrc of Anderson Konzen <anderson.konzen@gmail.com>
+" vim: set foldmethod=marker foldlevel=0:
+"
+" .vimrc, optimized for neovim + vim-plug + iTerm2
+" by Anderson Konzen <anderson.konzen@gmail.com>
 "
 " Inspired by https://github.com/junegunn/dotfiles/blob/master/vimrc
 
-
-" VIM-PLUG BLOCK {{{
 " ============================================================================
+" VIM-PLUG BLOCK {{{
 
 silent! if plug#begin('~/.vim/plugged')
 
@@ -14,6 +16,7 @@ Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 
 " Edit
 Plug 'tpope/vim-surround'
+Plug 'itchyny/lightline.vim'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -27,9 +30,10 @@ call plug#end()
 endif
 
 " }}}
+
+
 " ============================================================================
 " BASIC SETTINGS {{{
-" ============================================================================
 
 let mapleader      = ' '
 let maplocalleader = ' '
@@ -39,4 +43,4 @@ colorscheme Tomorrow-Night-Eighties
 set guifont=mononoki:h14
 
 " }}}
-" ============================================================================
+
