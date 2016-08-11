@@ -168,18 +168,28 @@ let NERDTreeMouseMode=2
 " lightline
 " ----------------------------------------------------------------------------
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'seoul256',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
-      \   'fugitive': 'LightLineFugitive'
+      \   'fugitive': 'LightLineFugitive',
+      \   'filename': 'LightLineFilename'
       \ }
       \ }
 
 function! LightLineFugitive()
   return exists('*fugitive#head') ? fugitive#head() : ''
+endfunction
+
+function! LightLineBufferNumber()
+  let nr = bufnr(bufname('%'))
+  return '[' . nr . ']'
+endfunction
+
+function! LightLineFilename()
+  return LightLineBufferNumber() . ' ' . ('' != expand('%:t') ? expand('%:t') : '[No Name]')
 endfunction
 
 " ----------------------------------------------------------------------------
