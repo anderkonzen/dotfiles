@@ -29,7 +29,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'elzr/vim-json', {'for' : 'json'}
 
 " Lint
-Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
+Plug 'scrooloose/syntastic'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -165,18 +165,32 @@ let NERDTreeHighlightCursorline=1
 let NERDTreeMouseMode=2
 
 " ----------------------------------------------------------------------------
+" syntastic
+" ----------------------------------------------------------------------------
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" ----------------------------------------------------------------------------
 " lightline
 " ----------------------------------------------------------------------------
 let g:lightline = {
       \ 'colorscheme': 'seoul256',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
+      \   'right': [ [ 'syntastic', 'lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
       \ },
       \ 'component_function': {
       \   'fugitive': 'LightLineFugitive',
       \   'filename': 'LightLineFilename'
-      \ }
+      \ },
+      \ 'component_expand': {
+      \   'syntastic': 'SyntasticStatuslineFlag'
+      \ },
+      \ 'component_type': {
+      \   'syntastic': 'error'
+      \ },
       \ }
 
 function! LightLineFugitive()
@@ -189,20 +203,23 @@ function! LightLineBufferNumber()
 endfunction
 
 function! LightLineFilename()
-  return LightLineBufferNumber() . ' ' . ('' != expand('%:t') ? expand('%:t') : '[No Name]')
+  let fname = expand('%:t')
+  return fname =~ 'NERD_tree' ? '' :
+        \ LightLineBufferNumber() . ' ' . ('' != fname ? fname : '[No Name]')
+endfunction
+
+augroup AutoSyntastic
+  autocmd!
+  autocmd BufWritePost *.c,*.cpp call s:syntastic()
+augroup END
+function! s:syntastic()
+  SyntasticCheck
+  call lightline#update()
 endfunction
 
 " ----------------------------------------------------------------------------
 " vim-json
 " ----------------------------------------------------------------------------
 let g:vim_json_syntax_conceal = 0
-
-" ----------------------------------------------------------------------------
-" syntastic
-" ----------------------------------------------------------------------------
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 
