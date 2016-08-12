@@ -1,6 +1,6 @@
 " vim: set foldmethod=marker foldlevel=0:
 "
-" .vimrc, optimized for neovim  iTerm2
+" .vimrc, optimized for neovim & iTerm2
 " by Anderson Konzen <anderson.konzen@gmail.com>
 "
 " Inspired by https://github.com/junegunn/dotfiles/blob/master/vimrc
@@ -25,6 +25,7 @@ Plug 'airblade/vim-gitgutter'
 
 " Languages
 Plug 'elixir-lang/vim-elixir'
+" vim-ruby needs 'gem install neovim' if you want code completion (Omni Completion)
 Plug 'vim-ruby/vim-ruby'
 Plug 'elzr/vim-json', {'for' : 'json'}
 
@@ -63,6 +64,7 @@ set autoread                    " automatically reload files changed outside of 
 set clipboard=unnamed           " normal OS clipboard interaction
 set showmatch                   " set show matching parenthesis
 set autowrite                   " automatically save before :next, :make etc.
+set nowrap                      " by default don't wrap line
 
 " Searching
 set hlsearch                    " highlight search terms
