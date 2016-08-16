@@ -81,12 +81,14 @@ set showcmd                     " show (partial) command in the last line of the
 set visualbell                  " don't beep
 set noerrorbells                " don't beep
 set shortmess=aIT               " avoid a series of prompts caused by file messages
-set list
+set list                        " show unprintable characters by default
 set listchars=tab:▸\ ,space:·,trail:·,extends:#,nbsp:·
 set virtualedit=block           " allow the cursor to go in to invalid places
 set cursorline                  " underline the current line, for quick orientation
 set title                       " change the terminal's title<Paste>
 set completeopt=menuone,preview
+set splitbelow                  " open new split panes to right...
+set splitright                  " ... and bottom, which feels more natural
 
 " Performance
 set hidden                      " hide buffers instead of closing them
@@ -118,7 +120,20 @@ nnoremap <leader>w :update<cr>
 " <F10> | NERD Tree
 nnoremap <F10> :NERDTreeToggle<cr>
 
-nnoremap <Leader><Leader> :e#<CR>i                  " quickly move between current and last files
+" <F3> |  Toggle list (display unprintable characters)
+inoremap <F3> :set list!<CR>
+nnoremap <F3> :set list!<CR>
+
+" Terminal
+tnoremap <Esc><Esc> <C-\><C-n>
+
+" Get off my lawn
+nnoremap <Left>  :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up>    :echoe "Use k"<CR>
+nnoremap <Down>  :echoe "Use j"<CR>
+
+nnoremap <Leader><Leader> :e#<CR>                   " quickly move between current and last files
 nnoremap <leader>W :%s/\s\+$//<CR>:let @/=''<CR>    " strip all trailing whitespace from a file
 nnoremap Y y$                                       " quick yanking to the end of the line
 nnoremap <leader>s :source $MYVIMRC<CR>             " reload vimrc
