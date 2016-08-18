@@ -81,7 +81,7 @@ set showcmd                     " show (partial) command in the last line of the
 set visualbell                  " don't beep
 set noerrorbells                " don't beep
 set shortmess=aIT               " avoid a series of prompts caused by file messages
-set list                        " show unprintable characters by default
+set nolist                      " don't show unprintable characters by default
 set listchars=tab:▸\ ,space:·,trail:·,extends:#,nbsp:·
 set virtualedit=block           " allow the cursor to go in to invalid places
 set cursorline                  " underline the current line, for quick orientation
@@ -114,7 +114,6 @@ set shada='20,\"80              " read/write a .viminfo file, don't store more t
 " Save
 inoremap <C-s>     <C-O>:update<cr>
 nnoremap <C-s>     :update<cr>
-nnoremap <leader>s :update<cr>
 nnoremap <leader>w :update<cr>
 
 " <F10> | NERD Tree
@@ -189,6 +188,9 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+let g:syntastic_enable_elixir_checker = 1
+let g:syntastic_elixir_checkers = ['elixir']
+
 " ----------------------------------------------------------------------------
 " lightline
 " ----------------------------------------------------------------------------
@@ -227,7 +229,7 @@ endfunction
 
 augroup AutoSyntastic
   autocmd!
-  autocmd BufWritePost *.c,*.cpp call s:syntastic()
+  autocmd BufWritePost * call s:syntastic()
 augroup END
 function! s:syntastic()
   SyntasticCheck
