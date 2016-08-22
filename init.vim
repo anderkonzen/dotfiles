@@ -17,6 +17,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 " Edit
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'   " comment stuff out (use gcc to comment and gcgc to uncomment)
+Plug 'tpope/vim-unimpaired'   " [b, ]b, ]t, et...
 Plug 'itchyny/lightline.vim'
 
 " Git
@@ -25,8 +27,8 @@ Plug 'airblade/vim-gitgutter'
 
 " Languages
 Plug 'elixir-lang/vim-elixir'
-" vim-ruby needs 'gem install neovim' if you want code completion (Omni Completion)
-Plug 'vim-ruby/vim-ruby'
+Plug 'vim-ruby/vim-ruby'      " vim-ruby needs 'gem install neovim' if you want code completion
+Plug 'tpope/vim-endwise'      " plugin that helps to end certain structures automatically
 Plug 'elzr/vim-json', {'for' : 'json'}
 
 " Lint
@@ -138,26 +140,6 @@ nnoremap Y y$                                       " quick yanking to the end o
 nnoremap <leader>s :source $MYVIMRC<CR>             " reload vimrc
 
 " ----------------------------------------------------------------------------
-" Quickfix
-" ----------------------------------------------------------------------------
-nnoremap ]q :cnext<cr>zz
-nnoremap [q :cprev<cr>zz
-nnoremap ]l :lnext<cr>zz
-nnoremap [l :lprev<cr>zz
-
-" ----------------------------------------------------------------------------
-" Buffers
-" ----------------------------------------------------------------------------
-nnoremap ]b :bnext<cr>
-nnoremap [b :bprev<cr>
-
-" ----------------------------------------------------------------------------
-" Tabs
-" ----------------------------------------------------------------------------
-nnoremap ]t :tabn<cr>
-nnoremap [t :tabp<cr>
-
-" ----------------------------------------------------------------------------
 " <tab> / <s-tab> | Circular windows navigation
 " ----------------------------------------------------------------------------
 nnoremap <tab>   <c-w>w
@@ -216,15 +198,9 @@ function! LightLineFugitive()
   return exists('*fugitive#head') ? fugitive#head() : ''
 endfunction
 
-function! LightLineBufferNumber()
-  let nr = bufnr(bufname('%'))
-  return '[' . nr . ']'
-endfunction
-
 function! LightLineFilename()
   let fname = expand('%:t')
-  return fname =~ 'NERD_tree' ? '' :
-        \ LightLineBufferNumber() . ' ' . ('' != fname ? fname : '[No Name]')
+  return fname =~ 'NERD_tree' ? '' : '' != fname ? fname : '[No Name]'
 endfunction
 
 augroup AutoSyntastic
