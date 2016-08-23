@@ -13,8 +13,10 @@ silent! if plug#begin('~/.vim/plugged')
 
 " Browsing
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'tpope/vim-unimpaired'   " [b, ]b, ]t, et...
+Plug 'ctrlpvim/ctrlp.vim'               " <C-p> to find files
+Plug 'tpope/vim-unimpaired'             " [b, ]b, ]t, et...
+Plug 'mileszs/ack.vim'                  " :Ack [pattern] to search for pattern
+Plug 'nathanaelkane/vim-indent-guides'  " <leader>ig to toggle on/off
 
 " Edit
 Plug 'tpope/vim-surround'
@@ -98,7 +100,7 @@ set wildmenu                    " make tab completion for files/buffers act like
 set wildmode=list:full          " show a list when pressing tab and complete first full match
 set switchbuf=useopen           " reveal already opened files from the quickfix window instead of opening new buffers
 set history=1000                " remember more commands and search history
-set undolevels=1000             " use many muchos levels of undo
+set undolevels=1000             " use many levels of undo
 set nobackup                    " do not keep backup files, it's 70's style cluttering
 set noswapfile                  " do not write annoying intermediate swap files
 set shada='20,\"80              " read/write a .viminfo file, don't store more than 80 lines of registers
@@ -212,9 +214,30 @@ function! s:syntastic()
   call lightline#update()
 endfunction
 
+
+" ----------------------------------------------------------------------------
+" ack.vim
+" ----------------------------------------------------------------------------
+" Use The Silver Searcher in case it is present
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+
 " ----------------------------------------------------------------------------
 " vim-json
 " ----------------------------------------------------------------------------
 let g:vim_json_syntax_conceal = 0
 
+
+" ----------------------------------------------------------------------------
+" vim-indent-guides
+" ----------------------------------------------------------------------------
+let g:indent_guides_guide_size = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=238
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
 
