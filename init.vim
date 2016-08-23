@@ -14,11 +14,11 @@ silent! if plug#begin('~/.vim/plugged')
 " Browsing
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-unimpaired'   " [b, ]b, ]t, et...
 
 " Edit
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'   " comment stuff out (use gcc to comment and gcgc to uncomment)
-Plug 'tpope/vim-unimpaired'   " [b, ]b, ]t, et...
 Plug 'itchyny/lightline.vim'
 
 " Git
