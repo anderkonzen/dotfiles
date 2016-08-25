@@ -22,6 +22,7 @@ Plug 'nathanaelkane/vim-indent-guides'  " <leader>ig to toggle on/off
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'   " comment stuff out (use gcc to comment and gcgc to uncomment)
 Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-endwise'      " plugin that helps to end certain structures automatically
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -30,7 +31,6 @@ Plug 'airblade/vim-gitgutter'
 " Languages
 Plug 'elixir-lang/vim-elixir'
 Plug 'vim-ruby/vim-ruby'      " vim-ruby needs 'gem install neovim' if you want code completion
-Plug 'tpope/vim-endwise'      " plugin that helps to end certain structures automatically
 Plug 'elzr/vim-json', {'for' : 'json'}
 
 " Lint
