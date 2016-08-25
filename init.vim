@@ -19,7 +19,6 @@ Plug 'mileszs/ack.vim'                  " :Ack [pattern] to search for pattern
 Plug 'nathanaelkane/vim-indent-guides'  " <leader>ig to toggle on/off
 
 " Edit
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'   " comment stuff out (use gcc to comment and gcgc to uncomment)
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-endwise'      " plugin that helps to end certain structures automatically
