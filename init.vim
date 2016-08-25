@@ -164,6 +164,18 @@ let NERDTreeHighlightCursorline=1
 " Use a single click to fold/unfold directories and a double click to open files
 let NERDTreeMouseMode=2
 
+" In order to open NERDTree when starting vim with a directory,
+" since we configured it to load on-demand, we use the hack below. 
+augroup NERDTreeLoaderHack
+  autocmd!
+  autocmd VimEnter * silent! autocmd! FileExplorer    " clear netrw autocmd group 
+  autocmd BufEnter,BufNew *
+        \   if isdirectory(expand('<amatch>'))
+        \|    call plug#load('nerdtree')
+        \|    execute 'autocmd! NERDTreeLoaderHack'
+        \|  endif
+augroup END
+
 " ----------------------------------------------------------------------------
 " syntastic
 " ----------------------------------------------------------------------------
