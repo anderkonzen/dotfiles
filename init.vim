@@ -131,10 +131,15 @@ nnoremap <F3> :set list!<CR>
 tnoremap <Esc><Esc> <C-\><C-n>
 
 " Get off my lawn
-nnoremap <Left>  :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up>    :echoe "Use k"<CR>
-nnoremap <Down>  :echoe "Use j"<CR>
+function! GetOffMyLawnEcho(message)
+  echohl WarningMsg
+  echo a:message
+  echohl None
+endfunction
+nnoremap <Left>  <Esc>:call GetOffMyLawnEcho("Gosh, use h!!!")<CR>
+nnoremap <Right> <Esc>:call GetOffMyLawnEcho("Gosh, use l!!!")<CR>
+nnoremap <Up>    <Esc>:call GetOffMyLawnEcho("Gosh, use k!!!")<CR>
+nnoremap <Down>  <Esc>:call GetOffMyLawnEcho("Gosh, use j!!!")<CR>
 
 nnoremap <Leader><Leader> :e#<CR>                   " quickly move between current and last files
 nnoremap <leader>W :%s/\s\+$//<CR>:let @/=''<CR>    " strip all trailing whitespace from a file
@@ -165,10 +170,10 @@ let NERDTreeHighlightCursorline=1
 let NERDTreeMouseMode=2
 
 " In order to open NERDTree when starting vim with a directory,
-" since we configured it to load on-demand, we use the hack below. 
+" since we configured it to load on-demand, we use the hack below.
 augroup NERDTreeLoaderHack
   autocmd!
-  autocmd VimEnter * silent! autocmd! FileExplorer    " clear netrw autocmd group 
+  autocmd VimEnter * silent! autocmd! FileExplorer    " clear netrw autocmd group
   autocmd BufEnter,BufNew *
         \   if isdirectory(expand('<amatch>'))
         \|    call plug#load('nerdtree')
