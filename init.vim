@@ -23,6 +23,8 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'  " <C-n> to toggle between number and r
 Plug 'tpope/vim-commentary'   " comment stuff out (use gcc to comment and gcgc to uncomment)
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-endwise'      " plugin that helps to end certain structures automatically
+Plug 'tpope/vim-surround'     " change ( with {: cs({; wrapp word with ': ysiw'
+Plug 'tpope/vim-repeat'       " improve vim repeat feature '.'
 
 " Git
 Plug 'tpope/vim-fugitive'
