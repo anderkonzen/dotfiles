@@ -1,8 +1,8 @@
 " vim: set foldmethod=marker foldlevel=0:
 "
-" .vimrc, optimized for neovim & iTerm2
+" .init.vim
 " by Anderson Konzen <anderson.konzen@gmail.com>
-"
+" 
 " Inspired by https://github.com/junegunn/dotfiles/blob/master/vimrc
 
 
@@ -110,6 +110,7 @@ set shada='20,\"80              " read/write a .viminfo file, don't store more t
 " }}}
 "
 
+
 " ============================================================================
 " MAPPINGS {{{
 
@@ -154,6 +155,15 @@ nnoremap <leader>s :source $MYVIMRC<CR>             " reload vimrc
 nnoremap <tab>   <c-w>w
 nnoremap <S-tab> <c-w>W
 
+" Or using ctrl to jump directly to a window
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+nnoremap <C-l> <C-w><C-l>
+nnoremap <C-h> <C-w><C-h>
+" Note: for <C-h> to work you may need to set kbs=\117 in your
+" terminal's terminfo/termcap:
+"   $ infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
+"   $ tic $TERM.ti
 " }}}
 
 
