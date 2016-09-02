@@ -1,4 +1,4 @@
-" vim: set foldmethod=marker foldlevel=0:
+" vim: foldmethod=marker foldlevel=0
 "
 " .init.vim
 " by Anderson Konzen <anderson.konzen@gmail.com>
@@ -6,10 +6,11 @@
 " Inspired by https://github.com/junegunn/dotfiles/blob/master/vimrc
 
 
-" ============================================================================
-" VIM-PLUG BLOCK {{{
+" Plugins ====================================================================
 
-silent! if plug#begin('~/.vim/plugged')
+" vim-plug, load plugins {{{
+
+call plug#begin('~/.config/nvim/plugged')
 
 " Browsing
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -40,63 +41,103 @@ Plug 'scrooloose/syntastic'
 
 " Add plugins to &runtimepath
 call plug#end()
-endif
 
 " }}}
 
 
-" ============================================================================
-" BASIC SETTINGS {{{
+" Settings ===================================================================
 
-let mapleader      = ' '
-let maplocalleader = ' '
+" Preamble {{{
 
-" Theme & Layout
+" NeoVim {{{
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+" }}}
+
+" Mapleader {{{
+let mapleader = ' '
+" }}}
+
+" Theme & Layout {{{
 colorscheme Tomorrow-Night-Eighties
 set guifont=mononoki:h14
+" }}}
 
-" Editor
+" Local directories {{{
+set undodir=~/.config/nvim/undo
+" }}}
+
+" Editor {{{
 set number                      " always show line numbers
-set autoindent                  " always set autoindenting on
+set autoindent                  " copy indent from last line when starting new line
 set smartindent                 " always set smartindenting on
 set backspace=indent,eol,start  " allow backspacing over everything in insert mode
 set shiftwidth=2                " number of spaces to use for autoindenting
 set tabstop=2                   " a tab is two spaces
-set expandtab                   " expand tabs by default (overloadable per file type)
+set expandtab                   " expand tabs to spaces (overloadable per file type)
 set smarttab                    " insert tabs on the start of a line according to shiftwidth, not tabstop
 set smartcase                   " ignore case if search pattern is all lowercase, case-sensitive otherwise
 set scrolloff=5                 " keep 5 lines off the edges of the screen when scrolling
+set esckeys                     " allow cursor keys in insert mode
+set sidescrolloff=5             " start scrolling three columns before vertical border of window
 set autoread                    " automatically reload files changed outside of Vim
 set clipboard=unnamed           " normal OS clipboard interaction
+set diffopt=filler              " add vertical spaces to keep right and left aligned
+set diffopt+=iwhite             " ignore whitespace changes (focus on code changes)
 set showmatch                   " set show matching parenthesis
 set autowrite                   " automatically save before :next, :make etc.
 set nowrap                      " by default don't wrap line
+set nostartofline               " don't reset cursor to start of line when moving around
+set encoding=utf-8 nobomb       " BOM often causes trouble
+" }}}
 
-" Searching
+" Searching {{{
 set hlsearch                    " highlight search terms
 set ignorecase                  " ignore case when searching
 set incsearch                   " show search matches as you type
-" clears the search register
-nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
+set magic                       " enable extended regexes
+set wrapscan                    " searches wrap around end of file
+" }}} 
 
-" Editor layout
+" clears the search register
+"nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
+" nnoremap <silent> <Esc> <Esc>:noh<CR>
+
+" Editor layout {{{
 set lazyredraw                  " don't update the display while executing macros
 set laststatus=2                " tell Vim to always put a status line in, even if there is only one window
 set cmdheight=2                 " use a status bar that is 2 rows high
 set showcmd                     " show (partial) command in the last line of the screen
 set visualbell                  " don't beep
 set noerrorbells                " don't beep
+set showtabline=2               " always show tab bar
+set ruler                       " show cursor position
 set shortmess=aIT               " avoid a series of prompts caused by file messages
 set nolist                      " don't show unprintable characters by default
-set listchars=tab:▸\ ,space:·,trail:·,extends:#,nbsp:·
 set virtualedit=block           " allow the cursor to go in to invalid places
-set cursorline                  " underline the current line, for quick orientation
+set cursorline                  " highlight the current line, for quick orientation
 set title                       " change the terminal's title<Paste>
 set completeopt=menuone,preview
 set splitbelow                  " open new split panes to right...
 set splitright                  " ... and bottom, which feels more natural
+set foldcolumn=0                " column to show folds
+set foldenable                  " enable folding
+set foldlevel=5                 " open all folds by default
+set foldmethod=syntax           " syntax are used to specify folds
+set foldminlines=0              " allow folding single lines
+set foldnestmax=5               " set max fold nesting level
+set formatoptions=
+set formatoptions+=c            " format comments
+set formatoptions+=r            " continue comments by default
+set formatoptions+=o            " make comment when using o or O from comment line
+set formatoptions+=q            " format comments with gq
+set formatoptions+=n            " recognize numbered lists
+set formatoptions+=2            " use indent from 2nd line of a paragraph
+set formatoptions+=l            " don't break lines that are already long
+set formatoptions+=1            " break before 1-letter words
+set mouse=a                     " enable mouse in all in all modes
+" }}}
 
-" Performance
+" Performance {{{
 set hidden                      " hide buffers instead of closing them
 set wildmenu                    " make tab completion for files/buffers act like bash
 set wildmode=list:full          " show a list when pressing tab and complete first full match
@@ -106,65 +147,107 @@ set undolevels=1000             " use many levels of undo
 set nobackup                    " do not keep backup files, it's 70's style cluttering
 set noswapfile                  " do not write annoying intermediate swap files
 set shada='20,\"80              " read/write a .viminfo file, don't store more than 80 lines of registers
+" }}}
 
 " }}}
-"
 
 
-" ============================================================================
-" MAPPINGS {{{
+" Configuration ==============================================================
 
-" ----------------------------------------------------------------------------
-" Basic mappings
-" ----------------------------------------------------------------------------
+" General {{{
+augroup general_config
+  autocmd!
 
-" Save
-inoremap <C-s>     <C-O>:update<cr>
-nnoremap <C-s>     :update<cr>
-nnoremap <leader>w :update<cr>
+  " Speed up viewport scrolling {{{
+  nnoremap <C-e> 3<C-e>
+  nnoremap <C-y> 3<C-y>
+  " }}}
+  
+  " Remap :W to :w {{{
+  command! W w
+  " }}}
+
+  " Toggle show tabs and trailing spaces (<space>c) {{{
+  set listchars=tab:▸\ ,space:·,trail:·,extends:#,eol:¬,nbsp:_
+  set fcs=fold:-
+  nnoremap <silent> <leader>c :set nolist!<CR>
+  " }}}
+
+  " Clear last search {{{
+  nnoremap <silent> <Esc> <Esc>:noh<CR>
+  " }}}
+
+  " Yank from cursor to end of line {{{
+  nnoremap Y y$
+  " }}}
+
+  " Insert newline {{{
+  map <leader><Enter> o<ESC>
+  " }}}
+
+  " Search and replace word under cursor (<space>*) {{{
+  nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
+  vnoremap <leader>* "hy:%s/\V<C-r>h//<left>
+  " }}}
+
+  " Toggle folds (,) {{{
+  nnoremap <silent> , :exe 'silent! normal! '.((foldclosed('.')>0)? 'zMzx' : 'zc')<CR>
+  " }}}
+
+  " Save with <C-s> or <space>w {{{
+  inoremap <C-s>     <C-O>:update<cr>
+  nnoremap <C-s>     :update<cr>
+  nnoremap <leader>w :update<cr>
+  " }}}
+
+  " Terminal {{{
+  tnoremap <Esc><Esc> <C-\><C-n>
+  " }}}
+
+  " Get off my lawn {{{
+  function! GetOffMyLawnEcho(message) " {{{
+    echohl WarningMsg
+    echo a:message
+    echohl None
+  endfunction " }}}
+  nnoremap <Left>  <Esc>:call GetOffMyLawnEcho("Gosh, use h!!!")<CR>
+  nnoremap <Right> <Esc>:call GetOffMyLawnEcho("Gosh, use l!!!")<CR>
+  nnoremap <Up>    <Esc>:call GetOffMyLawnEcho("Gosh, use k!!!")<CR>
+  nnoremap <Down>  <Esc>:call GetOffMyLawnEcho("Gosh, use j!!!")<CR>
+  " }}}
+
+  " <tab> / <s-tab> | Circular windows navigation {{{
+  nnoremap <tab>   <c-w>w
+  nnoremap <S-tab> <c-w>W
+
+  " Or using ctrl to jump directly to a window
+  nnoremap <C-j> <C-w><C-j>
+  nnoremap <C-k> <C-w><C-k>
+  nnoremap <C-l> <C-w><C-l>
+  nnoremap <C-h> <C-w><C-h>
+  " Note: for <C-h> to work you may need to set kbs=\117 in your
+  " terminal's terminfo/termcap:
+  "   $ infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
+  "   $ tic $TERM.ti
+  " }}}
+
+  " Other mappings {{{
+  nnoremap <Leader><Leader> :e#<CR>                   " quickly move between current and last files
+  nnoremap <leader>W :%s/\s\+$//<CR>:let @/=''<CR>    " strip all trailing whitespace from a file
+  nnoremap <leader>s :source $MYVIMRC<CR>             " reload vimrc
+  " }}}
+
+augroup END
+" }}}
+
 
 " <F10> | NERD Tree
 nnoremap <F10> :NERDTreeToggle<cr>
 
-" <F3> |  Toggle list (display unprintable characters)
-inoremap <F3> :set list!<CR>
-nnoremap <F3> :set list!<CR>
 
-" Terminal
-tnoremap <Esc><Esc> <C-\><C-n>
 
-" Get off my lawn
-function! GetOffMyLawnEcho(message)
-  echohl WarningMsg
-  echo a:message
-  echohl None
-endfunction
-nnoremap <Left>  <Esc>:call GetOffMyLawnEcho("Gosh, use h!!!")<CR>
-nnoremap <Right> <Esc>:call GetOffMyLawnEcho("Gosh, use l!!!")<CR>
-nnoremap <Up>    <Esc>:call GetOffMyLawnEcho("Gosh, use k!!!")<CR>
-nnoremap <Down>  <Esc>:call GetOffMyLawnEcho("Gosh, use j!!!")<CR>
 
-nnoremap <Leader><Leader> :e#<CR>                   " quickly move between current and last files
-nnoremap <leader>W :%s/\s\+$//<CR>:let @/=''<CR>    " strip all trailing whitespace from a file
-nnoremap Y y$                                       " quick yanking to the end of the line
-nnoremap <leader>s :source $MYVIMRC<CR>             " reload vimrc
 
-" ----------------------------------------------------------------------------
-" <tab> / <s-tab> | Circular windows navigation
-" ----------------------------------------------------------------------------
-nnoremap <tab>   <c-w>w
-nnoremap <S-tab> <c-w>W
-
-" Or using ctrl to jump directly to a window
-nnoremap <C-j> <C-w><C-j>
-nnoremap <C-k> <C-w><C-k>
-nnoremap <C-l> <C-w><C-l>
-nnoremap <C-h> <C-w><C-h>
-" Note: for <C-h> to work you may need to set kbs=\117 in your
-" terminal's terminfo/termcap:
-"   $ infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
-"   $ tic $TERM.ti
-" }}}
 
 
 " ============================================================================
