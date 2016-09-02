@@ -8,8 +8,12 @@ To configure git with your username and email, put the following in ~/.gitconfig
 
 
 https://github.com/alrra/dotfiles
+
 https://github.com/mathiasbynens/dotfiles
+
 https://github.com/paulirish/dotfiles
+
+https://github.com/gf3/dotfiles
 
 TODO
 
