@@ -1,0 +1,42 @@
+# Useful `.gitignore` templates:
+# https://github.com/github/gitignore
+
+# -----------------------------------
+# Mac
+# -----------------------------------
+
+*~
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# -----------------------------------
+# Vim
+# -----------------------------------
+
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+Session.vim
+.netrwhist
+*~
+tags
+
+# -----------------------------------
+# Elixir
+# -----------------------------------
+
+/_build
+/cover
+/deps
+erl_crash.dump
+*.ez
+

@@ -1,0 +1,32 @@
+[core]
+
+  # Make `git rebase` safer on macOS
+  # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+  trustctime = false
+
+  # Prevent showing files whose names contain non-ASCII symbols as unversioned.
+  # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
+  precomposeunicode = false
+
+  editor = nvim
+
+[color]
+
+	# Use colors in Git commands that are capable of colored output when
+	# outputting to the terminal (this is the default setting in Git ≥ 1.8.4.)
+	ui = auto
+
+[diff]
+
+	# Detect copies as well as renames
+	renames = copies
+
+[include]
+  
+  # Load local configs: https://git-scm.com/docs/git-config#_includes
+  #
+  # [!] The following needs to remain at the end of this file in
+  #     order to allow any of the above configs to be overwritten
+  #     by the local ones 
+  path = ~/.gitconfig.local
+
