@@ -67,6 +67,7 @@ set undodir=~/.config/nvim/undo
 " }}}
 
 " Editor {{{
+set encoding=utf-8 nobomb       " BOM often causes trouble
 set number                      " always show line numbers
 set autoindent                  " copy indent from last line when starting new line
 set smartindent                 " always set smartindenting on
@@ -77,8 +78,8 @@ set expandtab                   " expand tabs to spaces (overloadable per file t
 set smarttab                    " insert tabs on the start of a line according to shiftwidth, not tabstop
 set smartcase                   " ignore case if search pattern is all lowercase, case-sensitive otherwise
 set scrolloff=5                 " keep 5 lines off the edges of the screen when scrolling
+set sidescrolloff=5             " start scrolling five columns before vertical border of window
 set esckeys                     " allow cursor keys in insert mode
-set sidescrolloff=5             " start scrolling three columns before vertical border of window
 set autoread                    " automatically reload files changed outside of Vim
 set clipboard=unnamed           " normal OS clipboard interaction
 set diffopt=filler              " add vertical spaces to keep right and left aligned
@@ -87,7 +88,7 @@ set showmatch                   " set show matching parenthesis
 set autowrite                   " automatically save before :next, :make etc.
 set nowrap                      " by default don't wrap line
 set nostartofline               " don't reset cursor to start of line when moving around
-set encoding=utf-8 nobomb       " BOM often causes trouble
+set undofile                    " persistent undo
 " }}}
 
 " Searching {{{
@@ -97,10 +98,6 @@ set incsearch                   " show search matches as you type
 set magic                       " enable extended regexes
 set wrapscan                    " searches wrap around end of file
 " }}} 
-
-" clears the search register
-"nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
-" nnoremap <silent> <Esc> <Esc>:noh<CR>
 
 " Editor layout {{{
 set lazyredraw                  " don't update the display while executing macros
@@ -119,8 +116,8 @@ set title                       " change the terminal's title<Paste>
 set completeopt=menuone,preview
 set splitbelow                  " open new split panes to right...
 set splitright                  " ... and bottom, which feels more natural
-set foldcolumn=0                " column to show folds
 set foldenable                  " enable folding
+set foldcolumn=0                " column to show folds
 set foldlevel=5                 " open all folds by default
 set foldmethod=syntax           " syntax are used to specify folds
 set foldminlines=0              " allow folding single lines
