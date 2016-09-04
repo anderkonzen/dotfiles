@@ -2,7 +2,7 @@
 "
 " .init.vim
 " by Anderson Konzen <anderson.konzen@gmail.com>
-" 
+"
 " Inspired by https://github.com/junegunn/dotfiles/blob/master/vimrc
 
 
@@ -24,7 +24,7 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'  " <C-n> to toggle between number and r
 Plug 'tpope/vim-commentary'   " comment stuff out (use gcc to comment and gcgc to uncomment)
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-endwise'      " plugin that helps to end certain structures automatically
-Plug 'tpope/vim-surround'     " change ( with {: cs({; wrapp word with ': ysiw'
+Plug 'tpope/vim-surround'     " to change ( with {: cs({; wrapp word with ': ysiw'
 Plug 'tpope/vim-repeat'       " improve vim repeat feature '.'
 
 " Git
@@ -97,7 +97,7 @@ set ignorecase                  " ignore case when searching
 set incsearch                   " show search matches as you type
 set magic                       " enable extended regexes
 set wrapscan                    " searches wrap around end of file
-" }}} 
+" }}}
 
 " Editor layout {{{
 set lazyredraw                  " don't update the display while executing macros
@@ -159,7 +159,7 @@ augroup general_config
   nnoremap <C-e> 3<C-e>
   nnoremap <C-y> 3<C-y>
   " }}}
-  
+
   " Remap :W to :w {{{
   command! W w
   " }}}
@@ -228,9 +228,19 @@ augroup general_config
   "   $ tic $TERM.ti
   " }}}
 
+  " Strip trailing whitespace (<space>ss) {{{
+  function! StripWhitespace () " {{{
+    let save_cursor = getpos(".")
+    let old_query = getreg('/')
+    :%s/\s\+$//e
+    call setpos('.', save_cursor)
+    call setreg('/', old_query)
+  endfunction " }}}
+  noremap <leader>ss :call StripWhitespace ()<CR>
+  " }}}
+
   " Other mappings {{{
   nnoremap <Leader><Leader> :e#<CR>                   " quickly move between current and last files
-  nnoremap <leader>W :%s/\s\+$//<CR>:let @/=''<CR>    " strip all trailing whitespace from a file
   nnoremap <leader>s :source $MYVIMRC<CR>             " reload vimrc
   " }}}
 
@@ -329,6 +339,7 @@ augroup END
 " syntastic {{{
 augroup syntastic_config
   autocmd!
+
   let g:syntastic_always_populate_loc_list = 1
   let g:syntastic_auto_loc_list = 1
   let g:syntastic_check_on_open = 1
@@ -342,6 +353,7 @@ augroup END
 " lightline {{{
 augroup lightline_config
   autocmd!
+
   let g:lightline = {
         \ 'colorscheme': 'seoul256',
         \ 'active': {
@@ -381,7 +393,7 @@ augroup END
 " }}}
 
 " ack.vim {{{
-augroup ack_config
+augroup ack_vim_config
   autocmd!
   " Use The Silver Searcher in case it is present
   if executable('ag')
@@ -400,6 +412,7 @@ augroup END
 " vim-indent-guides {{{
 augroup vim_indent_guides_config
   autocmd!
+
   let g:indent_guides_guide_size = 1
   let g:indent_guides_start_level = 2
   let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
