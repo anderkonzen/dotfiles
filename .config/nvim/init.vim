@@ -234,119 +234,179 @@ augroup general_config
   nnoremap <leader>s :source $MYVIMRC<CR>             " reload vimrc
   " }}}
 
+  " Close Quickfix window (<space>qq) {{{
+  map <leader>qq :cclose<CR>
+  " }}}
+
+  " <F10> | NERD Tree {{{
+  nnoremap <F10> :NERDTreeToggle<cr>
+  " }}}
+
+augroup END
+" }}}
+
+" Highlight Interesting Words {{{
+augroup highlight_interesting_word
+  autocmd!
+  " This mini-plugin provides a few mappings for highlighting words temporarily.
+  "
+  " Sometimes you're looking at a hairy piece of code and would like a certain
+  " word or two to stand out temporarily.  You can search for it, but that only
+  " gives you one color of highlighting.  Now you can use <leader>N where N is
+  " a number from 1-6 to highlight the current word in a specific color.
+  function! HiInterestingWord(n) " {{{
+    " Save our location.
+    normal! mz
+
+    " Yank the current word into the z register.
+    normal! "zyiw
+
+    " Calculate an arbitrary match ID.  Hopefully nothing else is using it.
+    let mid = 86750 + a:n
+
+    " Clear existing matches, but don't worry if they don't exist.
+    silent! call matchdelete(mid)
+
+    " Construct a literal pattern that has to match at boundaries.
+    let pat = '\V\<' . escape(@z, '\') . '\>'
+
+    " Actually match the words.
+    call matchadd("InterestingWord" . a:n, pat, 1, mid)
+
+    " Move back to our original location.
+    normal! `z
+  endfunction " }}}
+
+  " Mappings {{{
+  nnoremap <silent> <leader>1 :call HiInterestingWord(1)<cr>
+  nnoremap <silent> <leader>2 :call HiInterestingWord(2)<cr>
+  nnoremap <silent> <leader>3 :call HiInterestingWord(3)<cr>
+  nnoremap <silent> <leader>4 :call HiInterestingWord(4)<cr>
+  nnoremap <silent> <leader>5 :call HiInterestingWord(5)<cr>
+  nnoremap <silent> <leader>6 :call HiInterestingWord(6)<cr>
+  " }}}
+
+  " Default Highlights {{{
+  hi def InterestingWord1 guifg=#000000 ctermfg=16 guibg=#ffa724 ctermbg=214
+  hi def InterestingWord2 guifg=#000000 ctermfg=16 guibg=#aeee00 ctermbg=154
+  hi def InterestingWord3 guifg=#000000 ctermfg=16 guibg=#8cffba ctermbg=121
+  hi def InterestingWord4 guifg=#000000 ctermfg=16 guibg=#b88853 ctermbg=137
+  hi def InterestingWord5 guifg=#000000 ctermfg=16 guibg=#ff9eb8 ctermbg=211
+  hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#ff2c4b ctermbg=195
+  " }}}
 augroup END
 " }}}
 
 
-" <F10> | NERD Tree
-nnoremap <F10> :NERDTreeToggle<cr>
+" Plugin Configuration =======================================================
 
-
-
-
-
-
-
-" ============================================================================
-" PLUGINS {{{
-
-" ----------------------------------------------------------------------------
-" NERDTree
-" ----------------------------------------------------------------------------
-" Show hidden files, too
-let NERDTreeShowFiles=1
-let NERDTreeShowHidden=1
-" Highlight the selected entry in the tree
-let NERDTreeHighlightCursorline=1
-" Use a single click to fold/unfold directories and a double click to open files
-let NERDTreeMouseMode=2
-
-" In order to open NERDTree when starting vim with a directory,
-" since we configured it to load on-demand, we use the hack below.
-augroup NERDTreeLoaderHack
+" NERDTree {{{
+augroup nerdtree_config
   autocmd!
-  autocmd VimEnter * silent! autocmd! FileExplorer    " clear netrw autocmd group
-  autocmd BufEnter,BufNew *
-        \   if isdirectory(expand('<amatch>'))
-        \|    call plug#load('nerdtree')
-        \|    execute 'autocmd! NERDTreeLoaderHack'
-        \|  endif
+
+  " Show hidden files, too
+  let NERDTreeShowFiles=1
+  let NERDTreeShowHidden=1
+  " Highlight the selected entry in the tree
+  let NERDTreeHighlightCursorline=1
+  " Use a single click to fold/unfold directories and a double click to open files
+  let NERDTreeMouseMode=2
+
+  " In order to open NERDTree when starting vim with a directory,
+  " since we configured it to load on-demand, we use the hack below.
+  augroup NERDTreeLoaderHack
+    autocmd!
+    autocmd VimEnter * silent! autocmd! FileExplorer    " clear netrw autocmd group
+    autocmd BufEnter,BufNew *
+          \   if isdirectory(expand('<amatch>'))
+          \|    call plug#load('nerdtree')
+          \|    execute 'autocmd! NERDTreeLoaderHack'
+          \|  endif
+  augroup END
 augroup END
+" }}}
 
-" ----------------------------------------------------------------------------
-" syntastic
-" ----------------------------------------------------------------------------
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_enable_elixir_checker = 1
-let g:syntastic_elixir_checkers = ['elixir']
-
-" ----------------------------------------------------------------------------
-" lightline
-" ----------------------------------------------------------------------------
-let g:lightline = {
-      \ 'colorscheme': 'seoul256',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
-      \   'right': [ [ 'syntastic', 'lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
-      \ },
-      \ 'component_function': {
-      \   'fugitive': 'LightLineFugitive',
-      \   'filename': 'LightLineFilename'
-      \ },
-      \ 'component_expand': {
-      \   'syntastic': 'SyntasticStatuslineFlag'
-      \ },
-      \ 'component_type': {
-      \   'syntastic': 'error'
-      \ },
-      \ }
-
-function! LightLineFugitive()
-  return exists('*fugitive#head') ? fugitive#head() : ''
-endfunction
-
-function! LightLineFilename()
-  let fname = expand('%:t')
-  return fname =~ 'NERD_tree' ? '' : '' != fname ? fname : '[No Name]'
-endfunction
-
-augroup AutoSyntastic
+" syntastic {{{
+augroup syntastic_config
   autocmd!
-  autocmd BufWritePost * call s:syntastic()
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
+
+  let g:syntastic_enable_elixir_checker = 1
+  let g:syntastic_elixir_checkers = ['elixir']
 augroup END
-function! s:syntastic()
-  SyntasticCheck
-  call lightline#update()
-endfunction
+"}}}
 
+" lightline {{{
+augroup lightline_config
+  autocmd!
+  let g:lightline = {
+        \ 'colorscheme': 'seoul256',
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
+        \   'right': [ [ 'syntastic', 'lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
+        \ },
+        \ 'component_function': {
+        \   'fugitive': 'LightLineFugitive',
+        \   'filename': 'LightLineFilename'
+        \ },
+        \ 'component_expand': {
+        \   'syntastic': 'SyntasticStatuslineFlag'
+        \ },
+        \ 'component_type': {
+        \   'syntastic': 'error'
+        \ },
+        \ }
 
-" ----------------------------------------------------------------------------
-" ack.vim
-" ----------------------------------------------------------------------------
-" Use The Silver Searcher in case it is present
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
+  function! LightLineFugitive()
+    return exists('*fugitive#head') ? fugitive#head() : ''
+  endfunction
 
+  function! LightLineFilename()
+    let fname = expand('%:t')
+    return fname =~ 'NERD_tree' ? '' : '' != fname ? fname : '[No Name]'
+  endfunction
 
-" ----------------------------------------------------------------------------
-" vim-json
-" ----------------------------------------------------------------------------
-let g:vim_json_syntax_conceal = 0
+  augroup AutoSyntastic
+    autocmd!
+    autocmd BufWritePost * call s:syntastic()
+  augroup END
+  function! s:syntastic()
+    SyntasticCheck
+    call lightline#update()
+  endfunction
+augroup END
+" }}}
 
+" ack.vim {{{
+augroup ack_config
+  autocmd!
+  " Use The Silver Searcher in case it is present
+  if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+  endif
+augroup END
+" }}}
 
-" ----------------------------------------------------------------------------
-" vim-indent-guides
-" ----------------------------------------------------------------------------
-let g:indent_guides_guide_size = 1
-let g:indent_guides_start_level = 2
-let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+" vim-json {{{
+augroup vim_json_config
+  autocmd!
+  let g:vim_json_syntax_conceal = 0
+augroup END
+" }}}
 
-let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=238
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
+" vim-indent-guides {{{
+augroup vim_indent_guides_config
+  autocmd!
+  let g:indent_guides_guide_size = 1
+  let g:indent_guides_start_level = 2
+  let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+
+  let g:indent_guides_auto_colors = 0
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=238
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
+augroup END
+" }}}
 

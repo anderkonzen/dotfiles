@@ -17,4 +17,5 @@ https://github.com/gf3/dotfiles
 
 TODO
 
+* install fonts for nvim
 * configure zshrc to define XDG_CONFIG_HOME
