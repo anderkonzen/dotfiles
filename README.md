@@ -1,11 +1,24 @@
 # git
 
-To configure git with your username and email, put the following in ~/.gitconfig.local
+Additional information for git should be put in `~/.gitconfig.local`, for instance, your user name and email.
 
-[core]
-  name = myusername
-  email = my@email.com
 
+# TODO
+
+* add fonts in the repo
+
+* version zsh stuff (plus http://antigen.sharats.me)
+
+* configure XDG_CONFIG_HOME and others
+
+* add Brewfile
+
+* tmux stuff
+
+* step-by-step on how to link vim, git, etc
+
+
+# Sources of Inspiration
 
 https://github.com/alrra/dotfiles
 
@@ -15,7 +28,10 @@ https://github.com/paulirish/dotfiles
 
 https://github.com/gf3/dotfiles
 
-TODO
+https://github.com/holman/dotfiles
 
-* install fonts for nvim
-* configure zshrc to define XDG_CONFIG_HOME
+https://github.com/skwp/dotfiles
+
+https://github.com/ashishb/dotfiles
+
+https://github.com/driesvints/dotfiles
