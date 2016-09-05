@@ -1,3 +1,6 @@
+# Brewfile
+# https://github.com/Homebrew/homebrew-bundle
+
 # Make sure apps get installed in system Applications dir
 cask_args appdir: '/Applications'
 
