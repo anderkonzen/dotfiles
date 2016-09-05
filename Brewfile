@@ -7,6 +7,7 @@ cask_args appdir: '/Applications'
 # Taps
 tap 'caskroom/cask'
 tap 'caskroom/versions'
+tap 'caskroom/fonts'
 tap 'homebrew/bundle'
 tap 'homebrew/dupes'
 
@@ -33,6 +34,18 @@ brew 'tree'
 brew 'wget'
 
 # Apps
-cask 'firefox'
-cask 'vlc'
+cask 'aerial'
+cask 'appcleaner'
 cask 'caffeine'
+cask 'firefox'
+cask 'flux'
+cask 'google-chrome'
+cask 'skype'
+cask 'slack'
+cask 'spotify'
+cask 'sublime-text'
+cask 'vlc'
+
+# Fonts
+cask 'font-hack'
+
