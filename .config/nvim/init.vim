@@ -166,7 +166,7 @@ augroup general_config
   " }}}
 
   " Toggle show tabs and trailing spaces (<space>c) {{{
-  set listchars=tab:▸\ ,space:·,trail:·,extends:#,eol:¬,nbsp:_
+  set listchars=tab:▸\ ,space:∙,trail:∙,extends:#,eol:¬,nbsp:_
   set fcs=fold:-
   nnoremap <silent> <leader>c :set nolist!<CR>
   " }}}
