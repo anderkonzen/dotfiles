@@ -28,8 +28,13 @@ brew 'bash'
 brew 'homebrew/dupes/grep'
 
 # Install Binaries
+brew 'ag'                   # https://github.com/ggreer/the_silver_searcher
+brew 'elixir'               # http://elixir-lang.org/
 brew 'git'
+brew 'neovim/neovim/neovim' # https://neovim.io/
 brew 'node'
+brew 'rbenv'                # https://github.com/rbenv/rbenv
+brew 'tmux'                 # https://tmux.github.io/
 brew 'tree'
 brew 'wget'
 
