@@ -361,11 +361,9 @@ augroup lightline_config
         \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
         \   'right': [ [ 'syntastic', 'lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
         \ },
-        \ 'component': {
-        \   'readonly': '%{&readonly?"":""}',
-        \ },
         \ 'component_function': {
         \   'fugitive': 'LightLineFugitive',
+        \   'readonly': 'LightLineReadonly',
         \   'filename': 'LightLineFilename'
         \ },
         \ 'component_expand': {
@@ -376,8 +374,16 @@ augroup lightline_config
         \ },
         \ }
 
+  function! LightLineReadonly()
+    return &ft !~? 'help' && &readonly ? '' : ''
+  endfunction
+
   function! LightLineFugitive()
-    return exists('*fugitive#head') ? ' ' . fugitive#head() : ''
+    if exists('*fugitive#head')
+      let branch = fugitive#head()
+      return branch !=# '' ? ' ' . branch : ''
+    endif
+    return ''
   endfunction
 
   function! LightLineFilename()
