@@ -144,6 +144,7 @@ set undolevels=1000             " use many levels of undo
 set nobackup                    " do not keep backup files, it's 70's style cluttering
 set noswapfile                  " do not write annoying intermediate swap files
 set shada='20,\"80              " read/write a .viminfo file, don't store more than 80 lines of registers
+set noshowmode                  " do not put mode message in last line
 " }}}
 
 " }}}
@@ -360,6 +361,9 @@ augroup lightline_config
         \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
         \   'right': [ [ 'syntastic', 'lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
         \ },
+        \ 'component': {
+        \   'readonly': '%{&readonly?"":""}',
+        \ },
         \ 'component_function': {
         \   'fugitive': 'LightLineFugitive',
         \   'filename': 'LightLineFilename'
@@ -373,7 +377,7 @@ augroup lightline_config
         \ }
 
   function! LightLineFugitive()
-    return exists('*fugitive#head') ? fugitive#head() : ''
+    return exists('*fugitive#head') ? ' ' . fugitive#head() : ''
   endfunction
 
   function! LightLineFilename()

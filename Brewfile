@@ -45,6 +45,7 @@ cask 'slack'
 cask 'spotify'
 cask 'sublime-text'
 cask 'vlc'
+cask 'iterm2'
 
 # Fonts
 cask 'font-hack'
