@@ -67,15 +67,11 @@ set undodir=~/.config/nvim/undo
 " }}}
 
 " Editor {{{
-set encoding=utf-8 nobomb       " BOM often causes trouble
 set number                      " always show line numbers
-set autoindent                  " copy indent from last line when starting new line
 set smartindent                 " always set smartindenting on
-set backspace=indent,eol,start  " allow backspacing over everything in insert mode
 set shiftwidth=2                " number of spaces to use for autoindenting
 set tabstop=2                   " a tab is two spaces
 set expandtab                   " expand tabs to spaces (overloadable per file type)
-set smarttab                    " insert tabs on the start of a line according to shiftwidth, not tabstop
 set smartcase                   " ignore case if search pattern is all lowercase, case-sensitive otherwise
 set scrolloff=5                 " keep 5 lines off the edges of the screen when scrolling
 set sidescrolloff=5             " start scrolling five columns before vertical border of window
@@ -89,19 +85,17 @@ set autowrite                   " automatically save before :next, :make etc.
 set nowrap                      " by default don't wrap line
 set nostartofline               " don't reset cursor to start of line when moving around
 set undofile                    " persistent undo
+set termguicolors               " true colors
 " }}}
 
 " Searching {{{
-set hlsearch                    " highlight search terms
 set ignorecase                  " ignore case when searching
-set incsearch                   " show search matches as you type
 set magic                       " enable extended regexes
 set wrapscan                    " searches wrap around end of file
 " }}}
 
 " Editor layout {{{
 set lazyredraw                  " don't update the display while executing macros
-set laststatus=2                " tell Vim to always put a status line in, even if there is only one window
 set cmdheight=2                 " use a status bar that is 2 rows high
 set showcmd                     " show (partial) command in the last line of the screen
 set visualbell                  " don't beep
@@ -124,22 +118,18 @@ set foldminlines=0              " allow folding single lines
 set foldnestmax=5               " set max fold nesting level
 set formatoptions=
 set formatoptions+=c            " format comments
-set formatoptions+=r            " continue comments by default
 set formatoptions+=o            " make comment when using o or O from comment line
 set formatoptions+=q            " format comments with gq
 set formatoptions+=n            " recognize numbered lists
 set formatoptions+=2            " use indent from 2nd line of a paragraph
 set formatoptions+=l            " don't break lines that are already long
 set formatoptions+=1            " break before 1-letter words
-set mouse=a                     " enable mouse in all in all modes
 " }}}
 
 " Performance {{{
 set hidden                      " hide buffers instead of closing them
-set wildmenu                    " make tab completion for files/buffers act like bash
 set wildmode=list:full          " show a list when pressing tab and complete first full match
 set switchbuf=useopen           " reveal already opened files from the quickfix window instead of opening new buffers
-set history=1000                " remember more commands and search history
 set undolevels=1000             " use many levels of undo
 set nobackup                    " do not keep backup files, it's 70's style cluttering
 set noswapfile                  " do not write annoying intermediate swap files
