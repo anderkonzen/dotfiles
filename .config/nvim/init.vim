@@ -27,6 +27,13 @@ Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-endwise'      " plugin that helps to end certain structures automatically
 Plug 'tpope/vim-surround'     " to change ( with {: cs({; wrapp word with ': ysiw'
 Plug 'tpope/vim-repeat'       " improve vim repeat feature '.'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'junegunn/rainbow_parentheses.vim'
+
+" Colors
+Plug 'chriskempson/base16-vim'
+Plug 'junegunn/seoul256.vim'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -61,8 +68,8 @@ let mapleader = ' '
 " }}}
 
 " Theme & Layout {{{
-colorscheme Tomorrow-Night-Eighties
-set guifont=mononoki:h14
+colorscheme base16-tomorrow-night
+set guifont=Hack:h14
 " }}}
 
 " Local directories {{{
