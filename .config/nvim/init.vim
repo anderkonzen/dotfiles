@@ -15,7 +15,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Browsing
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'ctrlpvim/ctrlp.vim'                 " <C-p> to find files
-Plug 'tpope/vim-unimpaired'               " [b, ]b, ]t, et...
+Plug 'tpope/vim-unimpaired'               " [b, ]b, ]t, etc...
 Plug 'mileszs/ack.vim'                    " :Ack [pattern] to search for pattern
 Plug 'nathanaelkane/vim-indent-guides'    " <leader>ig to toggle on/off
 Plug 'jeffkreeftmeijer/vim-numbertoggle'  " <C-n> to toggle between number and relativenumber
@@ -35,6 +35,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'elixir-lang/vim-elixir'
 Plug 'vim-ruby/vim-ruby'      " vim-ruby needs 'gem install neovim' if you want code completion
 Plug 'elzr/vim-json', {'for' : 'json'}
+Plug 'tpope/vim-markdown', {'for' : 'markdown'}
 
 " Lint
 Plug 'scrooloose/syntastic'
@@ -46,6 +47,7 @@ call plug#end()
 
 
 " Settings ===================================================================
+" Note: see nvim-defaults for default settings which are present here
 
 " Preamble {{{
 
