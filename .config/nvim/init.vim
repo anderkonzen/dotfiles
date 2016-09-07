@@ -19,6 +19,7 @@ Plug 'tpope/vim-unimpaired'               " [b, ]b, ]t, etc...
 Plug 'mileszs/ack.vim'                    " :Ack [pattern] to search for pattern
 Plug 'nathanaelkane/vim-indent-guides'    " <leader>ig to toggle on/off
 Plug 'jeffkreeftmeijer/vim-numbertoggle'  " <C-n> to toggle between number and relativenumber
+Plug 'justinmk/vim-sneak'                 " s{char}{char} to move the cursor to {char}{char}
 
 " Edit
 Plug 'tpope/vim-commentary'   " comment stuff out (use gcc to comment and gcgc to uncomment)
