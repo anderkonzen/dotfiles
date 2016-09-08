@@ -1,10 +1,4 @@
 " vim: foldmethod=marker foldlevel=0
-"
-" .init.vim
-" by Anderson Konzen <anderson.konzen@gmail.com>
-"
-" Inspired by https://github.com/junegunn/dotfiles/blob/master/vimrc
-
 
 " Plugins ====================================================================
 
