@@ -58,4 +58,5 @@ cask 'iterm2'
 
 # Fonts
 cask 'font-hack'
+cask 'font-mononoki'
 
