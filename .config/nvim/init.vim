@@ -21,6 +21,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-endwise'      " plugin that helps to end certain structures automatically
 Plug 'tpope/vim-surround'     " to change ( with {: cs({; wrapp word with ': ysiw'
 Plug 'tpope/vim-repeat'       " improve vim repeat feature '.'
+Plug 'ervandew/supertab'      " Improve <Tab> completion in insert mode
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
