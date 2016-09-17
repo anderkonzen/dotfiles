@@ -49,7 +49,6 @@ call plug#end()
 
 
 " Settings ===================================================================
-" Note: see nvim-defaults for default settings which are present here
 
 " Preamble {{{
 
@@ -196,16 +195,11 @@ augroup general_config
   tnoremap <Esc><Esc> <C-\><C-n>
   " }}}
 
-  " Get off my lawn {{{
-  function! GetOffMyLawnEcho(message) " {{{
-    echohl WarningMsg
-    echo a:message
-    echohl None
-  endfunction " }}}
-  nnoremap <Left>  <Esc>:call GetOffMyLawnEcho("Gosh, use h!!!")<CR>
-  nnoremap <Right> <Esc>:call GetOffMyLawnEcho("Gosh, use l!!!")<CR>
-  nnoremap <Up>    <Esc>:call GetOffMyLawnEcho("Gosh, use k!!!")<CR>
-  nnoremap <Down>  <Esc>:call GetOffMyLawnEcho("Gosh, use j!!!")<CR>
+  " Enforce purity {{{
+  nnoremap <Left>   <Nop>
+  nnoremap <Right>  <Nop>
+  nnoremap <Up>     <Nop>
+  nnoremap <Down>   <Nop>
   " }}}
 
   " <tab> / <s-tab> | Circular windows navigation {{{
@@ -424,6 +418,14 @@ augroup vim_indent_guides_config
   let g:indent_guides_auto_colors = 0
   autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=238
   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
+augroup END
+" }}}
+
+" vim-gitgutter {{{
+augroup vim_git_gutter_config
+  autocmd!
+  " Always show the sign column
+  let g:gitgutter_sign_column_always = 1
 augroup END
 " }}}
 
