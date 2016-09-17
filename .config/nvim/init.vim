@@ -1,6 +1,7 @@
 " vim: foldmethod=marker foldlevel=0
 
-" Plugins ====================================================================
+" ----------------------------------------------------------------------
+" Plugins
 
 " vim-plug, load plugins {{{
 
@@ -11,17 +12,17 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'ctrlpvim/ctrlp.vim'                 " <C-p> to find files
 Plug 'tpope/vim-unimpaired'               " [b, ]b, ]t, etc...
 Plug 'mileszs/ack.vim'                    " :Ack [pattern] to search for pattern
-Plug 'nathanaelkane/vim-indent-guides'    " <leader>ig to toggle on/off
-Plug 'jeffkreeftmeijer/vim-numbertoggle'  " <C-n> to toggle between number and relativenumber
 Plug 'justinmk/vim-sneak'                 " s{char}{char} to move the cursor to {char}{char}
 
 " Edit
-Plug 'tpope/vim-commentary'   " comment stuff out (use gcc to comment and gcgc to uncomment)
+Plug 'tpope/vim-commentary'               " comment stuff out (use gcc to comment and gcgc to uncomment)
+Plug 'tpope/vim-endwise'                  " plugin that helps to end certain structures automatically
+Plug 'tpope/vim-surround'                 " to change ( with {: cs({; wrapp word with ': ysiw'
+Plug 'tpope/vim-repeat'                   " improve vim repeat feature '.'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'  " <C-n> to toggle between number and relativenumber
+Plug 'nathanaelkane/vim-indent-guides'    " <leader>ig to toggle on/off
 Plug 'itchyny/lightline.vim'
-Plug 'tpope/vim-endwise'      " plugin that helps to end certain structures automatically
-Plug 'tpope/vim-surround'     " to change ( with {: cs({; wrapp word with ': ysiw'
-Plug 'tpope/vim-repeat'       " improve vim repeat feature '.'
-Plug 'ervandew/supertab'      " Improve <Tab> completion in insert mode
+Plug 'ervandew/supertab'                  " improve <Tab> completion in insert mode
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
@@ -49,9 +50,8 @@ call plug#end()
 " }}}
 
 
-" Settings ===================================================================
-
-" Preamble {{{
+" ----------------------------------------------------------------------
+" Settings
 
 " NeoVim {{{
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
@@ -70,50 +70,17 @@ set guifont=Hack:h14
 set undodir=~/.config/nvim/undo
 " }}}
 
-" Editor {{{
-set number                      " always show line numbers
-set smartindent                 " always set smartindenting on
-set shiftwidth=2                " number of spaces to use for autoindenting
-set tabstop=2                   " a tab is two spaces
-set expandtab                   " expand tabs to spaces (overloadable per file type)
-set smartcase                   " ignore case if search pattern is all lowercase, case-sensitive otherwise
-set scrolloff=5                 " keep 5 lines off the edges of the screen when scrolling
-set sidescrolloff=5             " start scrolling five columns before vertical border of window
-set esckeys                     " allow cursor keys in insert mode
-set autoread                    " automatically reload files changed outside of Vim
-set clipboard=unnamed           " normal OS clipboard interaction
-set diffopt=filler              " add vertical spaces to keep right and left aligned
-set diffopt+=iwhite             " ignore whitespace changes (focus on code changes)
-set showmatch                   " set show matching parenthesis
-set autowrite                   " automatically save before :next, :make etc.
-set nowrap                      " by default don't wrap line
-set nostartofline               " don't reset cursor to start of line when moving around
-set undofile                    " persistent undo
-set termguicolors               " true colors
-" }}}
-
-" Searching {{{
-set ignorecase                  " ignore case when searching
-set magic                       " enable extended regexes
-set wrapscan                    " searches wrap around end of file
-" }}}
-
 " Editor layout {{{
-set lazyredraw                  " don't update the display while executing macros
 set cmdheight=2                 " use a status bar that is 2 rows high
-set showcmd                     " show (partial) command in the last line of the screen
-set visualbell                  " don't beep
-set noerrorbells                " don't beep
-set showtabline=2               " always show tab bar
-set ruler                       " show cursor position
-set shortmess=aIT               " avoid a series of prompts caused by file messages
-set nolist                      " don't show unprintable characters by default
-set virtualedit=block           " allow the cursor to go in to invalid places
-set cursorline                  " highlight the current line, for quick orientation
-set title                       " change the terminal's title<Paste>
+set colorcolumn=100             " highlight certain column(s)
 set completeopt=menuone,preview
-set splitbelow                  " open new split panes to right...
-set splitright                  " ... and bottom, which feels more natural
+set cursorline                  " highlight the current line, for quick orientation
+set listchars=tab:▸\
+set listchars+=space:∙
+set listchars+=trail:∙
+set listchars+=extends:#
+set listchars+=eol:¬
+set listchars+=nbsp:_
 set foldenable                  " enable folding
 set foldcolumn=0                " column to show folds
 set foldlevel=5                 " open all folds by default
@@ -128,23 +95,65 @@ set formatoptions+=n            " recognize numbered lists
 set formatoptions+=2            " use indent from 2nd line of a paragraph
 set formatoptions+=l            " don't break lines that are already long
 set formatoptions+=1            " break before 1-letter words
+set noerrorbells                " don't beep
+set nolist                      " don't show unprintable characters by default
+set number                      " always show line numbers
+set ruler                       " show cursor position
+set scrolloff=5                 " keep 5 lines off the edges of the screen when scrolling
+set shortmess=aIT               " avoid a series of prompts caused by file messages
+set showcmd                     " show (partial) command in the last line of the screen
+set showtabline=2               " always show tab bar
+set sidescrolloff=5             " start scrolling five columns before vertical border of window
+set splitbelow                  " open new split panes to right...
+set splitright                  " ... and bottom, which feels more natural
+set termguicolors               " true colors
+set title                       " change the terminal's title
+set undofile                    " persistent undo
+set virtualedit=block           " allow the cursor to go in to invalid places
+set visualbell                  " don't beep
+" }}}
+
+" Editing {{{
+set autoread                    " automatically reload files changed outside of Vim
+set autowrite                   " automatically save before :next, :make etc.
+set clipboard=unnamed           " normal OS clipboard interaction
+set esckeys                     " allow cursor keys in insert mode
+set expandtab                   " expand tabs to spaces (overloadable per file type)
+set nostartofline               " don't reset cursor to start of line when moving around
+set nowrap                      " by default don't wrap line
+set shiftwidth=2                " number of spaces to use for autoindenting
+set showmatch                   " set show matching parenthesis
+set smartindent                 " always set smartindenting on
+set tabstop=2                   " a tab is two spaces
+" }}}
+
+" diff-mode (nvim -d file1 file2) {{{
+set diffopt=filler              " add vertical spaces to keep right and left aligned
+set diffopt+=iwhite             " ignore whitespace changes (focus on code changes)
+" }}}
+
+" Searching {{{
+set ignorecase                  " ignore case when searching
+set magic                       " enable extended regexes
+set smartcase                   " ignore case if search pattern is all lowercase, case-sensitive otherwise
+set wrapscan                    " searches wrap around end of file
 " }}}
 
 " Performance {{{
 set hidden                      " hide buffers instead of closing them
-set wildmode=list:full          " show a list when pressing tab and complete first full match
-set switchbuf=useopen           " reveal already opened files from the quickfix window instead of opening new buffers
-set undolevels=1000             " use many levels of undo
-set nobackup                    " do not keep backup files, it's 70's style cluttering
+set lazyredraw                  " don't update the display while executing macros
+set nobackup                    " do not keep backup files
+set noshowmode                  " do not put mode message in last line
 set noswapfile                  " do not write annoying intermediate swap files
 set shada='20,\"80              " read/write a .viminfo file, don't store more than 80 lines of registers
-set noshowmode                  " do not put mode message in last line
+set switchbuf=useopen           " reveal already opened files from the quickfix window instead of opening new buffers
+set undolevels=1000             " use many levels of undo
+set wildmode=list:full          " show a list when pressing tab and complete first full match
 " }}}
 
-" }}}
 
-
-" Configuration ==============================================================
+" ----------------------------------------------------------------------
+" General Configurations and Mappings
 
 " General {{{
 augroup general_config
@@ -160,8 +169,6 @@ augroup general_config
   " }}}
 
   " Toggle show tabs and trailing spaces (<space>c) {{{
-  set listchars=tab:▸\ ,space:∙,trail:∙,extends:#,eol:¬,nbsp:_
-  set fcs=fold:-
   nnoremap <silent> <leader>c :set nolist!<CR>
   " }}}
 
@@ -298,7 +305,8 @@ augroup END
 " }}}
 
 
-" Plugin Configuration =======================================================
+" ----------------------------------------------------------------------
+" Plugin Configuration
 
 " NERDTree {{{
 augroup nerdtree_config
