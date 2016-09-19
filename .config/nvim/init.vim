@@ -20,7 +20,7 @@ Plug 'tpope/vim-endwise'                  " plugin that helps to end certain str
 Plug 'tpope/vim-surround'                 " to change ( with {: cs({; wrapp word with ': ysiw'
 Plug 'tpope/vim-repeat'                   " improve vim repeat feature '.'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'  " <C-n> to toggle between number and relativenumber
-Plug 'nathanaelkane/vim-indent-guides'    " <leader>ig to toggle on/off
+Plug 'yggdroot/indentline'                " <leader>ig to toggle on/off
 Plug 'itchyny/lightline.vim'
 Plug 'ervandew/supertab'                  " improve <Tab> completion in insert mode
 Plug 'junegunn/goyo.vim'
@@ -402,6 +402,7 @@ augroup END
 " ack.vim {{{
 augroup ack_vim_config
   autocmd!
+
   " Use The Silver Searcher in case it is present
   if executable('ag')
     let g:ackprg = 'ag --vimgrep'
@@ -412,27 +413,26 @@ augroup END
 " vim-json {{{
 augroup vim_json_config
   autocmd!
+
   let g:vim_json_syntax_conceal = 0
 augroup END
 " }}}
 
-" vim-indent-guides {{{
-augroup vim_indent_guides_config
+" indentline {{{
+augroup indentline_config
   autocmd!
 
-  let g:indent_guides_guide_size = 1
-  let g:indent_guides_start_level = 2
-  let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+  let g:indentLine_char = '┊'
 
-  let g:indent_guides_auto_colors = 0
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=238
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
+  " <Leader>ig toggles indent lines
+  nnoremap <Leader>ig :IndentLinesToggle<CR>
 augroup END
 " }}}
 
 " vim-gitgutter {{{
 augroup vim_git_gutter_config
   autocmd!
+
   " Always show the sign column
   let g:gitgutter_sign_column_always = 1
 augroup END
