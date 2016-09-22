@@ -23,9 +23,6 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'  " <C-n> to toggle between number and r
 Plug 'yggdroot/indentline'                " <leader>ig to toggle on/off
 Plug 'itchyny/lightline.vim'
 Plug 'ervandew/supertab'                  " improve <Tab> completion in insert mode
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'junegunn/rainbow_parentheses.vim'
 
 " Colors
 Plug 'chriskempson/base16-vim'
@@ -98,7 +95,6 @@ set formatoptions+=1            " break before 1-letter words
 set noerrorbells                " don't beep
 set nolist                      " don't show unprintable characters by default
 set number                      " always show line numbers
-set ruler                       " show cursor position
 set scrolloff=5                 " keep 5 lines off the edges of the screen when scrolling
 set shortmess=aIT               " avoid a series of prompts caused by file messages
 set showcmd                     " show (partial) command in the last line of the screen
@@ -193,10 +189,9 @@ augroup general_config
   nnoremap <silent> , :exe 'silent! normal! '.((foldclosed('.')>0)? 'zMzx' : 'zc')<CR>
   " }}}
 
-  " Save with <C-s> or <space>w {{{
+  " Save with <C-s> {{{
   inoremap <C-s>     <C-O>:update<cr>
   nnoremap <C-s>     :update<cr>
-  nnoremap <leader>w :update<cr>
   " }}}
 
   " Terminal {{{
@@ -213,17 +208,6 @@ augroup general_config
   " <tab> / <s-tab> | Circular windows navigation {{{
   nnoremap <tab>   <c-w>w
   nnoremap <S-tab> <c-w>W
-
-  " Or using ctrl to jump directly to a window
-  nnoremap <C-j> <C-w><C-j>
-  nnoremap <C-k> <C-w><C-k>
-  nnoremap <C-l> <C-w><C-l>
-  nnoremap <C-h> <C-w><C-h>
-  " Note: for <C-h> to work you may need to set kbs=\117 in your
-  " terminal's terminfo/termcap:
-  "   $ infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
-  "   $ tic $TERM.ti
-  " }}}
 
   " Strip trailing whitespace (<space>ss) {{{
   function! StripWhitespace () " {{{
@@ -249,58 +233,6 @@ augroup general_config
   nnoremap <F10> :NERDTreeToggle<cr>
   " }}}
 
-augroup END
-" }}}
-
-" Highlight Interesting Words {{{
-augroup highlight_interesting_word
-  autocmd!
-  " This mini-plugin provides a few mappings for highlighting words temporarily.
-  "
-  " Sometimes you're looking at a hairy piece of code and would like a certain
-  " word or two to stand out temporarily.  You can search for it, but that only
-  " gives you one color of highlighting.  Now you can use <leader>N where N is
-  " a number from 1-6 to highlight the current word in a specific color.
-  function! HiInterestingWord(n) " {{{
-    " Save our location.
-    normal! mz
-
-    " Yank the current word into the z register.
-    normal! "zyiw
-
-    " Calculate an arbitrary match ID.  Hopefully nothing else is using it.
-    let mid = 86750 + a:n
-
-    " Clear existing matches, but don't worry if they don't exist.
-    silent! call matchdelete(mid)
-
-    " Construct a literal pattern that has to match at boundaries.
-    let pat = '\V\<' . escape(@z, '\') . '\>'
-
-    " Actually match the words.
-    call matchadd("InterestingWord" . a:n, pat, 1, mid)
-
-    " Move back to our original location.
-    normal! `z
-  endfunction " }}}
-
-  " Mappings {{{
-  nnoremap <silent> <leader>1 :call HiInterestingWord(1)<cr>
-  nnoremap <silent> <leader>2 :call HiInterestingWord(2)<cr>
-  nnoremap <silent> <leader>3 :call HiInterestingWord(3)<cr>
-  nnoremap <silent> <leader>4 :call HiInterestingWord(4)<cr>
-  nnoremap <silent> <leader>5 :call HiInterestingWord(5)<cr>
-  nnoremap <silent> <leader>6 :call HiInterestingWord(6)<cr>
-  " }}}
-
-  " Default Highlights {{{
-  hi def InterestingWord1 guifg=#000000 ctermfg=16 guibg=#ffa724 ctermbg=214
-  hi def InterestingWord2 guifg=#000000 ctermfg=16 guibg=#aeee00 ctermbg=154
-  hi def InterestingWord3 guifg=#000000 ctermfg=16 guibg=#8cffba ctermbg=121
-  hi def InterestingWord4 guifg=#000000 ctermfg=16 guibg=#b88853 ctermbg=137
-  hi def InterestingWord5 guifg=#000000 ctermfg=16 guibg=#ff9eb8 ctermbg=211
-  hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#ff2c4b ctermbg=195
-  " }}}
 augroup END
 " }}}
 
@@ -361,7 +293,8 @@ augroup lightline_config
         \ 'component_function': {
         \   'fugitive': 'LightLineFugitive',
         \   'readonly': 'LightLineReadonly',
-        \   'filename': 'LightLineFilename'
+        \   'filename': 'LightLineFilename',
+        \   'lineinfo': 'LightLineLineinfo'
         \ },
         \ 'component_expand': {
         \   'syntastic': 'SyntasticStatuslineFlag'
@@ -386,6 +319,11 @@ augroup lightline_config
   function! LightLineFilename()
     let fname = expand('%:t')
     return fname =~ 'NERD_tree' ? '' : '' != fname ? fname : '[No Name]'
+  endfunction
+
+  function! LightLineLineinfo()
+    let pos = line('.') . ':' . col('.')
+    return ' ' . pos 
   endfunction
 
   augroup AutoSyntastic
