@@ -348,14 +348,6 @@ augroup ack_vim_config
 augroup END
 " }}}
 
-" vim-json {{{
-augroup vim_json_config
-  autocmd!
-
-  let g:vim_json_syntax_conceal = 0
-augroup END
-" }}}
-
 " indentline {{{
 augroup indentline_config
   autocmd!
