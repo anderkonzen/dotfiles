@@ -323,7 +323,7 @@ augroup lightline_config
 
   function! LightLineLineinfo()
     let pos = line('.') . ':' . col('.')
-    return ' ' . pos 
+    return ' ' . pos
   endfunction
 
   augroup AutoSyntastic
@@ -353,6 +353,7 @@ augroup indentline_config
   autocmd!
 
   let g:indentLine_char = '┊'
+  let g:indentLine_concealcursor = 'c'
 
   " <Leader>ig toggles indent lines
   nnoremap <Leader>ig :IndentLinesToggle<CR>
