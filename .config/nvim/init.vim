@@ -37,6 +37,7 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'vim-ruby/vim-ruby'      " vim-ruby needs 'gem install neovim' if you want code completion
 Plug 'elzr/vim-json', {'for' : 'json'}
 Plug 'tpope/vim-markdown', {'for' : 'markdown'}
+Plug 'tmux-plugins/vim-tmux'
 
 " Lint
 Plug 'scrooloose/syntastic'
