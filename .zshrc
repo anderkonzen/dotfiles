@@ -28,8 +28,15 @@ zplug "zsh-users/zsh-syntax-highlighting", nice:10
 zplug "mafredri/zsh-async"
 zplug "sindresorhus/pure"
 
+# Configure TERM for tmux
+[ -z "$TMUX" ] && export TERM=xterm-256color-italic
+
 # jenv (jenv.be)
 if which jenv &> /dev/null; then eval "$(jenv init -)"; fi
+
+# base16-shell - https://github.com/chriskempson/base16-shell
+BASE16_SHELL=$HOME/dotfiles/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then

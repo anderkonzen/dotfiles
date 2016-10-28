@@ -60,8 +60,12 @@ let mapleader = ' '
 " }}}
 
 " Theme & Layout {{{
-colorscheme base16-tomorrow-night
+"colorscheme base16-tomorrow-night
+if filereadable(expand("~/.vimrc_background"))
+  source ~/.vimrc_background
+endif
 set guifont=Hack:h14
+highlight Comment cterm=italic
 " }}}
 
 " Local directories {{{
