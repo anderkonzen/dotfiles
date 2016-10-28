@@ -27,20 +27,18 @@ brew 'bash'
 # Install more recent versions of some OS X tools
 brew 'homebrew/dupes/grep'
 
-# Install Binaries
-brew 'ag'                   # https://github.com/ggreer/the_silver_searcher
+brew 'ag'
 brew 'git'
-brew 'neovim/neovim/neovim' # https://neovim.io/
+brew 'neovim/neovim/neovim'
 brew 'node'
-brew 'rbenv'                # https://github.com/rbenv/rbenv
+brew 'rbenv'
 brew 'ruby-build'
-brew 'tmux'                 # https://tmux.github.io/
+brew 'tmux'
 brew 'tree'
 brew 'wget'
-
-# Development
 brew 'exercism'
-brew 'elixir'               # http://elixir-lang.org/
+brew 'elixir'
+brew 'reattach-to-user-namespace'
 
 # Apps
 cask 'aerial'
