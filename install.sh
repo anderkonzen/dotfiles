@@ -33,9 +33,9 @@ iHeader "Configuring zsh as default shell..."
 
 zshPath=$(which zsh)
 if ! grep "$zshPath" < /etc/shells &> /dev/null; then
-  echo "$zshPath" &> /dev/null | sudo tee -a /etc/shells
+  command -v $zshPath | sudo tee -a /etc/shells
 fi
-chsh -s "$zshPath" &> /dev/null
+sudo chsh -s "$zshPath" &> /dev/null
 
 iFinishStep "zsh configured!"
 

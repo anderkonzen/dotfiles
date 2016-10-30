@@ -1,4 +1,9 @@
+export DOTFILES=$HOME/.dotfiles
+export ZSH=$DOTFILES/zsh
+
 # zplug
+export ZPLUG_HOME="${HOME}/.zplug"
+
 if [[ ! -d $ZPLUG_HOME ]]; then
     curl -sL zplug.sh/installer | zsh
     source $ZPLUG_HOME/init.zsh && zplug update --self
@@ -37,6 +42,9 @@ if which jenv &> /dev/null; then eval "$(jenv init -)"; fi
 # base16-shell - https://github.com/chriskempson/base16-shell
 BASE16_SHELL=$HOME/.dotfiles/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
+# Source all .zsh files inside of the zsh/ directory
+for config ($ZSH/**/*.zsh) source $config
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
