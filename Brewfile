@@ -13,7 +13,6 @@ tap 'homebrew/dupes'
 
 # Install ZSH
 brew 'zsh'
-brew 'zsh-completions'
 
 # Install GNU core utilities (those that come with OS X are outdated)
 brew 'coreutils'

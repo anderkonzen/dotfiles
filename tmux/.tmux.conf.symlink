@@ -89,5 +89,5 @@ bind -t vi-copy MouseDragEnd1Pane copy-pipe "pbcopy"
 bind C-c run "tmux save-buffer - | reattach-to-user-namespace pbcopy"
 bind C-v run "tmux set-buffer $(reattach-to-user-namespace pbpaste); tmux paste-buffer"
 
-source ~/dotfiles/tmux/theme.sh
+source ~/.dotfiles/tmux/theme.sh
 
