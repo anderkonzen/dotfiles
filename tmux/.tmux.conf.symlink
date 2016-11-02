@@ -16,10 +16,11 @@ set -g renumber-windows on
 
 # Redefine tmux prefix to C-a, and unbind C-b to be used elsewhere
 set -g prefix C-a
-bind C-a send-prefix    # C-a twice to send it to apps 
+# Ensure that we can send Ctrl-a to other apps
+bind C-a send-prefix
 unbind C-b
 
-# Change default delay to 1 ms
+# Change default delay between prefix and command to 1 ms
 set -s escape-time 1
 
 # Change window and pane base index numbers to 1
@@ -27,7 +28,7 @@ set -g base-index 1
 setw -g pane-base-index 1
 
 # Bind prefix-r to reload tmux configuration
-bind r source-file ~/.tmux.conf \; display "Reloaded!"
+bind r source-file ~/.tmux.conf \; display "tmux Reloaded!"
 
 # Splitting panes
 unbind %
@@ -57,6 +58,12 @@ bind l select-pane -R
 # Cycle through windows
 bind -r C-h select-window -t :-
 bind -r C-l select-window -t :+
+
+# Cycle through sessions
+unbind Left
+unbind Right
+bind -r Right switch-client -n
+bind -r Left switch-client -p
 
 # Center windows list
 set -g status-justify centre
@@ -89,5 +96,8 @@ bind -t vi-copy MouseDragEnd1Pane copy-pipe "pbcopy"
 bind C-c run "tmux save-buffer - | reattach-to-user-namespace pbcopy"
 bind C-v run "tmux set-buffer $(reattach-to-user-namespace pbpaste); tmux paste-buffer"
 
-source ~/.dotfiles/tmux/theme.sh
+# Log output to a text file on demand
+# bind P pipe-pane -o "cat >>~/#W.log" \; display "Toggled logging to ~/#W.log"
+
+source ~/.dotfiles/tmux/theme.conf
 
