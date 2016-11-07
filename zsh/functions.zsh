@@ -11,13 +11,8 @@ function colours() {
 }
 
 # Create a new directory and enter it
-function md() {
-	mkdir -p "$@" && cd "$@"
-}
-
-# find shorthand
-function f() {
-	find . -name "$1" 2>&1 | grep -v 'Permission denied'
+function mkd() {
+	mkdir -p "$@" && cd "$_";
 }
 
 # cd into whatever is the forefront Finder window.
@@ -37,11 +32,11 @@ function myip {
 # https://blog.no-panic.at/2015/04/21/set-tmux-pane-title-on-ssh-connections/
 ssh() {
   if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
-    tmux rename-window "$(echo $* | cut -d . -f 1)"
+    #tmux rename-window "$(echo $* | cut -d . -f 1)"
+    tmux rename-window "$*"
     command ssh "$@"
     tmux set-window-option automatic-rename "on" 1>/dev/null
   else
     command ssh "$@"
   fi
 }
-
