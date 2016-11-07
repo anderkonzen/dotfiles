@@ -40,7 +40,7 @@ zplug "sindresorhus/pure"
 if which jenv &> /dev/null; then eval "$(jenv init -)"; fi
 
 # base16-shell - https://github.com/chriskempson/base16-shell
-BASE16_SHELL=$HOME/.dotfiles/base16-shell/
+BASE16_SHELL=$DOTFILES/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 # Source all .zsh files inside of the zsh/ directory
