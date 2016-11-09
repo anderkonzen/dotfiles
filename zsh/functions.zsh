@@ -12,25 +12,25 @@ function colours() {
 
 # Create a new directory and enter it
 function mkd() {
-	mkdir -p "$@" && cd "$_";
+  mkdir -p "$@" && cd "$_"
 }
 
 # cd into whatever is the forefront Finder window.
-cdf() {  # short for cdfinder
+function cdf() {  # short for cdfinder
   cd "`osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)'`"
 }
 
 function myip {
-	ifconfig lo0 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "lo0 : " $2}'
-	ifconfig en0 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "en0 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
-	ifconfig en0 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en0 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
-	ifconfig en1 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "en1 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
-	ifconfig en1 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en1 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
+  ifconfig lo0 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "lo0 : " $2}'
+  ifconfig en0 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "en0 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
+  ifconfig en0 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en0 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
+  ifconfig en1 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "en1 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
+  ifconfig en1 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en1 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
 }
 
 # Change tmux window name on ssh session
 # https://blog.no-panic.at/2015/04/21/set-tmux-pane-title-on-ssh-connections/
-ssh() {
+function ssh() {
   if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
     #tmux rename-window "$(echo $* | cut -d . -f 1)"
     tmux rename-window "$*"
@@ -39,4 +39,10 @@ ssh() {
   else
     command ssh "$@"
   fi
+}
+
+function server() {
+  local port="${1:-8000}"
+  open "http://localhost:${port}/" &
+  ruby -run -e httpd . -p "$port"
 }

@@ -29,6 +29,7 @@ zplug "plugins/mix",      from:oh-my-zsh
 zplug "plugins/tmux",     from:oh-my-zsh
 zplug "plugins/docker",   from:oh-my-zsh
 
+zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", nice:10
 
 zplug "mafredri/zsh-async"
