@@ -32,8 +32,8 @@ bind r source-file ~/.tmux.conf \; display "tmux Reloaded!"
 
 # Splitting panes
 unbind %
-bind | split-window -h
-bind - split-window -v
+bind | split-window -h -d -c '#{pane_current_path}'
+bind - split-window -v -d -c '#{pane_current_path}'
 
 # Tile all panes
 unbind =
