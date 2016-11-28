@@ -1,11 +1,11 @@
 # Workarounds for accessing the Mac OS X pasteboard
-set-option -g default-command 'reattach-to-user-namespace -l zsh'
+set -g default-command 'reattach-to-user-namespace -l zsh'
 
 # tmux display things in 256 colors and italic
 set -g default-terminal "tmux-256color-italic"
 
 # Enable terminal compatibility
-set-option -ga terminal-overrides ",tmux-256color-italic:Tc"
+set -ga terminal-overrides ",tmux-256color-italic:Tc"
 
 # Activity Monitoring
 setw -g monitor-activity off
@@ -40,8 +40,8 @@ unbind =
 bind = select-layout tiled
 
 # Rename terminal title
-set-option -g set-titles on
-set-option -g set-titles-string "#T ≈ #W"   # pane - window
+set -g set-titles on
+set -g set-titles-string "#T ≈ #W"   # pane - window
 
 # Quickly open a new window
 bind N new-window
@@ -75,7 +75,7 @@ bind -r K resize-pane -U 5
 bind -r L resize-pane -R 5
 
 # Mouse scrolling
-setw -g mouse on
+set -g mouse on
 bind -n WheelUpPane if-shell -F -t = "#{mouse_any_flag}" "send-keys -M" "if -Ft= '#{pane_in_mode}' 'send-keys -M' 'select-pane -t=; copy-mode -e; send-keys -M'"
 bind -n WheelDownPane select-pane -t= \; send-keys -M
 
@@ -84,13 +84,12 @@ setw -g mode-keys vi
 
 # More settings to make copy mode more vim-like
 unbind [
-bind Escape copy-mode
 unbind p
 unbind ]
+bind Escape copy-mode
 bind p paste-buffer
-bind -t vi-copy 'v' begin-selection
-bind -t vi-copy 'y' copy-selection
-bind -t vi-copy MouseDragEnd1Pane copy-pipe "pbcopy"
+bind -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
+bind -t vi-copy MouseDragEnd1Pane copy-pipe "reattach-to-user-namespace pbcopy"
 
 # Buffers to/from Mac clipboard, yay tmux book from pragprog
 bind C-c run "tmux save-buffer - | reattach-to-user-namespace pbcopy"
