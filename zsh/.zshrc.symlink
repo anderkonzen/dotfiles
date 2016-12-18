@@ -11,9 +11,6 @@ else
     source $ZPLUG_HOME/init.zsh
 fi
 
-# Let zplug be managed by itself
-zplug "zplug/zplug"
-
 zplug "robbyrussell/oh-my-zsh",	use:"lib/completion.zsh"
 zplug "robbyrussell/oh-my-zsh", use:"lib/correction.zsh"
 zplug "robbyrussell/oh-my-zsh", use:"lib/directories.zsh"
@@ -30,7 +27,7 @@ zplug "plugins/tmux",     from:oh-my-zsh
 zplug "plugins/docker",   from:oh-my-zsh
 
 zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-syntax-highlighting", nice:10
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 zplug "mafredri/zsh-async"
 zplug "sindresorhus/pure"
