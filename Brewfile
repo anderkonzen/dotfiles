@@ -42,7 +42,7 @@ brew 'reattach-to-user-namespace'
 # Apps
 cask 'aerial'
 cask 'appcleaner'
-cask 'caffeine'
+cask 'keepingyouawake'
 cask 'firefox'
 cask 'flux'
 cask 'google-chrome'
