@@ -44,7 +44,7 @@ set -g set-titles on
 set -g set-titles-string "#T ≈ #W"   # pane - window
 
 # Quickly open a new window
-bind N new-window
+bind N new-window -c '#{pane_current_path}'
 
 # Synchronize all panes in a window
 bind y setw synchronize-panes
