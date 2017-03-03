@@ -12,3 +12,5 @@ alias du='du -h -c' # calculate disk usage for a folder
 # Hide/show all desktop icons (useful when presenting)
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
+alias pcurl='curl -w "\n\n%{time_total} secs" '
