@@ -29,10 +29,10 @@ zplug "plugins/docker",   from:oh-my-zsh
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
-zplug "mafredri/zsh-async", defer:0
-zplug "sindresorhus/pure", defer:1
+zplug "mafredri/zsh-async", from:github
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 
-zplug "zplug/zplug"
+zplug "zplug/zplug", hook-build:'zplug --self-manage'
 
 # Configure TERM for tmux
 [ -z "$TMUX" ] && export TERM=xterm-256color-italic
