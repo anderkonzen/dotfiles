@@ -347,6 +347,10 @@ augroup END
 augroup ack_vim_config
   autocmd!
 
+  " Do not jump to the first result automatically
+  cnoreabbrev Ack Ack!
+  nnoremap <Leader>a :Ack!<Space>
+
   " Use The Silver Searcher in case it is present
   if executable('ag')
     let g:ackprg = 'ag --vimgrep'
