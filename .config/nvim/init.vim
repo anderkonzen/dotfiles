@@ -39,6 +39,7 @@ Plug 'vim-ruby/vim-ruby'      " vim-ruby needs 'gem install neovim' if you want 
 Plug 'elzr/vim-json', {'for' : 'json'}
 Plug 'tpope/vim-markdown', {'for' : 'markdown'}
 Plug 'tmux-plugins/vim-tmux'
+Plug 'elmcast/elm-vim'
 
 " Lint
 Plug 'scrooloose/syntastic'
@@ -283,6 +284,8 @@ augroup syntastic_config
 
   let g:syntastic_enable_elixir_checker = 1
   let g:syntastic_elixir_checkers = ['elixir']
+
+  let g:elm_syntastic_show_warnings = 1
 augroup END
 "}}}
 
@@ -385,6 +388,23 @@ augroup vim_git_gutter_config
 
   " Always show the sign column
   let g:gitgutter_sign_column_always = 1
+augroup END
+" }}}
+
+" elm-vim {{{
+augroup elm_vim_config
+  autocmd!
+
+  " Disable mappings (need to check for conflicts...)
+  let g:elm_setup_keybindings = 0
+
+  let g:elm_jump_to_error = 0
+  let g:elm_make_show_warnings = 1
+  let g:elm_syntastic_show_warnings = 1
+  let g:elm_browser_command = "open"
+  let g:elm_detailed_complete = 1
+  let g:elm_format_autosave = 1
+  let g:elm_format_fail_silently = 1
 augroup END
 " }}}
 
