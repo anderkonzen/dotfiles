@@ -40,6 +40,7 @@ Plug 'elzr/vim-json', {'for' : 'json'}
 Plug 'tpope/vim-markdown', {'for' : 'markdown'}
 Plug 'tmux-plugins/vim-tmux'
 Plug 'elmcast/elm-vim'
+Plug 'tpope/vim-rails'
 
 " Lint
 Plug 'scrooloose/syntastic'
