@@ -4,6 +4,10 @@ These are my dotfiles and configurations for some of the programs I use. In gene
 
 Just clone this repo and configure/symlink/etc. the programs you use. Some programs can be installed using `brew bundle` (see Brewfile and [here](https://github.com/Homebrew/homebrew-bundle) for more info). 
 
+## zsh
+
+Use `~/.zprofile` if you want to have local configurations. zsh will source this file before `~/.zshrc`.
+
 ## git
 
 Use `~/.gitconfig.local` to store sensitive data like git credentials and other local configurations. For instance:
