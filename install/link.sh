@@ -19,6 +19,20 @@ done
 iFinishStep "Symlinks created!"
 
 newLine
+iHeader "Creating custom symlinks..."
+
+target="$HOME/bin/elm-format"
+
+iStep "Handling file $target"
+if [ -L $target ]; then
+  iBad "~${target#$HOME} already exists... Skipping."
+else
+  ln -s $(which elm-format-0.18) $target && iGood "Symlink created $target"
+fi
+
+iFinishStep "Custom symlinks created!"
+
+newLine
 iHeader "Installing to ~/.config..."
 
 if [ ! -d $HOME/.config ]; then
