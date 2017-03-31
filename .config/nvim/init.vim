@@ -121,7 +121,6 @@ set visualbell                  " don't beep
 set autoread                    " automatically reload files changed outside of Vim
 set autowrite                   " automatically save before :next, :make etc.
 set clipboard=unnamed           " normal OS clipboard interaction
-set esckeys                     " allow cursor keys in insert mode
 set expandtab                   " expand tabs to spaces (overloadable per file type)
 set nostartofline               " don't reset cursor to start of line when moving around
 set nowrap                      " by default don't wrap line
