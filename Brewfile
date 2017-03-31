@@ -28,7 +28,7 @@ brew 'homebrew/dupes/grep'
 
 brew 'ag'
 brew 'git'
-brew 'neovim/neovim/neovim'
+brew 'neovim/neovim/neovim', args: ['HEAD', 'without-jemalloc']
 brew 'node'
 brew 'rbenv'
 brew 'ruby-build'
