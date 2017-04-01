@@ -28,6 +28,7 @@ Plug 'ervandew/supertab'                  " improve <Tab> completion in insert m
 " Colors
 Plug 'chriskempson/base16-vim'
 Plug 'junegunn/seoul256.vim'
+Plug 'ayu-theme/ayu-vim'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -110,7 +111,7 @@ set showtabline=2               " always show tab bar
 set sidescrolloff=5             " start scrolling five columns before vertical border of window
 set splitbelow                  " open new split panes to right...
 set splitright                  " ... and bottom, which feels more natural
-set termguicolors               " true colors
+set termguicolors               " enable true colors support
 set title                       " change the terminal's title
 set undofile                    " persistent undo
 set virtualedit=block           " allow the cursor to go in to invalid places
@@ -294,7 +295,7 @@ augroup lightline_config
   autocmd!
 
   let g:lightline = {
-        \ 'colorscheme': 'seoul256',
+        \ 'colorscheme': 'Tomorrow_Night_Eighties',
         \ 'active': {
         \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
         \   'right': [ [ 'syntastic', 'lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
