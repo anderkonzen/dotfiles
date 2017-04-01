@@ -27,6 +27,21 @@ Use `~/.gitconfig.local` to store sensitive data like git credentials and other 
 $ ln -s ~/dotfiles/.config/nvim ~/.config/nvim
 ```
 
+### Themes
+
+Use `~/.vimrc_background` to have local settings for the colorscheme. For example:
+
+```sh
+# ~/.vimrc_background
+
+" colorscheme base16-tomorrow-night
+
+" let ayucolor="light"  " for light version of theme
+let ayucolor="mirage" " for mirage version of theme
+" let ayucolor="dark"   " for dark version of theme
+colorscheme ayu
+```
+
 # Acknowledgements
 
 The work on this repo is inspired and based on other great configurations. Below some of the people/repos I took ideas to create my own stuff:
