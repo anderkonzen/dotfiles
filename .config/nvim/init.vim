@@ -7,15 +7,13 @@
 
 call plug#begin('~/.config/nvim/plugged')
 
-" Browsing
+" General
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'ctrlpvim/ctrlp.vim'                 " <C-p> to find files
 Plug 'tpope/vim-unimpaired'               " [b, ]b, ]t, etc...
 Plug 'mileszs/ack.vim'                    " :Ack [pattern] to search for pattern
 Plug 'justinmk/vim-sneak'                 " s{char}{char} to move the cursor to {char}{char}
 Plug 'tpope/vim-eunuch'                   " :Rename, :Move...
-
-" Edit
 Plug 'tpope/vim-commentary'               " comment stuff out (use gcc to comment and gcgc to uncomment)
 Plug 'tpope/vim-endwise'                  " plugin that helps to end certain structures automatically
 Plug 'tpope/vim-surround'                 " to change ( with {: cs({; wrapp word with ': ysiw'
@@ -34,14 +32,23 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-" Languages
+" Languages/Syntax
 Plug 'elixir-lang/vim-elixir'
 Plug 'vim-ruby/vim-ruby'      " vim-ruby needs 'gem install neovim' if you want code completion
-Plug 'elzr/vim-json', {'for' : 'json'}
-Plug 'tpope/vim-markdown', {'for' : 'markdown'}
+Plug 'elzr/vim-json', { 'for': 'json' }
+Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'tmux-plugins/vim-tmux'
 Plug 'elmcast/elm-vim'
 Plug 'tpope/vim-rails'
+Plug 'pangloss/vim-javascript'
+Plug 'othree/html5.vim'
+
+" Deoplete related plugins (auto complete)
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'awetzel/elixir.nvim', { 'do': 'yes \| ./install.sh' }
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install -g tern' }
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+Plug 'fishbullet/deoplete-ruby'
 
 " Lint
 Plug 'scrooloose/syntastic'
@@ -406,6 +413,22 @@ augroup elm_vim_config
   let g:elm_detailed_complete = 1
   let g:elm_format_autosave = 1
   let g:elm_format_fail_silently = 1
+augroup END
+" }}}
+
+" deoplete {{{
+augroup deoplete_config
+  autocmd!
+
+  " Use deoplete
+  let g:deoplete#enable_at_startup = 1
+
+  " Tern config (javascript)
+  let g:tern_request_timeout = 1
+  " This do disable full signature type on autocomplete
+  " let g:tern_show_signature_in_pum = '0'
+  let g:tern#command = ["tern"]
+  let g:tern#arguments = ["--persistent"]
 augroup END
 " }}}
 
