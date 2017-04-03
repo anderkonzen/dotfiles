@@ -38,6 +38,7 @@ brew 'wget'
 brew 'exercism'
 brew 'elixir'
 brew 'reattach-to-user-namespace'
+brew 'python3'
 
 # Apps
 cask 'aerial'
