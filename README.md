@@ -42,6 +42,20 @@ let ayucolor="mirage" " for mirage version of theme
 colorscheme ayu
 ```
 
+### deoplete.vim
+
+I am using [deoplete.vim](https://github.com/Shougo/deoplete.nvim) to have omni auto-complete for a few languages (ruby, elixir and javascript). In order to have all this working, you need to have python3 and node.js installed (already covered in the brew bundle).
+
+Before installing the plugin in neovim, you also need to install the neovim-python module with:
+
+```sh
+pip3 install --user neovim
+```
+
+Then, in neovim, execute `:PlugInstall` and then `:UpdateRemotePlugins`. You can check if everything is working fine with `:CheckHealth`.
+
+Note: for javascript the plugin installs [ternjs](http://ternjs.net/), so you also need node installed in your system.
+
 # Acknowledgements
 
 The work on this repo is inspired and based on other great configurations. Below some of the people/repos I took ideas to create my own stuff:
