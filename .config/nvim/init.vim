@@ -22,8 +22,7 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'  " <C-n> to toggle between number and r
 Plug 'yggdroot/indentline'                " <leader>ig to toggle on/off
 Plug 'itchyny/lightline.vim'
 Plug 'ervandew/supertab'                  " improve <Tab> completion in insert mode
-Plug '/usr/local/opt/fzf'
-  \| Plug 'junegunn/fzf.vim'
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 
 " Colors
 Plug 'chriskempson/base16-vim'
