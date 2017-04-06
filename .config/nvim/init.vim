@@ -176,6 +176,12 @@ augroup general_config
   nnoremap <C-y> 3<C-y>
   " }}}
 
+  " Quicker window movement
+  nnoremap <C-j> <C-w>J
+  nnoremap <C-k> <C-w>K
+  nnoremap <C-h> <C-w>H
+  nnoremap <C-l> <C-w>L
+
   " Remap :W to :w {{{
   command! W w
   " }}}
