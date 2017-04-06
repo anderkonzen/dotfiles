@@ -47,6 +47,10 @@ BASE16_SHELL=$DOTFILES/base16-shell/
 # Source all .zsh files inside of the zsh/ directory
 for config ($ZSH/**/*.zsh) source $config
 
+# Source fzf
+[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
