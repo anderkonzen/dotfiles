@@ -40,6 +40,7 @@ brew 'elixir'
 brew 'reattach-to-user-namespace'
 brew 'python3'
 brew 'fzf'
+brew 'z'
 
 # Apps
 cask 'aerial'
