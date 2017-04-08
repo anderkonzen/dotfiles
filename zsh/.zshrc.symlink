@@ -20,7 +20,7 @@ zplug "robbyrussell/oh-my-zsh", use:"lib/key-bindings.zsh"
 zplug "robbyrussell/oh-my-zsh", use:"lib/theme-and-appearance.zsh"
 
 zplug "plugins/git",      from:oh-my-zsh
-zplug "plugins/autojump", from:oh-my-zsh
+# zplug "plugins/autojump", from:oh-my-zsh
 zplug "plugins/rbenv",    from:oh-my-zsh
 zplug "plugins/mix",      from:oh-my-zsh
 zplug "plugins/tmux",     from:oh-my-zsh
