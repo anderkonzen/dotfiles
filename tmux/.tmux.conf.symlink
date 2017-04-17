@@ -2,7 +2,7 @@
 set -g default-command 'reattach-to-user-namespace -l zsh'
 
 # tmux display things in 256 colors and italic
-set -g default-terminal "tmux-256color-italic"
+# set -g default-terminal "tmux-256color-italic"
 
 # Enable terminal compatibility
 set -ga terminal-overrides ",tmux-256color-italic:Tc"

@@ -46,7 +46,7 @@ fi
 zplug load --verbose
 
 # Configure TERM for tmux
-[ -z "$TMUX" ] && export TERM=xterm-256color-italic
+# [ -z "$TMUX" ] && export TERM=xterm-256color-italic
 
 # jenv (jenv.be)
 if which jenv &> /dev/null; then eval "$(jenv init -)"; fi
