@@ -1,0 +1,60 @@
+# Brewfile
+# https://github.com/Homebrew/homebrew-bundle
+
+# Make sure apps get installed in system Applications dir
+cask_args appdir: '/Applications'
+
+# Taps
+tap 'caskroom/cask'
+tap 'caskroom/versions'
+tap 'caskroom/fonts'
+tap 'homebrew/bundle'
+
+# Install GNU core utilities (those that come with OS X are outdated)
+brew 'coreutils'
+
+# Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
+brew 'findutils'
+
+# Install newer bash
+brew 'bash'
+
+brew 'fish'
+brew 'ag'
+brew 'git'
+brew 'neovim/neovim/neovim', args: ['HEAD', 'without-jemalloc']
+brew 'node'
+brew 'rbenv'
+brew 'ruby-build'
+brew 'tmux'
+brew 'tree'
+brew 'wget'
+brew 'exercism'
+brew 'elixir'
+brew 'reattach-to-user-namespace'
+brew 'python3'
+brew 'fzf'
+brew 'z'
+
+# Apps
+cask 'aerial'
+cask 'appcleaner'
+cask 'keepingyouawake'
+cask 'firefox'
+cask 'flux'
+cask 'google-chrome'
+cask 'skype'
+cask 'slack'
+cask 'spotify'
+cask 'sublime-text'
+cask 'vlc'
+cask 'iterm2'
+cask 'disk-inventory-x'
+cask 'nvalt'
+cask 'the-unarchiver'
+cask 'dropbox'
+
+# Fonts
+cask 'font-hack'
+cask 'font-mononoki'
+
