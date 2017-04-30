@@ -89,4 +89,4 @@ The work on this repo is inspired and based on other great configurations. Below
 
 * https://github.com/Kraymer/F-dotfiles
 * http://dotfiles.github.io
-
+* https://github.com/webpro/awesome-dotfiles
