@@ -25,7 +25,7 @@ The stow directory should be the first one so the stow configuration is installe
 
 Directories starting with a `_` are not supposed to be *stowed*.
 
-# Pre-requisites
+# Requirements
 
 Prior to symlink the directories, I recommend installing all the apps declared in the `_homebrew/Brewfile`:
 
@@ -41,6 +41,16 @@ this will install `stow` and other necessary apps. Of course, you need [`brew`](
 If you already use fish as your shell, the symlink of the fish directory might not work because `~/.config/fish` probably already exists. In this case you can delete or backup this directory before running `stow fish`.
 
 # Configuring other apps
+
+## git
+
+Use `~/.gitconfig.local` to store sensitive data like git credentials and other local configurations. For instance:
+
+```shell
+[user]
+    name = Anderson Konzen
+    email = anderkonzen@example.com
+```
 
 ## neovim
 
