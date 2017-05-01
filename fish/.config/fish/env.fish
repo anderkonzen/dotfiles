@@ -29,3 +29,5 @@ setenv -x GREP_OPTIONS "--color=auto"
 # Custom bin path
 set -x PATH ~/bin $PATH
 
+set -x FZF_DEFAULT_COMMAND 'ag --hidden --ignore .git -g ""'
+
