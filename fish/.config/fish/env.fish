@@ -27,7 +27,7 @@ set -x LESS_TERMCAP_us (set_color -o green)
 set -x GREP_OPTIONS "--color=auto"
 
 # Custom bin path
-set -x PATH ~/bin $PATH
+set PATH $HOME/bin $PATH
 
 # fzf
 set -x FZF_DEFAULT_COMMAND 'ag --hidden --ignore .git -g ""'
