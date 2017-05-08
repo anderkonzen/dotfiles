@@ -54,6 +54,7 @@ cask 'disk-inventory-x'
 cask 'nvalt'
 cask 'the-unarchiver'
 cask 'dropbox'
+cask 'hyper'
 
 # Fonts
 cask 'font-hack'
