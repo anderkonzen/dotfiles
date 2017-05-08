@@ -19,6 +19,7 @@ brew 'findutils'
 # Install newer bash
 brew 'bash'
 
+brew 'stow'
 brew 'fish'
 brew 'ag'
 brew 'git'
@@ -26,6 +27,7 @@ brew 'neovim/neovim/neovim', args: ['HEAD', 'without-jemalloc']
 brew 'node'
 brew 'rbenv'
 brew 'ruby-build'
+brew 'jenv'
 brew 'tmux'
 brew 'tree'
 brew 'wget'
