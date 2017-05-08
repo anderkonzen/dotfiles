@@ -27,7 +27,6 @@ brew 'neovim/neovim/neovim', args: ['HEAD', 'without-jemalloc']
 brew 'node'
 brew 'rbenv'
 brew 'ruby-build'
-brew 'jenv'
 brew 'tmux'
 brew 'tree'
 brew 'wget'
