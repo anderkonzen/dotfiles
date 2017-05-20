@@ -14,3 +14,5 @@ alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && 
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
 alias pcurl='curl -w "\n\n%{time_total} secs" '
+
+alias ls="${aliases[ls]:-ls} -G"
