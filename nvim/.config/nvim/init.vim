@@ -1,5 +1,3 @@
-" vim: set foldmethod=marker foldlevel=0:
-
 " ============================================================================
 " VIM-PLUG BLOCK {{{
 " ============================================================================
@@ -12,12 +10,15 @@ Plug 'tpope/vim-eunuch'                   " :Rename, :Move...
 Plug 'tpope/vim-endwise'                  " plugin that helps to end certain structures automatically
 Plug 'tpope/vim-surround'                 " to change ( with {: cs({; wrapp word with ': ysiw'
 Plug 'tpope/vim-repeat'                   " improve vim repeat feature '.'
+Plug 'tpope/vim-characterize'             " ga shows better information on current character
 Plug 'jeffkreeftmeijer/vim-numbertoggle'  " <C-n> to toggle between number and relativenumber
 Plug 'yggdroot/indentline'                " <leader>ig to toggle on/off
+Plug 'ntpeters/vim-better-whitespace'     " show white space in red and :StripWhitespace
 Plug 'ervandew/supertab'                  " improve <Tab> completion in insert mode
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'ctrlpvim/ctrlp.vim'
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'                    " :Ack [pattern] to search for pattern (grep)
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -31,6 +32,7 @@ Plug 'itchyny/lightline.vim'
 
 " Syntax and Lint
 Plug 'elixir-lang/vim-elixir'
+Plug 'slashmili/alchemist.vim'
 Plug 'vim-ruby/vim-ruby'                  " vim-ruby needs 'gem install neovim' if you want code completion
 Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
@@ -41,6 +43,9 @@ Plug 'pangloss/vim-javascript'
 Plug 'othree/html5.vim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'scrooloose/syntastic'
+
+" Omnicomplete
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()
 endif
@@ -92,7 +97,8 @@ set noshowmode                  " do not put mode message in last line
 set noswapfile                  " do not write annoying intermediate swap files
 set shada='20,\"80              " read/write a .viminfo file, don't store more than 80 lines of registers
 set switchbuf=useopen           " reveal already opened files from the quickfix window instead of opening new buffers
-set undolevels=1000             " use many levels of undo
+set undofile                    " maintain undo history between sessions
+set undolevels=1000             " use this many levels of undo
 set wildmode=list:full          " show a list when pressing tab and complete first full match
 
 set listchars=tab:▸\
@@ -115,6 +121,11 @@ set magic                       " enable extended regexes
 set smartcase                   " ignore case if search pattern is all lowercase, case-sensitive otherwise
 set wrapscan                    " searches wrap around end of file
 
+" Folding
+set foldlevelstart=99           " default to all folds open when opening a buffer
+set foldnestmax=4               " don't be absurd about how deeply to nest syntax folding
+set foldopen-=block             " drives me nuts that moving with ] opens folds
+
 " diff-mode (nvim -d file1 file2)
 set diffopt=filler              " add vertical spaces to keep right and left aligned
 set diffopt+=iwhite             " ignore whitespace changes (focus on code changes)
@@ -128,24 +139,27 @@ set diffopt+=iwhite             " ignore whitespace changes (focus on code chang
 " Basic mappings
 " ----------------------------------------------------------------------------
 
+" In and out of command mode quickly, less pain
+noremap <CR> :
+
 " Speed up viewport scrolling
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
 " Save
-inoremap <C-s>     <C-O>:update<cr>
-nnoremap <C-s>     :update<cr>
-nnoremap <leader>s :update<cr>
-nnoremap <leader>w :update<cr>
+inoremap <C-s>     <C-O>:update<CR>
+nnoremap <C-s>     :update<CR>
+nnoremap <leader>s :update<CR>
+nnoremap <leader>w :update<CR>
 " Remap :W to :w
 command! W w
 
 " Quit
-inoremap <C-Q>     <esc>:q<cr>
-nnoremap <C-Q>     :q<cr>
-vnoremap <C-Q>     <esc>
-nnoremap <Leader>q :q<cr>
-nnoremap <Leader>Q :qa!<cr>
+inoremap <C-Q>     <Esc>:q<CR>
+nnoremap <C-Q>     :q<CR>
+vnoremap <C-Q>     <Esc>
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>Q :qa!<CR>
 
 " Toggle show tabs and trailing spaces
 nnoremap <silent> <leader>tt :set nolist!<CR>
@@ -157,7 +171,7 @@ nnoremap <silent> <Esc> <Esc>:noh<CR>
 nnoremap Y y$
 
 " Insert newline
-map <leader><Enter> o<ESC>
+map <leader><Enter> o<Esc>
 
 " Search and replace word under cursor
 nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
@@ -172,6 +186,9 @@ nnoremap <Down>   <Nop>
 " qq to record, Q to replay
 nnoremap Q @q
 
+" Kill the opened buffer
+nnoremap <C-k> :bd<CR>
+
 " ----------------------------------------------------------------------------
 " <tab> / <s-tab> | Circular windows navigation
 " ----------------------------------------------------------------------------
@@ -183,12 +200,12 @@ nnoremap <Leader><Leader> :e#<CR>
 " ----------------------------------------------------------------------------
 " Moving lines
 " ----------------------------------------------------------------------------
-nnoremap <silent> <C-k> :move-2<cr>
-nnoremap <silent> <C-j> :move+<cr>
+nnoremap <silent> <C-k> :move-2<CR>
+nnoremap <silent> <C-j> :move+<CR>
 nnoremap <silent> <C-h> <<
 nnoremap <silent> <C-l> >>
-xnoremap <silent> <C-k> :move-2<cr>gv
-xnoremap <silent> <C-j> :move'>+<cr>gv
+xnoremap <silent> <C-k> :move-2<CR>gv
+xnoremap <silent> <C-j> :move'>+<CR>gv
 xnoremap <silent> <C-h> <gv
 xnoremap <silent> <C-l> >gv
 xnoremap < <gv
@@ -197,27 +214,24 @@ xnoremap > >gv
 " ----------------------------------------------------------------------------
 " <leader>c Close quickfix/location window
 " ----------------------------------------------------------------------------
-nnoremap <leader>c :cclose<bar>lclose<cr>
+nnoremap <leader>c :cclose<bar>lclose<CR>
 
-" ----------------------------------------------------------------------------
-" <leader>ss Strip trailing whitespace
-" ----------------------------------------------------------------------------
-function! s:strip_whitespace()
-  let save_cursor = getpos(".")
-  let old_query = getreg('/')
-  :%s/\s\+$//e
-  call setpos('.', save_cursor)
-  call setreg('/', old_query)
-endfunction
-nnoremap <leader>ss :<c-u>call <SID>strip_whitespace()<CR>
 
 " <F10> | NERD Tree
-nnoremap <F10> :NERDTreeToggle<cr>
+nnoremap <F10> :NERDTreeToggle<CR>
+
+" Clever tpope
+nnoremap <silent> <F9> :if &previewwindow<Bar>pclose<Bar>elseif exists(':Gstatus')<Bar>exe 'Gstatus'<Bar>else<Bar>ls<Bar>endif<CR>
 
 " }}}
 " ============================================================================
 " PLUGINS {{{
 " ============================================================================
+
+" ----------------------------------------------------------------------------
+" deoplete
+" ----------------------------------------------------------------------------
+let g:deoplete#enable_at_startup = 1
 
 " ----------------------------------------------------------------------------
 " indentline
@@ -227,6 +241,13 @@ let g:indentLine_concealcursor = 'c'
 
 " <leader>ig Toggles indent lines
 nnoremap <Leader>ig :IndentLinesToggle<CR>
+
+" ----------------------------------------------------------------------------
+" vim-better-whitespace
+" ----------------------------------------------------------------------------
+
+" <leader>ss Strip trailing whitespace
+nnoremap <leader>ss :StripWhitespace<CR>
 
 " ----------------------------------------------------------------------------
 " lightline
@@ -251,36 +272,36 @@ let g:lightline = {
       \ },
       \ }
 
-  function! LightLineReadonly()
-    return &ft !~? 'help' && &readonly ? '' : ''
-  endfunction
+function! LightLineReadonly()
+  return &ft !~? 'help' && &readonly ? '' : ''
+endfunction
 
-  function! LightLineFugitive()
-    if exists('*fugitive#head')
-      let branch = fugitive#head()
-      return branch !=# '' ? ' ' . branch : ''
-    endif
-    return ''
-  endfunction
+function! LightLineFugitive()
+  if exists('*fugitive#head')
+    let branch = fugitive#head()
+    return branch !=# '' ? ' ' . branch : ''
+  endif
+  return ''
+endfunction
 
-  function! LightLineFilename()
-    let fname = expand('%:t')
-    return fname =~ 'NERD_tree' ? '' : '' != fname ? fname : '[No Name]'
-  endfunction
+function! LightLineFilename()
+  let fname = expand('%:t')
+  return fname =~ 'NERD_tree' ? '' : '' != fname ? fname : '[No Name]'
+endfunction
 
-  function! LightLineLineinfo()
-    let pos = line('.') . ':' . col('.')
-    return ' ' . pos
-  endfunction
+function! LightLineLineinfo()
+  let pos = line('.') . ':' . col('.')
+  return ' ' . pos
+endfunction
 
-  augroup AutoSyntastic
-    autocmd!
-    autocmd BufWritePost * call s:syntastic()
-  augroup END
-  function! s:syntastic()
-    SyntasticCheck
-    call lightline#update()
-  endfunction
+augroup AutoSyntastic
+  autocmd!
+  autocmd BufWritePost * call s:syntastic()
+augroup END
+function! s:syntastic()
+  SyntasticCheck
+  call lightline#update()
+endfunction
 
 " ----------------------------------------------------------------------------
 " lightline
@@ -311,6 +332,32 @@ augroup nerd_loader
         \| endif
 augroup END
 
+" ----------------------------------------------------------------------------
+" syntastic
+" ----------------------------------------------------------------------------
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_enable_elixir_checker = 1
+let g:syntastic_elixir_checkers = ['elixir']
+let g:elm_syntastic_show_warnings = 1
+
+" ----------------------------------------------------------------------------
+" syntastic
+" ----------------------------------------------------------------------------
+" Do not jump to the first result automatically
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>
+
+" Enhance :grep
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+  set grepprg=ag\ --vimgrep\ $*
+  set grepformat=%f:%l:%c:%m
+endif
+
 " }}}
 " ============================================================================
 " AUTOCMD {{{
@@ -318,12 +365,8 @@ augroup END
 augroup vimrc
   au BufWritePost vimrc,.vimrc,init.vim nested if expand('%') !~ 'fugitive' | source % | endif
 
-  " Close preview window
-  if exists('##CompleteDone')
-    au CompleteDone * pclose
-  else
-    au InsertLeave * if !pumvisible() && (!exists('*getcmdwintype') || empty(getcmdwintype())) | pclose | endif
-  endif
+  " Almost never want to remain in paste mode after insert
+  autocmd InsertLeave * if &paste | set nopaste paste? | endif
 
   " Automatic rename of tmux window
   if exists('$TMUX') && !exists('$NORENAME')
@@ -332,5 +375,19 @@ augroup vimrc
   endif
 augroup END
 
+" Fun with some goodies hidden in vim-git ftplugins. {{{
+augroup GitTricks
+  autocmd!
+  autocmd FileType gitrebase
+        \ nnoremap <buffer> P :Pick<CR>   |
+        \ nnoremap <buffer> S :Squash<CR> |
+        \ nnoremap <buffer> E :Edit<CR>   |
+        \ nnoremap <buffer> R :Reword<CR> |
+        \ nnoremap <buffer> F :Fixup<CR>  |
+        \ nnoremap <buffer> C :Cycle<CR>
+augroup END " }}}
+
 " }}}
-" ============================================================================ 
+" ============================================================================
+
+" vim:foldmethod=marker foldlevel=0 foldclose=all commentstring="%s
