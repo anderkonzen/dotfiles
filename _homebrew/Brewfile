@@ -55,6 +55,8 @@ cask 'nvalt'
 cask 'the-unarchiver'
 cask 'dropbox'
 cask 'hyper'
+cask 'beardedspice'
+cask 'oversight'
 
 # Fonts
 cask 'font-hack'
