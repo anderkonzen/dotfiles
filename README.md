@@ -36,10 +36,6 @@ brew bundle
 
 this will install `stow` and other necessary apps. Of course, you need [`brew`](https://brew.sh) installed to run this command.
 
-## fish
-
-If you already use fish as your shell, the symlink of the fish directory might not work because `~/.config/fish` probably already exists. In this case you can delete or backup this directory before running `stow fish`.
-
 # Configuring other apps
 
 ## git
