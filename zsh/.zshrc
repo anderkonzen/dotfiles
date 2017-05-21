@@ -10,7 +10,6 @@ zplug "modules/history",        from:prezto, depth:1
 zplug "plugins/git",            from:oh-my-zsh, depth:1
 zplug "plugins/docker",         from:oh-my-zsh, depth:1
 zplug "plugins/docker-compose", from:oh-my-zsh, depth:1
-zplug "robbyrussell/oh-my-zsh", use:"lib/directories.zsh", depth:1
 zplug "robbyrussell/oh-my-zsh", use:"lib/grep.zsh", depth:1
 
 # Themes
@@ -50,5 +49,5 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
-# Aliases and functions
+# Other files with pattern _*.zsh will be sourced
 for config ($DOTFILES/zsh/_*.zsh) source $config
