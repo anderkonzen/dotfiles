@@ -1,41 +1,37 @@
-" vim: foldmethod=marker foldlevel=0
+" vim: set foldmethod=marker foldlevel=0:
 
-" ----------------------------------------------------------------------
-" Plugins
+" ============================================================================
+" VIM-PLUG BLOCK {{{
+" ============================================================================
 
-" vim-plug, load plugins {{{
+silent! if plug#begin('~/.config/nvim/plugged')
 
-call plug#begin('~/.config/nvim/plugged')
-
-" General
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'ctrlpvim/ctrlp.vim'                 " <C-p> to find files
 Plug 'tpope/vim-unimpaired'               " [b, ]b, ]t, etc...
-Plug 'mileszs/ack.vim'                    " :Ack [pattern] to search for pattern
-Plug 'justinmk/vim-sneak'                 " s{char}{char} to move the cursor to {char}{char}
-Plug 'tpope/vim-eunuch'                   " :Rename, :Move...
 Plug 'tpope/vim-commentary'               " comment stuff out (use gcc to comment and gcgc to uncomment)
+Plug 'tpope/vim-eunuch'                   " :Rename, :Move...
 Plug 'tpope/vim-endwise'                  " plugin that helps to end certain structures automatically
 Plug 'tpope/vim-surround'                 " to change ( with {: cs({; wrapp word with ': ysiw'
 Plug 'tpope/vim-repeat'                   " improve vim repeat feature '.'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'  " <C-n> to toggle between number and relativenumber
 Plug 'yggdroot/indentline'                " <leader>ig to toggle on/off
-Plug 'itchyny/lightline.vim'
 Plug 'ervandew/supertab'                  " improve <Tab> completion in insert mode
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 
-" Colors
-Plug 'chriskempson/base16-vim'
-Plug 'junegunn/seoul256.vim'
-Plug 'ayu-theme/ayu-vim'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-" Languages/Syntax
+" Colors
+Plug 'chriskempson/base16-vim'
+
+" Statusline
+Plug 'itchyny/lightline.vim'
+
+" Syntax and Lint
 Plug 'elixir-lang/vim-elixir'
-Plug 'vim-ruby/vim-ruby'      " vim-ruby needs 'gem install neovim' if you want code completion
+Plug 'vim-ruby/vim-ruby'                  " vim-ruby needs 'gem install neovim' if you want code completion
 Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'tmux-plugins/vim-tmux'
@@ -43,92 +39,42 @@ Plug 'elmcast/elm-vim'
 Plug 'tpope/vim-rails'
 Plug 'pangloss/vim-javascript'
 Plug 'othree/html5.vim'
-Plug 'dag/vim-fish'
 Plug 'kchmck/vim-coffee-script'
-
-" Deoplete related plugins (auto complete)
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'awetzel/elixir.nvim', { 'do': 'yes \| ./install.sh' }
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install -g tern' }
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-Plug 'fishbullet/deoplete-ruby'
-
-" Lint
 Plug 'scrooloose/syntastic'
 
-" Add plugins to &runtimepath
 call plug#end()
-
-" }}}
-
-
-" ----------------------------------------------------------------------
-" Settings
-
-" NeoVim {{{
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-" }}}
-
-" Mapleader {{{
-let mapleader = ' '
-" }}}
-
-" Theme & Layout {{{
-"colorscheme base16-tomorrow-night
-if filereadable(expand("~/.vimrc_background"))
-  source ~/.vimrc_background
 endif
+
+" }}}
+" ============================================================================
+" BASIC SETTINGS {{{
+" ============================================================================
+
+let mapleader      = ' '
+let maplocalleader = ' '
+
+augroup vimrc
+  autocmd!
+augroup END
+
+set termguicolors               " enable true colors support
 set guifont=Hack:h14
-highlight Comment cterm=italic
-" }}}
+colorscheme base16-tomorrow-night
 
-" Local directories {{{
-set undodir=~/.config/nvim/undo
-" }}}
-
-" Editor layout {{{
-set cmdheight=2                 " use a status bar that is 2 rows high
-set colorcolumn=100             " highlight certain column(s)
-set completeopt=menuone,preview
-set cursorline                  " highlight the current line, for quick orientation
-set listchars=tab:▸\
-set listchars+=space:∙
-set listchars+=trail:∙
-set listchars+=extends:#
-set listchars+=eol:¬
-set listchars+=nbsp:_
-set foldenable                  " enable folding
-set foldcolumn=0                " column to show folds
-set foldlevel=5                 " open all folds by default
-set foldmethod=syntax           " syntax are used to specify folds
-set foldminlines=0              " allow folding single lines
-set foldnestmax=5               " set max fold nesting level
-set formatoptions=
-set formatoptions+=c            " format comments
-set formatoptions+=o            " make comment when using o or O from comment line
-set formatoptions+=q            " format comments with gq
-set formatoptions+=n            " recognize numbered lists
-set formatoptions+=2            " use indent from 2nd line of a paragraph
-set formatoptions+=l            " don't break lines that are already long
-set formatoptions+=1            " break before 1-letter words
-set noerrorbells                " don't beep
-set nolist                      " don't show unprintable characters by default
 set number                      " always show line numbers
+set cmdheight=2                 " use a status bar that is 2 rows high
+set showtabline=2               " always show tab bar
+set title                       " change the terminal's title
 set scrolloff=5                 " keep 5 lines off the edges of the screen when scrolling
+set sidescrolloff=5             " start scrolling five columns before vertical border of window
+set colorcolumn=100             " highlight the 100th column
+set cursorline                  " highlight the current line, for quick orientation
 set shortmess=aIT               " avoid a series of prompts caused by file messages
 set showcmd                     " show (partial) command in the last line of the screen
-set showtabline=2               " always show tab bar
-set sidescrolloff=5             " start scrolling five columns before vertical border of window
 set splitbelow                  " open new split panes to right...
 set splitright                  " ... and bottom, which feels more natural
-set termguicolors               " enable true colors support
-set title                       " change the terminal's title
-set undofile                    " persistent undo
 set virtualedit=block           " allow the cursor to go in to invalid places
 set visualbell                  " don't beep
-" }}}
-
-" Editing {{{
 set autoread                    " automatically reload files changed outside of Vim
 set autowrite                   " automatically save before :next, :make etc.
 set clipboard=unnamed           " normal OS clipboard interaction
@@ -139,21 +85,6 @@ set shiftwidth=2                " number of spaces to use for autoindenting
 set showmatch                   " set show matching parenthesis
 set smartindent                 " always set smartindenting on
 set tabstop=2                   " a tab is two spaces
-" }}}
-
-" diff-mode (nvim -d file1 file2) {{{
-set diffopt=filler              " add vertical spaces to keep right and left aligned
-set diffopt+=iwhite             " ignore whitespace changes (focus on code changes)
-" }}}
-
-" Searching {{{
-set ignorecase                  " ignore case when searching
-set magic                       " enable extended regexes
-set smartcase                   " ignore case if search pattern is all lowercase, case-sensitive otherwise
-set wrapscan                    " searches wrap around end of file
-" }}}
-
-" Performance {{{
 set hidden                      " hide buffers instead of closing them
 set lazyredraw                  " don't update the display while executing macros
 set nobackup                    " do not keep backup files
@@ -163,172 +94,162 @@ set shada='20,\"80              " read/write a .viminfo file, don't store more t
 set switchbuf=useopen           " reveal already opened files from the quickfix window instead of opening new buffers
 set undolevels=1000             " use many levels of undo
 set wildmode=list:full          " show a list when pressing tab and complete first full match
+
+set listchars=tab:▸\
+set listchars+=space:∙
+set listchars+=trail:∙
+set listchars+=extends:#
+set listchars+=eol:¬
+set listchars+=nbsp:_
+
+" Auto formatting
+set formatoptions=
+set formatoptions+=n            " recognize numbered lists
+set formatoptions+=2            " use indent from 2nd line of a paragraph
+set formatoptions+=l            " don't break lines that are already long
+set formatoptions+=1            " break before 1-letter words
+
+" Searching
+set ignorecase                  " ignore case when searching
+set magic                       " enable extended regexes
+set smartcase                   " ignore case if search pattern is all lowercase, case-sensitive otherwise
+set wrapscan                    " searches wrap around end of file
+
+" diff-mode (nvim -d file1 file2)
+set diffopt=filler              " add vertical spaces to keep right and left aligned
+set diffopt+=iwhite             " ignore whitespace changes (focus on code changes)
+
 " }}}
+" ============================================================================
+" MAPPINGS {{{
+" ============================================================================
 
+" ----------------------------------------------------------------------------
+" Basic mappings
+" ----------------------------------------------------------------------------
 
-" ----------------------------------------------------------------------
-" General Configurations and Mappings
+" Speed up viewport scrolling
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
 
-" General {{{
-augroup general_config
-  autocmd!
+" Save
+inoremap <C-s>     <C-O>:update<cr>
+nnoremap <C-s>     :update<cr>
+nnoremap <leader>s :update<cr>
+nnoremap <leader>w :update<cr>
+" Remap :W to :w
+command! W w
 
-  " Speed up viewport scrolling {{{
-  nnoremap <C-e> 3<C-e>
-  nnoremap <C-y> 3<C-y>
-  " }}}
+" Quit
+inoremap <C-Q>     <esc>:q<cr>
+nnoremap <C-Q>     :q<cr>
+vnoremap <C-Q>     <esc>
+nnoremap <Leader>q :q<cr>
+nnoremap <Leader>Q :qa!<cr>
 
-  " Quicker window movement
-  nnoremap <C-j> <C-w>J
-  nnoremap <C-k> <C-w>K
-  nnoremap <C-h> <C-w>H
-  nnoremap <C-l> <C-w>L
+" Toggle show tabs and trailing spaces
+nnoremap <silent> <leader>tt :set nolist!<CR>
 
-  " Remap :W to :w {{{
-  command! W w
-  " }}}
+" Clear last search
+nnoremap <silent> <Esc> <Esc>:noh<CR>
 
-  " Toggle show tabs and trailing spaces (<space>c) {{{
-  nnoremap <silent> <leader>c :set nolist!<CR>
-  " }}}
+" Yank from cursor to end of line
+nnoremap Y y$
 
-  " Clear last search {{{
-  nnoremap <silent> <Esc> <Esc>:noh<CR>
-  " }}}
+" Insert newline
+map <leader><Enter> o<ESC>
 
-  " Yank from cursor to end of line {{{
-  nnoremap Y y$
-  " }}}
+" Search and replace word under cursor
+nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
+vnoremap <leader>* "hy:%s/\V<C-r>h//<left>
 
-  " Insert newline {{{
-  map <leader><Enter> o<ESC>
-  " }}}
+" Enforce purity
+nnoremap <Left>   <Nop>
+nnoremap <Right>  <Nop>
+nnoremap <Up>     <Nop>
+nnoremap <Down>   <Nop>
 
-  " Search and replace word under cursor (<space>*) {{{
-  nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
-  vnoremap <leader>* "hy:%s/\V<C-r>h//<left>
-  " }}}
+" qq to record, Q to replay
+nnoremap Q @q
 
-  " Toggle folds (,) {{{
-  nnoremap <silent> , :exe 'silent! normal! '.((foldclosed('.')>0)? 'zMzx' : 'zc')<CR>
-  " }}}
+" ----------------------------------------------------------------------------
+" <tab> / <s-tab> | Circular windows navigation
+" ----------------------------------------------------------------------------
+nnoremap <tab>   <c-w>w
+nnoremap <S-tab> <c-w>W
+" Quickly move between current and last files
+nnoremap <Leader><Leader> :e#<CR>
 
-  " Save with <C-s> {{{
-  inoremap <C-s>     <C-O>:update<cr>
-  nnoremap <C-s>     :update<cr>
-  " }}}
+" ----------------------------------------------------------------------------
+" Moving lines
+" ----------------------------------------------------------------------------
+nnoremap <silent> <C-k> :move-2<cr>
+nnoremap <silent> <C-j> :move+<cr>
+nnoremap <silent> <C-h> <<
+nnoremap <silent> <C-l> >>
+xnoremap <silent> <C-k> :move-2<cr>gv
+xnoremap <silent> <C-j> :move'>+<cr>gv
+xnoremap <silent> <C-h> <gv
+xnoremap <silent> <C-l> >gv
+xnoremap < <gv
+xnoremap > >gv
 
-  " Terminal {{{
-  tnoremap <Esc><Esc> <C-\><C-n>
-  " }}}
+" ----------------------------------------------------------------------------
+" <leader>c Close quickfix/location window
+" ----------------------------------------------------------------------------
+nnoremap <leader>c :cclose<bar>lclose<cr>
 
-  " Enforce purity {{{
-  nnoremap <Left>   <Nop>
-  nnoremap <Right>  <Nop>
-  nnoremap <Up>     <Nop>
-  nnoremap <Down>   <Nop>
-  " }}}
+" ----------------------------------------------------------------------------
+" <leader>ss Strip trailing whitespace
+" ----------------------------------------------------------------------------
+function! s:strip_whitespace()
+  let save_cursor = getpos(".")
+  let old_query = getreg('/')
+  :%s/\s\+$//e
+  call setpos('.', save_cursor)
+  call setreg('/', old_query)
+endfunction
+nnoremap <leader>ss :<c-u>call <SID>strip_whitespace()<CR>
 
-  " <tab> / <s-tab> | Circular windows navigation {{{
-  nnoremap <tab>   <c-w>w
-  nnoremap <S-tab> <c-w>W
+" <F10> | NERD Tree
+nnoremap <F10> :NERDTreeToggle<cr>
 
-  " Strip trailing whitespace (<space>ss) {{{
-  function! StripWhitespace () " {{{
-    let save_cursor = getpos(".")
-    let old_query = getreg('/')
-    :%s/\s\+$//e
-    call setpos('.', save_cursor)
-    call setreg('/', old_query)
-  endfunction " }}}
-  noremap <leader>ss :call StripWhitespace ()<CR>
-  " }}}
-
-  " Other mappings {{{
-  nnoremap <Leader><Leader> :e#<CR>                   " quickly move between current and last files
-  nnoremap <leader>s :source $MYVIMRC<CR>             " reload vimrc
-  " }}}
-
-  " Close Quickfix window (<space>qq) {{{
-  map <leader>qq :cclose<CR>
-  " }}}
-
-  " <F10> | NERD Tree {{{
-  nnoremap <F10> :NERDTreeToggle<cr>
-  " }}}
-
-augroup END
 " }}}
+" ============================================================================
+" PLUGINS {{{
+" ============================================================================
 
+" ----------------------------------------------------------------------------
+" indentline
+" ----------------------------------------------------------------------------
+let g:indentLine_char = '┊'
+let g:indentLine_concealcursor = 'c'
 
-" ----------------------------------------------------------------------
-" Plugin Configuration
+" <leader>ig Toggles indent lines
+nnoremap <Leader>ig :IndentLinesToggle<CR>
 
-" NERDTree {{{
-augroup nerdtree_config
-  autocmd!
-
-  " Show hidden files, too
-  let NERDTreeShowFiles=1
-  let NERDTreeShowHidden=1
-  " Highlight the selected entry in the tree
-  let NERDTreeHighlightCursorline=1
-  " Use a single click to fold/unfold directories and a double click to open files
-  let NERDTreeMouseMode=2
-
-  " In order to open NERDTree when starting vim with a directory,
-  " since we configured it to load on-demand, we use the hack below.
-  augroup NERDTreeLoaderHack
-    autocmd!
-    autocmd VimEnter * silent! autocmd! FileExplorer    " clear netrw autocmd group
-    autocmd BufEnter,BufNew *
-          \   if isdirectory(expand('<amatch>'))
-          \|    call plug#load('nerdtree')
-          \|    execute 'autocmd! NERDTreeLoaderHack'
-          \|  endif
-  augroup END
-augroup END
-" }}}
-
-" syntastic {{{
-augroup syntastic_config
-  autocmd!
-
-  let g:syntastic_always_populate_loc_list = 1
-  let g:syntastic_auto_loc_list = 1
-  let g:syntastic_check_on_open = 1
-  let g:syntastic_check_on_wq = 0
-
-  let g:syntastic_enable_elixir_checker = 1
-  let g:syntastic_elixir_checkers = ['elixir']
-
-  let g:elm_syntastic_show_warnings = 1
-augroup END
-"}}}
-
-" lightline {{{
-augroup lightline_config
-  autocmd!
-
-  let g:lightline = {
-        \ 'colorscheme': 'Tomorrow_Night_Eighties',
-        \ 'active': {
-        \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
-        \   'right': [ [ 'syntastic', 'lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
-        \ },
-        \ 'component_function': {
-        \   'fugitive': 'LightLineFugitive',
-        \   'readonly': 'LightLineReadonly',
-        \   'filename': 'LightLineFilename',
-        \   'lineinfo': 'LightLineLineinfo'
-        \ },
-        \ 'component_expand': {
-        \   'syntastic': 'SyntasticStatuslineFlag'
-        \ },
-        \ 'component_type': {
-        \   'syntastic': 'error'
-        \ },
-        \ }
+" ----------------------------------------------------------------------------
+" lightline
+" ----------------------------------------------------------------------------
+let g:lightline = {
+      \ 'colorscheme': 'Tomorrow_Night_Eighties',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
+      \   'right': [ [ 'syntastic', 'lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
+      \ },
+      \ 'component_function': {
+      \   'fugitive': 'LightLineFugitive',
+      \   'readonly': 'LightLineReadonly',
+      \   'filename': 'LightLineFilename',
+      \   'lineinfo': 'LightLineLineinfo'
+      \ },
+      \ 'component_expand': {
+      \   'syntastic': 'SyntasticStatuslineFlag'
+      \ },
+      \ 'component_type': {
+      \   'syntastic': 'error'
+      \ },
+      \ }
 
   function! LightLineReadonly()
     return &ft !~? 'help' && &readonly ? '' : ''
@@ -360,84 +281,56 @@ augroup lightline_config
     SyntasticCheck
     call lightline#update()
   endfunction
-augroup END
-" }}}
 
-" ack.vim {{{
-augroup ack_vim_config
+" ----------------------------------------------------------------------------
+" lightline
+" ----------------------------------------------------------------------------
+let g:elm_setup_keybindings = 0
+let g:elm_jump_to_error = 0
+let g:elm_make_show_warnings = 1
+let g:elm_syntastic_show_warnings = 1
+let g:elm_browser_command = "open"
+let g:elm_detailed_complete = 1
+let g:elm_format_autosave = 1
+let g:elm_format_fail_silently = 1
+
+" ----------------------------------------------------------------------------
+" NERDTree
+" ----------------------------------------------------------------------------
+let NERDTreeShowFiles=1
+let NERDTreeShowHidden=1
+let NERDTreeHighlightCursorline=1
+let NERDTreeMouseMode=2
+augroup nerd_loader
   autocmd!
+  autocmd VimEnter * silent! autocmd! FileExplorer
+  autocmd BufEnter,BufNew *
+        \  if isdirectory(expand('<amatch>'))
+        \|   call plug#load('nerdtree')
+        \|   execute 'autocmd! nerd_loader'
+        \| endif
+augroup END
 
-  " Do not jump to the first result automatically
-  cnoreabbrev Ack Ack!
-  nnoremap <Leader>a :Ack!<Space>
+" }}}
+" ============================================================================
+" AUTOCMD {{{
+" ============================================================================
+augroup vimrc
+  au BufWritePost vimrc,.vimrc,init.vim nested if expand('%') !~ 'fugitive' | source % | endif
 
-  " Use The Silver Searcher in case it is present
-  if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
+  " Close preview window
+  if exists('##CompleteDone')
+    au CompleteDone * pclose
+  else
+    au InsertLeave * if !pumvisible() && (!exists('*getcmdwintype') || empty(getcmdwintype())) | pclose | endif
+  endif
 
-    " Use Ag over Grep
-    set grepprg=ag\ --nogroup\ --nocolor
-
-    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-    let g:ctrlp_user_command = 'ag -Q -l --nocolor --hidden -g "" %s'
-
-    " ag is fast enough that CtrlP doesn't need to cache
-    let g:ctrlp_use_caching = 0
+  " Automatic rename of tmux window
+  if exists('$TMUX') && !exists('$NORENAME')
+    au BufEnter * if empty(&buftype) | call system('tmux rename-window '.expand('%:t:S')) | endif
+    au VimLeave * call system('tmux set-window automatic-rename on')
   endif
 augroup END
+
 " }}}
-
-" indentline {{{
-augroup indentline_config
-  autocmd!
-
-  let g:indentLine_char = '┊'
-  let g:indentLine_concealcursor = 'c'
-
-  " <Leader>ig toggles indent lines
-  nnoremap <Leader>ig :IndentLinesToggle<CR>
-augroup END
-" }}}
-
-" vim-gitgutter {{{
-augroup vim_git_gutter_config
-  autocmd!
-
-  " Always show the sign column
-  let g:gitgutter_sign_column_always = 1
-augroup END
-" }}}
-
-" elm-vim {{{
-augroup elm_vim_config
-  autocmd!
-
-  " Disable mappings (need to check for conflicts...)
-  let g:elm_setup_keybindings = 0
-
-  let g:elm_jump_to_error = 0
-  let g:elm_make_show_warnings = 1
-  let g:elm_syntastic_show_warnings = 1
-  let g:elm_browser_command = "open"
-  let g:elm_detailed_complete = 1
-  let g:elm_format_autosave = 1
-  let g:elm_format_fail_silently = 1
-augroup END
-" }}}
-
-" deoplete {{{
-augroup deoplete_config
-  autocmd!
-
-  " Use deoplete
-  let g:deoplete#enable_at_startup = 1
-
-  " Tern config (javascript)
-  let g:tern_request_timeout = 1
-  " This do disable full signature type on autocomplete
-  " let g:tern_show_signature_in_pum = '0'
-  let g:tern#command = ["tern"]
-  let g:tern#arguments = ["--persistent"]
-augroup END
-" }}}
-
+" ============================================================================ 
