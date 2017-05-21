@@ -79,6 +79,11 @@ Then, in neovim, execute `:PlugInstall` and then `:UpdateRemotePlugins`. You can
 
 Note: for javascript the plugin installs [ternjs](http://ternjs.net/), so you also need node installed in your system.
 
+# TODO
+
+* goyo
+* vimwiki
+
 # Acknowledgements
 
 The work on this repo is inspired and based on other great configurations. Below you will find some of the people/repos I took ideas from to create my own stuff:
@@ -86,3 +91,6 @@ The work on this repo is inspired and based on other great configurations. Below
 * https://github.com/Kraymer/F-dotfiles
 * http://dotfiles.github.io
 * https://github.com/webpro/awesome-dotfiles
+
+* https://github.com/ches/dotfiles
+* https://github.com/junegunn/dotfiles
