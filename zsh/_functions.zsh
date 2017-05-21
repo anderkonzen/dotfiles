@@ -46,3 +46,4 @@ function server() {
   open "http://localhost:${port}/" &
   ruby -run -e httpd . -p "$port"
 }
+

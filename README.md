@@ -1,18 +1,48 @@
-These are my dotfiles and configurations for some of the programs I use. In general the configurations take into account a system running OS X, with iTerm2, zsh, neovim, git and Homebrew.
+These are my dotfiles and configurations for some of the programs I use. In general the configurations are optimized for a system running macOS, with iTerm2, fish, neovim, git and Homebrew.
 
-# Setup
+# Install
 
-Just clone this repo and configure/symlink/etc. the programs you use. Some programs can be installed using `brew bundle` (see Brewfile and [here](https://github.com/Homebrew/homebrew-bundle) for more info). 
+The files are managed by `stow`, so basically:
 
-## zsh
+1. Clone the repository:
 
-Use `~/.zprofile` if you want to have local configurations. zsh will source this file before `~/.zshrc`.
+```shell
+git clone https://github.com/anderkonzen/dotfiles.git ~/.dotfiles
+```
+
+2. Setup `stow`: 
+
+```shell
+cd .dotfiles
+stow -t ~ stow
+```
+
+The stow directory should be the first one so the stow configuration is installed properly (global ignore files, etc).
+
+3. Install the desired package with `stow <dir>`
+
+# Conventions
+
+Directories starting with a `_` are not supposed to be *stowed*.
+
+# Requirements
+
+Prior to symlink the directories, I recommend installing all the apps declared in the `_homebrew/Brewfile`:
+
+```shell
+cd ~/.dotfiles/_homebrew
+brew bundle
+```
+
+this will install `stow` and other necessary apps. Of course, you need [`brew`](https://brew.sh) installed to run this command.
+
+# Configuring other apps
 
 ## git
 
 Use `~/.gitconfig.local` to store sensitive data like git credentials and other local configurations. For instance:
 
-```bash
+```shell
 [user]
     name = Anderson Konzen
     email = anderkonzen@example.com
@@ -20,18 +50,11 @@ Use `~/.gitconfig.local` to store sensitive data like git credentials and other 
 
 ## neovim
 
-[Neovim](https://neovim.io/) follows the XDG convention. Thus, if you cloned the repo into `~/dotfiles` you can create the following symlink:
-
-```bash
-# First make sure ~/.config/nvim exists
-$ ln -s ~/dotfiles/.config/nvim ~/.config/nvim
-```
-
 ### Themes
 
 Use `~/.vimrc_background` to have local settings for the colorscheme. For example:
 
-```sh
+```shell
 # ~/.vimrc_background
 
 " colorscheme base16-tomorrow-night
@@ -58,12 +81,8 @@ Note: for javascript the plugin installs [ternjs](http://ternjs.net/), so you al
 
 # Acknowledgements
 
-The work on this repo is inspired and based on other great configurations. Below some of the people/repos I took ideas to create my own stuff:
+The work on this repo is inspired and based on other great configurations. Below you will find some of the people/repos I took ideas from to create my own stuff:
 
-* https://github.com/alrra/dotfiles
-* https://github.com/mathiasbynens/dotfiles
-* https://github.com/gf3/dotfiles
-* https://github.com/paulirish/dotfiles
-* https://github.com/holman/dotfiles
-* https://github.com/driesvints/dotfiles
-
+* https://github.com/Kraymer/F-dotfiles
+* http://dotfiles.github.io
+* https://github.com/webpro/awesome-dotfiles

@@ -43,6 +43,8 @@ Plug 'elmcast/elm-vim'
 Plug 'tpope/vim-rails'
 Plug 'pangloss/vim-javascript'
 Plug 'othree/html5.vim'
+Plug 'dag/vim-fish'
+Plug 'kchmck/vim-coffee-script'
 
 " Deoplete related plugins (auto complete)
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }

@@ -22,4 +22,5 @@ export LESS_TERMCAP_so=$'\E[00;44;37m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
-export PATH=$PATH:$HOME/bin
+# Enable ls colors
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
