@@ -11,6 +11,7 @@ zplug "plugins/git",            from:oh-my-zsh, depth:1
 zplug "plugins/docker",         from:oh-my-zsh, depth:1
 zplug "plugins/docker-compose", from:oh-my-zsh, depth:1
 zplug "robbyrussell/oh-my-zsh", use:"lib/grep.zsh", depth:1
+zplug "robbyrussell/oh-my-zsh", use:"lib/key-bindings.zsh", depth:1
 
 # Themes
 zplug "mafredri/zsh-async", from:github
