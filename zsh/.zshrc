@@ -33,6 +33,9 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load #--verbose
 
+# zsh customization
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=240'
+
 # jenv (jenv.be)
 if which jenv &> /dev/null; then eval "$(jenv init -)"; fi
 

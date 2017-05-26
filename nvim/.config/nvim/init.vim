@@ -31,6 +31,8 @@ Plug 'chriskempson/base16-vim'
 Plug 'itchyny/lightline.vim'
 
 " Syntax and Lint
+Plug 'ekalinin/Dockerfile.vim'
+
 Plug 'elixir-lang/vim-elixir'
 Plug 'slashmili/alchemist.vim'
 Plug 'vim-ruby/vim-ruby'                  " vim-ruby needs 'gem install neovim' if you want code completion
