@@ -65,7 +65,7 @@ augroup vimrc
 augroup END
 
 set termguicolors               " enable true colors support
-set guifont=Hack:h14
+set guifont=Fira\ Code:h1
 colorscheme base16-tomorrow-night
 
 set number                      " always show line numbers
