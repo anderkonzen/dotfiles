@@ -20,10 +20,9 @@ brew 'findutils'
 brew 'bash'
 
 brew 'stow'
-brew 'fish'
 brew 'ag'
 brew 'git'
-brew 'neovim/neovim/neovim', args: ['HEAD', 'without-jemalloc']
+brew 'neovim', args: ['HEAD', 'without-jemalloc']
 brew 'node'
 brew 'rbenv'
 brew 'ruby-build'
@@ -59,4 +58,5 @@ cask 'hyper'
 # Fonts
 cask 'font-hack'
 cask 'font-mononoki'
+cask 'font-fira-code'
 
