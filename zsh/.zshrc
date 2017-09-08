@@ -37,6 +37,9 @@ zplug load #--verbose
 # zsh customization
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=240'
 
+# pure customization
+PURE_PROMPT_SYMBOL=λ
+
 # jenv (jenv.be)
 if which jenv &> /dev/null; then eval "$(jenv init -)"; fi
 
