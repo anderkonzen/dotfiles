@@ -57,5 +57,8 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
+# Ajust PATH
+PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
+
 # Other files with pattern _*.zsh will be sourced
 for config ($DOTFILES/zsh/_*.zsh) source $config
