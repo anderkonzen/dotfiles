@@ -8,4 +8,4 @@ for nic in ${all_nics[@]}; do
   done
   [[ -n "${lan_ip}" ]] && break
 done
-echo "🌐 ${lan_ip-N/A}"
+echo "${lan_ip-N/A}"
