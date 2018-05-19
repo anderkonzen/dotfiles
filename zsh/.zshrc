@@ -40,6 +40,9 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=240'
 # pure customization
 PURE_PROMPT_SYMBOL=λ
 
+# Ensure user-installed binaries take precedence
+export PATH=/usr/local/bin:$PATH
+
 # jenv (jenv.be)
 if which jenv &> /dev/null; then eval "$(jenv init -)"; fi
 
