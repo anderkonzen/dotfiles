@@ -40,10 +40,10 @@ Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'tmux-plugins/vim-tmux'
 Plug 'elmcast/elm-vim'
-Plug 'tpope/vim-rails'
+" Plug 'tpope/vim-rails'
 Plug 'pangloss/vim-javascript'
 Plug 'othree/html5.vim'
-Plug 'kchmck/vim-coffee-script'
+" Plug 'kchmck/vim-coffee-script'
 Plug 'scrooloose/syntastic'
 
 " Omnicomplete
