@@ -37,6 +37,7 @@ brew 'fzf'
 brew 'z'
 
 # Apps
+cask '1password'
 cask 'appcleaner'
 cask 'keepingyouawake'
 cask 'firefox'
@@ -51,6 +52,7 @@ cask 'iterm2'
 cask 'disk-inventory-x'
 cask 'nvalt'
 cask 'the-unarchiver'
+cask 'spectacle'
 cask 'dropbox'
 
 # Fonts
