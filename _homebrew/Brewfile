@@ -37,7 +37,6 @@ brew 'fzf'
 brew 'z'
 
 # Apps
-cask 'aerial'
 cask 'appcleaner'
 cask 'keepingyouawake'
 cask 'firefox'
@@ -53,8 +52,6 @@ cask 'disk-inventory-x'
 cask 'nvalt'
 cask 'the-unarchiver'
 cask 'dropbox'
-cask 'hyper'
-cask 'emacs'
 
 # Fonts
 cask 'font-hack'
