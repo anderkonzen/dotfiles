@@ -24,3 +24,5 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 
 # Enable ls colors
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
+
+export PATH="$HOME/.cargo/bin:$PATH"

@@ -41,13 +41,10 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=240'
 PURE_PROMPT_SYMBOL=λ
 
 # Ensure user-installed binaries take precedence
-export PATH=/usr/local/bin:$PATH
+# export PATH=/usr/local/bin:$PATH
 
-# jenv (jenv.be)
-if which jenv &> /dev/null; then eval "$(jenv init -)"; fi
-
-# rbenv
-if which rbenv &> /dev/null; then eval "$(rbenv init -)"; fi
+# MySQL
+export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
 
 # z
 . /usr/local/etc/profile.d/z.sh
@@ -56,15 +53,16 @@ if which rbenv &> /dev/null; then eval "$(rbenv init -)"; fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
+# asdf
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
+
 # Fix gnupg
 export GPG_TTY=$(tty)
 
 # base16
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-
-# Ajust PATH
-PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 
 # Other files with pattern _*.zsh will be sourced
 for config ($DOTFILES/zsh/_*.zsh) source $config
