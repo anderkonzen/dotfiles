@@ -34,6 +34,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'ekalinin/Dockerfile.vim'
 
 Plug 'elixir-lang/vim-elixir'
+Plug 'mhinz/vim-mix-format'
 Plug 'slashmili/alchemist.vim'
 Plug 'vim-ruby/vim-ruby'                  " vim-ruby needs 'gem install neovim' if you want code completion
 Plug 'elzr/vim-json', { 'for': 'json' }
@@ -247,7 +248,6 @@ nnoremap <Leader>ig :IndentLinesToggle<CR>
 " ----------------------------------------------------------------------------
 " vim-better-whitespace
 " ----------------------------------------------------------------------------
-
 " <leader>ss Strip trailing whitespace
 nnoremap <leader>ss :StripWhitespace<CR>
 
