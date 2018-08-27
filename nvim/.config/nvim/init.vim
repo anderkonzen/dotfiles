@@ -30,21 +30,23 @@ Plug 'chriskempson/base16-vim'
 " Statusline
 Plug 'itchyny/lightline.vim'
 
-" Syntax and Lint
-Plug 'ekalinin/Dockerfile.vim'
-
+" Elixir
 Plug 'elixir-lang/vim-elixir'
 Plug 'mhinz/vim-mix-format'
 Plug 'slashmili/alchemist.vim'
+
+Plug 'ekalinin/Dockerfile.vim'
 Plug 'vim-ruby/vim-ruby'                  " vim-ruby needs 'gem install neovim' if you want code completion
 Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'tmux-plugins/vim-tmux'
+
+" Javascript / HTML
 Plug 'elmcast/elm-vim'
-" Plug 'tpope/vim-rails'
 Plug 'pangloss/vim-javascript'
 Plug 'othree/html5.vim'
-" Plug 'kchmck/vim-coffee-script'
+
+" Syntax checking
 Plug 'scrooloose/syntastic'
 
 " Omnicomplete
@@ -167,6 +169,9 @@ nnoremap <Leader>Q :qa!<CR>
 " Toggle show tabs and trailing spaces
 nnoremap <silent> <leader>tt :set nolist!<CR>
 
+" Toggle relative number
+nnoremap <silent> <leader>n :set relativenumber!<CR>
+
 " Clear last search
 nnoremap <silent> <Esc> <Esc>:noh<CR>
 
@@ -219,7 +224,6 @@ xnoremap > >gv
 " ----------------------------------------------------------------------------
 nnoremap <leader>c :cclose<bar>lclose<CR>
 
-
 " <F10> | NERD Tree
 nnoremap <F10> :NERDTreeToggle<CR>
 
@@ -248,8 +252,26 @@ nnoremap <Leader>ig :IndentLinesToggle<CR>
 " ----------------------------------------------------------------------------
 " vim-better-whitespace
 " ----------------------------------------------------------------------------
-" <leader>ss Strip trailing whitespace
+" Strip trailing whitespace
 nnoremap <leader>ss :StripWhitespace<CR>
+
+" ----------------------------------------------------------------------------
+" fzf
+" ----------------------------------------------------------------------------
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+nnoremap <leader>xf :Files<CR>
+nnoremap <leader>xa :Ag<Space>
+nnoremap <leader>xb :Buffers<CR>
 
 " ----------------------------------------------------------------------------
 " lightline
@@ -306,7 +328,7 @@ function! s:syntastic()
 endfunction
 
 " ----------------------------------------------------------------------------
-" lightline
+" elm
 " ----------------------------------------------------------------------------
 let g:elm_setup_keybindings = 0
 let g:elm_jump_to_error = 0
@@ -326,7 +348,6 @@ let NERDTreeHighlightCursorline=1
 let NERDTreeMouseMode=2
 augroup nerd_loader
   autocmd!
-  autocmd VimEnter * silent! autocmd! FileExplorer
   autocmd BufEnter,BufNew *
         \  if isdirectory(expand('<amatch>'))
         \|   call plug#load('nerdtree')
@@ -349,12 +370,11 @@ let g:elm_syntastic_show_warnings = 1
 let g:syntastic_html_checkers=['']
 
 " ----------------------------------------------------------------------------
-" syntastic
+" ack.vim
 " ----------------------------------------------------------------------------
 " Do not jump to the first result automatically
 cnoreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space>
-
 " Enhance :grep
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
@@ -380,7 +400,7 @@ augroup vimrc
 augroup END
 
 " Fun with some goodies hidden in vim-git ftplugins. {{{
-augroup GitTricks
+augroup gittricks
   autocmd!
   autocmd FileType gitrebase
         \ nnoremap <buffer> P :Pick<CR>   |
