@@ -226,6 +226,7 @@ nnoremap <leader>c :cclose<bar>lclose<CR>
 
 " <F10> | NERD Tree
 nnoremap <F10> :NERDTreeToggle<CR>
+nnoremap <leader>fr :NERDTreeFind<CR>
 
 " Clever tpope
 nnoremap <silent> <F9> :if &previewwindow<Bar>pclose<Bar>elseif exists(':Gstatus')<Bar>exe 'Gstatus'<Bar>else<Bar>ls<Bar>endif<CR>
