@@ -26,3 +26,5 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$PATH:/usr/local/go/bin"
+
