@@ -274,6 +274,8 @@ nnoremap <leader>xf :Files<CR>
 nnoremap <leader>xa :Ag<Space>
 nnoremap <leader>xb :Buffers<CR>
 
+nnoremap <leader>ef :MixFormat<CR>
+
 " ----------------------------------------------------------------------------
 " lightline
 " ----------------------------------------------------------------------------
