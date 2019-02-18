@@ -10,6 +10,7 @@ zplug "modules/history",        from:prezto, depth:1
 zplug "plugins/git",            from:oh-my-zsh, depth:1
 zplug "plugins/docker",         from:oh-my-zsh, depth:1
 zplug "plugins/docker-compose", from:oh-my-zsh, depth:1
+zplug "plugins/kubectl",        from:oh-my-zsh, depth:1
 zplug "plugins/extract",        from:oh-my-zsh, depth:1
 zplug "robbyrussell/oh-my-zsh", use:"lib/grep.zsh", depth:1
 zplug "robbyrussell/oh-my-zsh", use:"lib/key-bindings.zsh", depth:1
@@ -69,3 +70,5 @@ PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
 # Other files with pattern _*.zsh will be sourced
 for config ($DOTFILES/zsh/_*.zsh) source $config
+
+peek() { tmux split-window -p 33 "$EDITOR" "$@" || exit; }
