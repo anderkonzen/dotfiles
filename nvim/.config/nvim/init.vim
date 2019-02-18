@@ -42,9 +42,9 @@ Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'tmux-plugins/vim-tmux'
 
 " Javascript / HTML
-Plug 'elmcast/elm-vim'
-Plug 'pangloss/vim-javascript'
-Plug 'othree/html5.vim'
+" Plug 'elmcast/elm-vim'
+" Plug 'pangloss/vim-javascript'
+" Plug 'othree/html5.vim'
 
 " Syntax checking
 Plug 'scrooloose/syntastic'
