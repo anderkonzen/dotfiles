@@ -16,3 +16,5 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 alias pcurl='curl -w "\n\n%{time_total} secs" '
 
 alias ls="${aliases[ls]:-ls} -G"
+
+alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
