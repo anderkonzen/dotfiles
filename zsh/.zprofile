@@ -28,3 +28,9 @@ export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$PATH:/usr/local/go/bin"
 
+export SPARK_HOME=/Users/anderkonzen/Developer/opt/spark-2.4.0-bin-hadoop2.7
+export PATH=$SPARK_HOME/bin:$PATH
+export PYSPARK_PYTHON=python3
+
+export ERL_AFLAGS="-kernel shell_history enabled"
+
