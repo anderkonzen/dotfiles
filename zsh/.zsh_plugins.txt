@@ -1,0 +1,19 @@
+robbyrussell/oh-my-zsh
+robbyrussell/oh-my-zsh path:plugins/docker
+robbyrussell/oh-my-zsh path:plugins/docker-compose
+robbyrussell/oh-my-zsh path:plugins/extract
+robbyrussell/oh-my-zsh path:plugins/git
+robbyrussell/oh-my-zsh path:plugins/kops
+robbyrussell/oh-my-zsh path:plugins/kubectl
+
+robbyrussell/oh-my-zsh path:lib/grep.zsh
+robbyrussell/oh-my-zsh path:lib/history.zsh
+robbyrussell/oh-my-zsh path:lib/key-bindings.zsh
+
+zsh-users/zsh-completions
+# zsh-users/zsh-autosuggestions
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-history-substring-search
+
+mafredri/zsh-async
+sindresorhus/pure
