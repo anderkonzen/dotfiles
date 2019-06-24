@@ -36,3 +36,9 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 # Use proper sed with gnu-sed
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
+# Ensure user-installed binaries take precedence
+# export PATH=/usr/local/bin:$PATH
+
+# MySQL
+export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
+
