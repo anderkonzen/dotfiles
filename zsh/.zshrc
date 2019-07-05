@@ -42,3 +42,7 @@ PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 # MySQL
 export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
 
+# tmuxinator
+source $DOTFILES/tmux/tmuxinator.zsh
+
+autoload -Uz compinit; compinit
