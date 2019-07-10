@@ -69,6 +69,7 @@ You can check if everything is working fine with `:CheckHealth`.
 
 * goyo
 * vimwiki
+* antibody
 
 # Acknowledgements
 
