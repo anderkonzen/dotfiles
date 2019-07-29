@@ -46,3 +46,9 @@ export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
 source $DOTFILES/tmux/tmuxinator.zsh
 
 autoload -Uz compinit; compinit
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/anderkonzen/Developer/opt/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/anderkonzen/Developer/opt/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/anderkonzen/Developer/opt/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/anderkonzen/Developer/opt/google-cloud-sdk/completion.zsh.inc'; fi
