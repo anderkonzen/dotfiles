@@ -34,3 +34,6 @@ export PYSPARK_PYTHON=python3
 
 export ERL_AFLAGS="-kernel shell_history enabled"
 
+# Custom bin
+export PATH=$HOME/.dotfiles/_bin:$PATH
+
