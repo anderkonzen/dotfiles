@@ -29,6 +29,10 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 
+# go
+export GOPATH=$HOME/go
+export PATH="$GOPATH/bin:$PATH"
+
 # Use proper sed with gnu-sed
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
@@ -63,4 +67,7 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# kubectl completions
+source <(kubectl completion zsh)
 
