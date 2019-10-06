@@ -35,6 +35,9 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'mhinz/vim-mix-format'
 Plug 'slashmili/alchemist.vim'
 
+" Haskell
+Plug 'neovimhaskell/haskell-vim'
+
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'vim-ruby/vim-ruby'                  " vim-ruby needs 'gem install neovim' if you want code completion
 Plug 'elzr/vim-json', { 'for': 'json' }

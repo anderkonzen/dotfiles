@@ -37,6 +37,9 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export GOPATH=$HOME/go
 export PATH="$GOPATH/bin:$PATH"
 
+# haskell
+export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
+
 # Use proper sed with gnu-sed
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
