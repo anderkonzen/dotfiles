@@ -15,8 +15,6 @@ source /Users/anderkonzen/Library/Caches/antibody/https-COLON--SLASH--SLASH-gith
 source /Users/anderkonzen/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh/lib/key-bindings.zsh
 source /Users/anderkonzen/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-mafredri-SLASH-zsh-async/async.plugin.zsh
 fpath+=( /Users/anderkonzen/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-mafredri-SLASH-zsh-async )
-source /Users/anderkonzen/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-rupa-SLASH-z/z.sh
-fpath+=( /Users/anderkonzen/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-rupa-SLASH-z )
 source /Users/anderkonzen/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-completions/zsh-completions.plugin.zsh
 fpath+=( /Users/anderkonzen/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-completions )
 source /Users/anderkonzen/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh

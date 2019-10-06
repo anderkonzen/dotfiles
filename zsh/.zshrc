@@ -20,6 +20,10 @@ PURE_PROMPT_SYMBOL=λ
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
+# z - jump around
+# https://github.com/rupa/z
+. /usr/local/etc/profile.d/z.sh
+
 # fzf
 # https://github.com/junegunn/fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -37,6 +41,7 @@ export PATH="$GOPATH/bin:$PATH"
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
 # Ensure user-installed binaries take precedence
+# Use it carefully, since this might override asdf for example.
 # export PATH=/usr/local/bin:$PATH
 
 # MySQL
@@ -52,21 +57,6 @@ if [ -f '/Users/anderkonzen/Developer/opt/google-cloud-sdk/path.zsh.inc' ]; then
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/anderkonzen/Developer/opt/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/anderkonzen/Developer/opt/google-cloud-sdk/completion.zsh.inc'; fi
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/anderkonzen/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/anderkonzen/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/anderkonzen/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/anderkonzen/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
 # kubectl completions
 source <(kubectl completion zsh)

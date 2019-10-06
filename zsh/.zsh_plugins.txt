@@ -11,8 +11,6 @@ robbyrussell/oh-my-zsh path:lib/key-bindings.zsh
 
 mafredri/zsh-async
 
-rupa/z
-
 zsh-users/zsh-completions
 # zsh-users/zsh-autosuggestions
 zsh-users/zsh-syntax-highlighting
