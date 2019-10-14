@@ -64,3 +64,8 @@ if [ -f '/Users/anderkonzen/Developer/opt/google-cloud-sdk/completion.zsh.inc' ]
 # kubectl completions
 source <(kubectl completion zsh)
 
+# kube-ps1
+export KUBE_PS1_SYMBOL_ENABLE=false
+source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+PS1='$(kube_ps1) '$PS1
+
