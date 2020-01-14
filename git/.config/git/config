@@ -5,7 +5,7 @@
   precomposeunicode = false
 
   editor = nvim
-  excludesfile = /Users/anderkonzen/.gitignore_global
+  excludesfile = ~/.gitignore_global
 
 [alias]
 
@@ -105,17 +105,8 @@
   # Don't guess the user's identity.
   # https://github.com/git/git/blob/90f7b16b3adc78d4bbabbd426fb69aa78c714f71/Documentation/config.txt#L2847-L2855
   useConfigOnly = true
-  signingkey = 05E8BB9ACB0B47D0
-
-[difftool "sourcetree"]
-
-  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-  path =
-
-[mergetool "sourcetree"]
-
-  cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-  trustExitCode = true
+  # Add this section to .gitconfig.local (see below)
+  signingkey = YOURSIGNINKEY
 
 [include]
 
@@ -127,8 +118,5 @@
   path = ~/.gitconfig.local
 
 [gpg]
-  program = gpg
 
-; [commit]
-;   gpgsign = true
-;   template = /Users/anderkonzen/.stCommitMsg
+  program = gpg

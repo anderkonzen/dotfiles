@@ -9,6 +9,7 @@ export EDITOR=nvim
 
 # Pager
 export PAGER=less
+
 # Less status line
 export LESS='-R -f -X -i -P ?f%f:(stdin). ?lb%lb?L/%L.. [?eEOF:?pb%pb\%..]'
 export LESSCHARSET='utf-8'
@@ -25,15 +26,16 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 # Enable ls colors
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$PATH:/usr/local/go/bin"
-
-export SPARK_HOME=/Users/anderkonzen/Developer/opt/spark-2.4.0-bin-hadoop2.7
+# spark
+export SPARK_HOME=$HOME/Developer/opt/spark-2.4.0-bin-hadoop2.7
 export PATH=$SPARK_HOME/bin:$PATH
 export PYSPARK_PYTHON=python3
 
+# Erlang
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-# Custom bin
-export PATH=$HOME/.dotfiles/_bin:$PATH
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"
 
+# Custom bin
+# export PATH=$HOME/.dotfiles/_bin:$PATH

@@ -1,5 +1,3 @@
-export DOTFILES=$HOME/.dotfiles
-
 # Antibody
 # https://github.com/getantibody/antibody
 export ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
@@ -29,43 +27,39 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
-# asdf
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
-
 # go
 export GOPATH=$HOME/go
-export PATH="$GOPATH/bin:$PATH"
+# Makes it easier to execute go applications
+# export PATH="$GOPATH/bin:$PATH"
 
 # haskell
-export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
-
-# Use proper sed with gnu-sed
-PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-
-# Ensure user-installed binaries take precedence
-# Use it carefully, since this might override asdf for example.
-# export PATH=/usr/local/bin:$PATH
+# export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
 
 # MySQL
 export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
 
-# tmuxinator
-source $DOTFILES/tmux/tmuxinator.zsh
-
-autoload -Uz compinit; compinit
-
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/anderkonzen/Developer/opt/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/anderkonzen/Developer/opt/google-cloud-sdk/path.zsh.inc'; fi
+# if [ -f '/Users/anderkonzen/Developer/opt/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/anderkonzen/Developer/opt/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/anderkonzen/Developer/opt/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/anderkonzen/Developer/opt/google-cloud-sdk/completion.zsh.inc'; fi
+# if [ -f '/Users/anderkonzen/Developer/opt/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/anderkonzen/Developer/opt/google-cloud-sdk/completion.zsh.inc'; fi
 
 # kubectl completions
 source <(kubectl completion zsh)
 
 # kube-ps1
+# https://github.com/jonmosco/kube-ps1
 export KUBE_PS1_SYMBOL_ENABLE=false
-source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+source "$HOME/Developer/opt/kube-ps1/kube-ps1.sh"
 PS1='$(kube_ps1) '$PS1
 
+# nvm/nodejs
+# https://github.com/nvm-sh/nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# asdf
+# https://asdf-vm.com/
+. $(brew --prefix asdf)/asdf.sh
+. $(brew --prefix asdf)/etc/bash_completion.d/asdf.bash
