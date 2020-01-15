@@ -36,6 +36,3 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
-
-# Custom bin
-# export PATH=$HOME/.dotfiles/_bin:$PATH

@@ -63,3 +63,7 @@ export NVM_DIR="$HOME/.nvm"
 # https://asdf-vm.com/
 . $(brew --prefix asdf)/asdf.sh
 . $(brew --prefix asdf)/etc/bash_completion.d/asdf.bash
+
+# dotfiles and custom bin
+export DOTFILES=$HOME/dotfiles
+export PATH=$PATH:$DOTFILES/_bin
