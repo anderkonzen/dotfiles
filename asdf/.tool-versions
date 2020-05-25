@@ -1,9 +1,10 @@
-elixir 1.9.1-otp-22
-erlang 22.0.7
+elixir 1.10.3-otp-22
+erlang 22.3.4
 golang 1.13.6
 kops 1.12.3
 kubectl 1.14.6
-maven 3.5.4
+maven 3.6.3
 ruby 2.7.0
 scala 2.12.7
-python 3.8.1 2.7.17
+python 3.7.7 2.7.18
+lua 5.3.5
