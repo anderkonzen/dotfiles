@@ -27,12 +27,17 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 
 # spark
-export SPARK_HOME=$HOME/Developer/opt/spark-2.4.0-bin-hadoop2.7
+# export SPARK_HOME=$HOME/Developer/opt/spark-1.4.0-bin-hadoop2.7
+export SPARK_HOME=$HOME/Developer/opt/spark-2.4.5-bin-hadoop2.7
 export PATH=$SPARK_HOME/bin:$PATH
-export PYSPARK_PYTHON=python3
+# export PYSPARK_PYTHON=python3
 
 # Erlang
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# java
+# Check installed versions with '/usr/libexec/java_home -V'
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`

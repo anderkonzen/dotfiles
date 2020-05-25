@@ -20,7 +20,11 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 
 # z - jump around
 # https://github.com/rupa/z
-. /usr/local/etc/profile.d/z.sh
+# . /usr/local/etc/profile.d/z.sh
+
+# zoxide (replaces z)
+# https://github.com/ajeetdsouza/zoxide
+eval "$(zoxide init zsh)"
 
 # fzf
 # https://github.com/junegunn/fzf
