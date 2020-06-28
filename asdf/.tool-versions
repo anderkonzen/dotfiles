@@ -8,3 +8,4 @@ ruby 2.7.0
 scala 2.12.7
 python 3.7.7 2.7.18
 lua 5.3.5
+terraform 0.12.28

@@ -34,7 +34,7 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 # go
 export GOPATH=$HOME/go
 # Makes it easier to execute go applications
-# export PATH="$GOPATH/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
 
 # haskell
 # export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
@@ -62,6 +62,10 @@ PS1='$(kube_ps1) '$PS1
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# aws
+# https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-completion.html
+complete -C '/usr/local/bin/aws_completer' aws
 
 # asdf
 # https://asdf-vm.com/
