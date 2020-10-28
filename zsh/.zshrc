@@ -40,7 +40,7 @@ export PATH="$GOPATH/bin:$PATH"
 # export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
 
 # MySQL
-export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
+export PATH="/usr/local/opt/mysql@8.0/bin:$PATH"
 
 # The next line updates PATH for the Google Cloud SDK.
 # if [ -f '/Users/anderkonzen/Developer/opt/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/anderkonzen/Developer/opt/google-cloud-sdk/path.zsh.inc'; fi
@@ -67,11 +67,13 @@ export NVM_DIR="$HOME/.nvm"
 # https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-completion.html
 complete -C '/usr/local/bin/aws_completer' aws
 
-# asdf
-# https://asdf-vm.com/
-. $(brew --prefix asdf)/asdf.sh
-. $(brew --prefix asdf)/etc/bash_completion.d/asdf.bash
+# assh
+alias ssh="assh wrapper ssh --"
+
+# asdf-vm
+. $HOME/.asdf/asdf.sh
 
 # dotfiles and custom bin
 export DOTFILES=$HOME/dotfiles
 export PATH=$PATH:$DOTFILES/_bin
+
