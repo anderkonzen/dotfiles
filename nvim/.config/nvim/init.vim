@@ -5,7 +5,7 @@
 silent! if plug#begin('~/.config/nvim/plugged')
 
 Plug 'tpope/vim-unimpaired'               " [b, ]b, ]t, etc...
-Plug 'tpope/vim-commentary'               " comment stuff out (use gcc to comment and gcgc to uncomment)
+Plug 'tpope/vim-commentary'               " comment stuff out (use gcc to comment and to uncomment)
 Plug 'tpope/vim-eunuch'                   " :Rename, :Move...
 Plug 'tpope/vim-endwise'                  " plugin that helps to end certain structures automatically
 Plug 'tpope/vim-surround'                 " to change ( with {: cs({; wrapp word with ': ysiw'
@@ -17,7 +17,8 @@ Plug 'ntpeters/vim-better-whitespace'     " show white space in red and :StripWh
 Plug 'ervandew/supertab'                  " improve <Tab> completion in insert mode
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'                    " :Ack [pattern] to search for pattern (grep)
 
 " Git
@@ -31,7 +32,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'itchyny/lightline.vim'
 
 " Elixir
-Plug 'elixir-lang/vim-elixir'
+Plug 'elixir-editors/vim-elixir'
 Plug 'mhinz/vim-mix-format'
 Plug 'slashmili/alchemist.vim'
 

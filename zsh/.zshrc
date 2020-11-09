@@ -18,6 +18,10 @@ PURE_PROMPT_SYMBOL=λ
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
+# bat Customization
+# https://github.com/sharkdp/bat
+export BAT_THEME="base16"
+
 # z - jump around
 # https://github.com/rupa/z
 # . /usr/local/etc/profile.d/z.sh
@@ -76,4 +80,5 @@ alias ssh="assh wrapper ssh --"
 # dotfiles and custom bin
 export DOTFILES=$HOME/dotfiles
 export PATH=$PATH:$DOTFILES/_bin
+source "$DOTFILES/zsh/_aliases.zsh"
 
