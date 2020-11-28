@@ -286,11 +286,11 @@ nnoremap <leader>ef :MixFormat<CR>
 let g:lightline = {
       \ 'colorscheme': 'Tomorrow_Night_Eighties',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
+      \   'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
       \   'right': [ [ 'syntastic', 'lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
       \ },
       \ 'component_function': {
-      \   'fugitive': 'LightLineFugitive',
+      \   'gitbranch': 'LightLineGitBranch',
       \   'readonly': 'LightLineReadonly',
       \   'filename': 'LightLineFilename',
       \   'lineinfo': 'LightLineLineinfo'
@@ -303,16 +303,13 @@ let g:lightline = {
       \ },
       \ }
 
-function! LightLineReadonly()
-  return &ft !~? 'help' && &readonly ? '' : ''
+function! LightLineGitBranch()
+  let branch = FugitiveHead()
+  return branch !=# '' ? ' ' . branch : ''
 endfunction
 
-function! LightLineFugitive()
-  if exists('*fugitive#head')
-    let branch = fugitive#head()
-    return branch !=# '' ? ' ' . branch : ''
-  endif
-  return ''
+function! LightLineReadonly()
+  return &readonly && &filetype !=# 'help' ? '' : ''
 endfunction
 
 function! LightLineFilename()
