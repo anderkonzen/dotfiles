@@ -5,7 +5,7 @@
 silent! if plug#begin('~/.config/nvim/plugged')
 
 Plug 'tpope/vim-unimpaired'               " [b, ]b, ]t, etc...
-Plug 'tpope/vim-commentary'               " comment stuff out (use gcc to comment and gcgc to uncomment)
+Plug 'tpope/vim-commentary'               " comment stuff out (use gcc to comment and to uncomment)
 Plug 'tpope/vim-eunuch'                   " :Rename, :Move...
 Plug 'tpope/vim-endwise'                  " plugin that helps to end certain structures automatically
 Plug 'tpope/vim-surround'                 " to change ( with {: cs({; wrapp word with ': ysiw'
@@ -17,7 +17,8 @@ Plug 'ntpeters/vim-better-whitespace'     " show white space in red and :StripWh
 Plug 'ervandew/supertab'                  " improve <Tab> completion in insert mode
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'                    " :Ack [pattern] to search for pattern (grep)
 
 " Git
@@ -31,7 +32,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'itchyny/lightline.vim'
 
 " Elixir
-Plug 'elixir-lang/vim-elixir'
+Plug 'elixir-editors/vim-elixir'
 Plug 'mhinz/vim-mix-format'
 Plug 'slashmili/alchemist.vim'
 
@@ -285,11 +286,11 @@ nnoremap <leader>ef :MixFormat<CR>
 let g:lightline = {
       \ 'colorscheme': 'Tomorrow_Night_Eighties',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
+      \   'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
       \   'right': [ [ 'syntastic', 'lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
       \ },
       \ 'component_function': {
-      \   'fugitive': 'LightLineFugitive',
+      \   'gitbranch': 'LightLineGitBranch',
       \   'readonly': 'LightLineReadonly',
       \   'filename': 'LightLineFilename',
       \   'lineinfo': 'LightLineLineinfo'
@@ -302,16 +303,13 @@ let g:lightline = {
       \ },
       \ }
 
-function! LightLineReadonly()
-  return &ft !~? 'help' && &readonly ? '' : ''
+function! LightLineGitBranch()
+  let branch = FugitiveHead()
+  return branch !=# '' ? ' ' . branch : ''
 endfunction
 
-function! LightLineFugitive()
-  if exists('*fugitive#head')
-    let branch = fugitive#head()
-    return branch !=# '' ? ' ' . branch : ''
-  endif
-  return ''
+function! LightLineReadonly()
+  return &readonly && &filetype !=# 'help' ? '' : ''
 endfunction
 
 function! LightLineFilename()
