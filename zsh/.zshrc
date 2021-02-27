@@ -8,6 +8,8 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey "\033[1~" beginning-of-line
+bindkey "\033[4~" end-of-line
 
 # Pure Customization
 # https://github.com/sindresorhus/pure
@@ -86,4 +88,3 @@ alias ssh="assh wrapper ssh --"
 export DOTFILES=$HOME/dotfiles
 export PATH=$PATH:$DOTFILES/_bin
 source "$DOTFILES/zsh/_aliases.zsh"
-
