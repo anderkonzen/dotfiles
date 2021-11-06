@@ -21,6 +21,9 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'                    " :Ack [pattern] to search for pattern (grep)
 
+
+Plug 'junegunn/limelight.vim'
+
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -131,9 +134,9 @@ set smartcase                   " ignore case if search pattern is all lowercase
 set wrapscan                    " searches wrap around end of file
 
 " Folding
-set foldlevelstart=99           " default to all folds open when opening a buffer
-set foldnestmax=4               " don't be absurd about how deeply to nest syntax folding
-set foldopen-=block             " drives me nuts that moving with ] opens folds
+" set foldlevelstart=99           " default to all folds open when opening a buffer
+" set foldnestmax=4               " don't be absurd about how deeply to nest syntax folding
+" set foldopen-=block             " drives me nuts that moving with ] opens folds
 
 " diff-mode (nvim -d file1 file2)
 set diffopt=filler              " add vertical spaces to keep right and left aligned

@@ -79,7 +79,7 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=true
 complete -C '/usr/local/bin/aws_completer' aws
 
 # assh
-alias ssh="assh wrapper ssh --"
+# alias ssh="assh wrapper ssh --"
 
 # asdf-vm
 . $HOME/.asdf/asdf.sh
@@ -87,4 +87,6 @@ alias ssh="assh wrapper ssh --"
 # dotfiles and custom bin
 export DOTFILES=$HOME/dotfiles
 export PATH=$PATH:$DOTFILES/_bin
+export PATH=$PATH:/usr/local/sbin
 source "$DOTFILES/zsh/_aliases.zsh"
+source "$DOTFILES/zsh/_functions.zsh"
