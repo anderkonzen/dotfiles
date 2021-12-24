@@ -24,11 +24,7 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 # https://github.com/sharkdp/bat
 export BAT_THEME="base16"
 
-# z - jump around
-# https://github.com/rupa/z
-# . /usr/local/etc/profile.d/z.sh
-
-# zoxide (replaces z)
+# zoxide
 # https://github.com/ajeetdsouza/zoxide
 eval "$(zoxide init zsh)"
 
@@ -48,27 +44,14 @@ export PATH="$GOPATH/bin:$PATH"
 # MySQL
 export PATH="/usr/local/opt/mysql@8.0/bin:$PATH"
 
-# The next line updates PATH for the Google Cloud SDK.
-# if [ -f '/Users/anderkonzen/Developer/opt/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/anderkonzen/Developer/opt/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-# if [ -f '/Users/anderkonzen/Developer/opt/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/anderkonzen/Developer/opt/google-cloud-sdk/completion.zsh.inc'; fi
-
 # kubectl completions
 source <(kubectl completion zsh)
-
-# kube-ps1
-# https://github.com/jonmosco/kube-ps1
-export KUBE_PS1_SYMBOL_ENABLE=false
-source "$HOME/Developer/opt/kube-ps1/kube-ps1.sh"
-PS1='$(kube_ps1) '$PS1
 
 # nvm/nodejs
 # https://github.com/nvm-sh/nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 
 # .NET telemetry opt out
 # https://docs.microsoft.com/en-us/dotnet/core/tools/telemetry
