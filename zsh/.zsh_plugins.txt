@@ -13,7 +13,7 @@ robbyrussell/oh-my-zsh path:lib/key-bindings.zsh
 mafredri/zsh-async
 
 zsh-users/zsh-completions
-# zsh-users/zsh-autosuggestions
+zsh-users/zsh-autosuggestions
 zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-history-substring-search
 
