@@ -46,6 +46,9 @@ export PATH="/usr/local/opt/mysql@8.0/bin:$PATH"
 
 # kubectl completions
 source <(kubectl completion zsh)
+alias kubectl=kubecolor
+# make completion work with kubecolor
+compdef kubecolor=kubectl
 
 # nvm/nodejs
 # https://github.com/nvm-sh/nvm
