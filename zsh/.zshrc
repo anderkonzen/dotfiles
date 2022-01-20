@@ -70,6 +70,9 @@ complete -C '/usr/local/bin/aws_completer' aws
 # asdf-vm
 . $HOME/.asdf/asdf.sh
 
+# atuin
+# eval "$(atuin init zsh)"
+
 # dotfiles and custom bin
 export DOTFILES=$HOME/dotfiles
 export PATH=$PATH:$DOTFILES/_bin
