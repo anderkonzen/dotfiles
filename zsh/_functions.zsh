@@ -28,17 +28,6 @@ function myip {
   ifconfig en1 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en1 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
 }
 
-# Change tmux window name on ssh session
-# https://blog.no-panic.at/2015/04/21/set-tmux-pane-title-on-ssh-connections/
-function ssh() {
-  if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
-    #tmux rename-window "$(echo $* | cut -d . -f 1)"
-    tmux rename-window "$*"
-    tmux set-window-option automatic-rename "on" 1>/dev/null
-  fi
-  assh wrapper ssh -- "${@}"
-}
-
 function server() {
   local port="${1:-8000}"
   open "http://localhost:${port}/" &

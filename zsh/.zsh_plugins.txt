@@ -1,17 +1,19 @@
-robbyrussell/oh-my-zsh
-robbyrussell/oh-my-zsh path:plugins/brew
-robbyrussell/oh-my-zsh path:plugins/extract
-robbyrussell/oh-my-zsh path:plugins/git
-robbyrussell/oh-my-zsh path:plugins/kops
-robbyrussell/oh-my-zsh path:plugins/kubectl
-robbyrussell/oh-my-zsh path:plugins/asdf
+ohmyzsh/ohmyzsh
+ohmyzsh/ohmyzsh path:plugins/brew
+ohmyzsh/ohmyzsh path:plugins/git
+ohmyzsh/ohmyzsh path:plugins/kops
+ohmyzsh/ohmyzsh path:plugins/kubectl
 
-robbyrussell/oh-my-zsh path:lib/grep.zsh
-robbyrussell/oh-my-zsh path:lib/history.zsh
-robbyrussell/oh-my-zsh path:lib/key-bindings.zsh
+# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/aws
+# ohmyzsh/ohmyzsh path:plugins/aws
+
+ohmyzsh/ohmyzsh path:lib/grep.zsh
+ohmyzsh/ohmyzsh path:lib/directories.zsh
+ohmyzsh/ohmyzsh path:lib/history.zsh
 
 mafredri/zsh-async
 
+# Kinda didn't like autosuggestions with following configs, so keep it disabled
 zsh-users/zsh-completions
 # zsh-users/zsh-autosuggestions
 zsh-users/zsh-syntax-highlighting
