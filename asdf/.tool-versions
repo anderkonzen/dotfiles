@@ -1,11 +1,10 @@
-elixir 1.10.4-otp-23
+elixir 1.13.2-otp-24
 erlang 23.0.3
-golang 1.13.6
+golang 1.17.6
 kops v1.18.1
-kubectl 1.19.1
+kubectl 1.19.16
 maven 3.6.3
-ruby 2.7.0
+ruby 3.1.0
 scala 2.12.7
-python 3.7.7 2.7.18
-lua 5.3.5
+python 3.10.2 2.7.18
 terraform 0.12.28

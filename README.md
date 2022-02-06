@@ -8,7 +8,7 @@ The files are managed by [`stow`](https://www.gnu.org/software/stow/), so basica
 1. Clone the repository:
 
 ```shell
-git clone https://github.com/anderkonzen/dotfiles.git ~/.dotfiles
+git clone https://github.com/anderkonzen/dotfiles.git ~/dotfiles
 ```
 
 2. Setup `stow`: 
@@ -20,7 +20,7 @@ stow -t ~ stow
 
 The stow directory should be the first one so the stow configuration is installed properly (global ignore files, etc).
 
-3. Install the desired package with `stow <dir>`
+3. Install the desired packages with `stow <dir>`
 
 # Conventions
 
@@ -28,20 +28,17 @@ Directories starting with a `_` are not supposed to be *stowed*.
 
 # Requirements
 
-Prior to symlink the directories, I recommend installing all the apps declared in the `_homebrew/Brewfile`:
+I use a few apps that not necessarily need to be installed prior to issuing the stow commands.
 
-```shell
-cd ~/.dotfiles/_homebrew
-brew bundle
-```
-
-this will install `stow` and other necessary apps. Of course, you need [`brew`](https://brew.sh) installed to run this command.
+zsh and other stuff will use the apps, so you'll need to install or adjust accordingly to your needs.
 
 # Configuring other apps
 
 ## git
 
-Use `~/.gitconfig.local` to store sensitive data like git credentials and other local configurations. For instance:
+Use `~/.gitconfig.local` to store sensitive data like git credentials and other local configurations.
+For instance:
+
 
 ```shell
 [user]
@@ -49,26 +46,10 @@ Use `~/.gitconfig.local` to store sensitive data like git credentials and other 
     email = anderkonzen@example.com
 ```
 
-## neovim
-
-### deoplete.vim
-
-I am using [deoplete.vim](https://github.com/Shougo/deoplete.nvim) to have omni auto-completion for a few languages (ruby, elixir and javascript).
-In order to have it this working, you need to have *python3* and *node.js* installed (these are installed as part of the `brew bundle` above).
-
-Before installing the plugin in neovim, you also need to install the neovim-python module with:
-
-```sh
-pip3 install --user neovim
-```
-
-Then, in neovim, execute `:PlugInstall` and then `:UpdateRemotePlugins`.
-You can check if everything is working fine with `:CheckHealth`.
-
 # TODO
 
-* goyo
-* vimwiki
+* nvim configuration and requirements
+* a list of common apps I use (to be in sync with stow)
 * antibody
 
 # Acknowledgements
