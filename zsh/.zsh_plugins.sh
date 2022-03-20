@@ -8,8 +8,6 @@ source /Users/anderkonzen/Library/Caches/antibody/https-COLON--SLASH--SLASH-gith
 fpath+=( /Users/anderkonzen/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-ohmyzsh-SLASH-ohmyzsh/plugins/kops )
 source /Users/anderkonzen/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-ohmyzsh-SLASH-ohmyzsh/plugins/kubectl/kubectl.plugin.zsh
 fpath+=( /Users/anderkonzen/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-ohmyzsh-SLASH-ohmyzsh/plugins/kubectl )
-source /Users/anderkonzen/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-ohmyzsh-SLASH-ohmyzsh/plugins/aws/aws.plugin.zsh
-fpath+=( /Users/anderkonzen/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-ohmyzsh-SLASH-ohmyzsh/plugins/aws )
 source /Users/anderkonzen/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-ohmyzsh-SLASH-ohmyzsh/lib/grep.zsh
 source /Users/anderkonzen/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-ohmyzsh-SLASH-ohmyzsh/lib/directories.zsh
 source /Users/anderkonzen/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-ohmyzsh-SLASH-ohmyzsh/lib/history.zsh
