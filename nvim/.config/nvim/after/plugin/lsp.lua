@@ -41,8 +41,12 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 -- elixirls
 lspconfig.elixirls.setup {
   cmd = { vim.fn.getenv("HOME") .. "/Developer/opt/elixir-ls/release/language_server.sh" },
-  on_attach = on_attach,
-  capabilities = capabilities
+  on_attach = function()
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer = 0})
+    vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {buffer = 0})
+  end,
+  -- on_attach = on_attach,
+  -- capabilities = capabilities
 }
 
 
