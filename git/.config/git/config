@@ -1,11 +1,9 @@
 [core]
 
-  # Prevent showing files whose names contain non-ASCII symbols as unversioned.
-  # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
-  precomposeunicode = false
-
   editor = nvim
-  excludesfile = ~/.gitignore_global
+
+  # Use the config below to override $HOME/.config/git/ignore
+  # excludesfile = ~/.gitignore_global
 
 [alias]
 
@@ -105,8 +103,11 @@
   # Don't guess the user's identity.
   # https://github.com/git/git/blob/90f7b16b3adc78d4bbabbd426fb69aa78c714f71/Documentation/config.txt#L2847-L2855
   useConfigOnly = true
-  # Add this section to .gitconfig.local (see below)
-  signingkey = YOURSIGNINKEY
+
+  # Add the following to .gitconfig.local (see below)
+  signingkey = YOUR_SIGNINKEY
+  name = YOUR_NAME
+  email = YOUR_EMAIL
 
 [include]
 
@@ -120,5 +121,7 @@
 [gpg]
 
   program = gpg
+
 [init]
+
 	defaultBranch = main

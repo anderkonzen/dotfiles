@@ -1,3 +1,4 @@
+.zsh_plugins.txt
 _aliases.zsh
-_directories.zsh
 _functions.zsh
+bundle_antibody.sh
