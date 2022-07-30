@@ -1,3 +1,15 @@
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
+
+# brew completion setup
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
+
 # antibody
 # https://github.com/getantibody/antibody
 export ZSH=$(antibody path ohmyzsh/ohmyzsh)
@@ -30,6 +42,7 @@ eval "$(zoxide init zsh)"
 
 # fzf
 # https://github.com/junegunn/fzf
+# https://github.com/BurntSushi/ripgrep
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND="rg --hidden"
 command -v bat > /dev/null && export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always {}'"
@@ -70,6 +83,9 @@ export AWS_CLI_AUTO_PROMPT=on-partial
 # https://github.com/moul/assh
 alias ssh="assh wrapper ssh --"
 
+# Postres.app
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
+
 # dotfiles and custom bin
 export DOTFILES=$HOME/dotfiles
 export PATH=$PATH:$DOTFILES/_bin
@@ -77,3 +93,6 @@ export PATH=$PATH:$DOTFILES/_bin
 # source custom stuff
 source "$DOTFILES/zsh/_aliases.zsh"
 source "$DOTFILES/zsh/_functions.zsh"
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"

@@ -11,7 +11,15 @@ The files are managed by [`stow`](https://www.gnu.org/software/stow/), so basica
 git clone https://github.com/anderkonzen/dotfiles.git ~/dotfiles
 ```
 
-2. Setup `stow`: 
+2. Initialize git submodules:
+
+```shell
+cd ~/dotfiles
+git submodule init
+git submodule update
+```
+
+3. Setup `stow`:
 
 ```shell
 cd .dotfiles
@@ -20,7 +28,7 @@ stow -t ~ stow
 
 The stow directory should be the first one so the stow configuration is installed properly (global ignore files, etc).
 
-3. Install the desired packages with `stow <dir>`
+4. Install the desired packages with `stow <dir>`
 
 # Conventions
 

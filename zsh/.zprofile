@@ -1,3 +1,6 @@
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zprofile.pre.zsh" ]] && . "$HOME/.fig/shell/zprofile.pre.zsh"
+
 # Language
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -36,3 +39,6 @@ export JAVA_HOME=`/usr/libexec/java_home -v 17`
 
 # brew
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zprofile.post.zsh" ]] && . "$HOME/.fig/shell/zprofile.post.zsh"
