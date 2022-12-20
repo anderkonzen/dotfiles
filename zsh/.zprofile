@@ -1,6 +1,5 @@
 # Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zprofile.pre.zsh" ]] && . "$HOME/.fig/shell/zprofile.pre.zsh"
-
+[[ -f "$HOME/.fig/shell/zprofile.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zprofile.pre.zsh"
 # Language
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -30,9 +29,6 @@ export LSCOLORS="Gxfxcxdxbxegedabagacad"
 # Erlang
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-# Rust
-. "$HOME/.cargo/env"
-
 # Java
 # Check installed versions with '/usr/libexec/java_home -V'
 export JAVA_HOME=`/usr/libexec/java_home -v 17`
@@ -41,4 +37,4 @@ export JAVA_HOME=`/usr/libexec/java_home -v 17`
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zprofile.post.zsh" ]] && . "$HOME/.fig/shell/zprofile.post.zsh"
+[[ -f "$HOME/.fig/shell/zprofile.post.zsh" ]] && builtin source "$HOME/.fig/shell/zprofile.post.zsh"
