@@ -1,49 +1,16 @@
-local actions = require('telescope.actions')
+local builtin = require('telescope.builtin')
 
-require('telescope').setup{
-  defaults = {
-    -- Default configuration for telescope goes here:
-    -- config_key = value,
-    file_ignore_patterns = {
-      "node_modules"
-    },
-    prompt_prefix = " 🔍 ",
+-- Enable telescope fzf native, if installed
+pcall(require('telescope').load_extension, 'fzf')
 
+-- Project Files
+vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
 
-    mappings = {
-      i = {
-        -- Exit/close Telescope when hitting escape instead of entering
-        -- normal-like mode
-        ["<esc>"] = actions.close
-      }
-    }
-  },
-  pickers = {
-    -- Default configuration for builtin pickers goes here:
-    -- picker_name = {
-    --   picker_config_key = value,
-    --   ...
-    -- }
-    -- Now the picker_config_key will be applied every time you call this
-    -- builtin picker
-  },
-  extensions = {
-    -- Your extension configuration goes here:
-    -- extension_name = {
-    --   extension_config_key = value,
-    -- }
-    -- please take a look at the readme of the extension you want to configure
-    fzf = {
-      fuzzy = true,                    -- false will only do exact matching
-      override_generic_sorter = true,  -- override the generic sorter
-      override_file_sorter = true,     -- override the file sorter
-      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-                                       -- the default case_mode is "smart_case"
-    }
-  }
-}
+-- Git Files (only versioned files)
+vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 
--- To get fzf loaded and working with telescope, you need to call
--- load_extension somewhere after setup function
-require('telescope').load_extension('fzf')
+-- Project Search
+vim.keymap.set('n', '<leader>ps', function()
+	builtin.grep_string({ search = vim.fn.input("Grep > ") });
+end)
 
