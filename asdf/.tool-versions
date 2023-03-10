@@ -12,5 +12,6 @@ terragrunt 0.38.4
 eksctl 0.105.0
 helm 3.9.0
 minikube 1.25.1
-yarn 1.22.17
+yarn 1.22.19
 
+direnv 2.32.2

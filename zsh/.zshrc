@@ -89,9 +89,16 @@ export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 export DOTFILES=$HOME/dotfiles
 export PATH=$PATH:$DOTFILES/_bin
 
+if [ -f $HOME/.anderkonzen.zsh ]; then
+  source $HOME/.anderkonzen.zsh
+fi
+
 # source custom stuff
 source "$DOTFILES/zsh/_aliases.zsh"
 source "$DOTFILES/zsh/_functions.zsh"
+
+# direnv hooks
+eval "$(direnv hook zsh)"
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
