@@ -34,3 +34,8 @@ function server() {
   ruby -run -e httpd . -p "$port"
 }
 
+function arv_profile() {
+  export PROFILE="$@"
+  direnv reload
+}
+
