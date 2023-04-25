@@ -1,5 +1,18 @@
 # Fig pre block. Keep at the top of this file.
 [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
+
+# .zshrc
+#   zshenv -> zprofile -> zshrc (current)
+#
+# | zshenv   : always
+# | zprofile : if login shell
+# | zshrc    : if interactive shell
+# | zlogin   : if login shell, after zshrc
+# | zlogout  : if login shell, after logout
+#
+# https://zsh.sourceforge.io/Doc/Release/Files.html#Files
+#
+
 # brew completion setup
 if type brew &>/dev/null
 then
@@ -9,18 +22,32 @@ then
   compinit
 fi
 
-# antibody
-# https://github.com/getantibody/antibody
-export ZSH=$(antibody path ohmyzsh/ohmyzsh)
-source ~/.zsh_plugins.sh
+# zplug
+export ZPLUG_HOME=/opt/homebrew/opt/zplug
+source $ZPLUG_HOME/init.zsh
 
-# custom bindkeys
-# bindkey '^[[A' history-substring-search-up
-# bindkey '^[[B' history-substring-search-down
-# bindkey "$terminfo[kcuu1]" history-substring-search-up
-# bindkey "$terminfo[kcud1]" history-substring-search-down
-# bindkey "\033[1~" beginning-of-line
-# bindkey "\033[4~" end-of-line
+zplug "zplug/zplug", hook-build:"zplug --self-manage"
+
+zplug "plugins/brew", from:oh-my-zsh
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/kubectl", from:oh-my-zsh
+
+zplug "lib/compfix", from:oh-my-zsh
+zplug "lib/completion", from:oh-my-zsh
+zplug "lib/directories", from:oh-my-zsh
+zplug "lib/git", from:oh-my-zsh
+zplug "lib/history", from:oh-my-zsh
+zplug "lib/key-bindings", from:oh-my-zsh
+
+# (defer:2 means syntax-highlighting gets loaded after completions)
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+# (defer:3 means history-substring search gets loaded after syntax-highlighting)
+zplug "zsh-users/zsh-history-substring-search", defer:3
+zplug "zsh-users/zsh-autosuggestions"
+zplug 'zsh-users/zsh-completions', depth:1
+
+# Source plugins and add commands to $PATH
+zplug load
 
 # pure customization
 # https://github.com/sindresorhus/pure
@@ -89,16 +116,20 @@ export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 export DOTFILES=$HOME/dotfiles
 export PATH=$PATH:$DOTFILES/_bin
 
+# Source custom stuff
 if [ -f $HOME/.anderkonzen.zsh ]; then
   source $HOME/.anderkonzen.zsh
 fi
-
-# source custom stuff
 source "$DOTFILES/zsh/_aliases.zsh"
 source "$DOTFILES/zsh/_functions.zsh"
 
 # direnv hooks
 eval "$(direnv hook zsh)"
 
+# starship.rs
+# https://starship.rs/
+eval "$(starship init zsh)"
+
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+

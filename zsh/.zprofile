@@ -1,11 +1,16 @@
 # Fig pre block. Keep at the top of this file.
 [[ -f "$HOME/.fig/shell/zprofile.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zprofile.pre.zsh"
-# Language
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
+
+# LANGUAGE must be set by en_US
+export LANGUAGE="en_US.UTF-8"
+export LANG="${LANGUAGE}"
+export LC_ALL="${LANGUAGE}"
+export LC_CTYPE="${LANGUAGE}"
 
 # Editor
+# Editor
 export EDITOR=nvim
+export GIT_EDITOR="${EDITOR}"
 
 # Pager
 export PAGER=less
@@ -23,8 +28,16 @@ export LESS_TERMCAP_so=$'\E[00;44;37m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
-# lscolors
-export LSCOLORS="Gxfxcxdxbxegedabagacad"
+# ls command colors
+export LSCOLORS=exfxcxdxbxegedabagacad
+export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+
+# History file and its size
+export HISTFILE=~/.zsh_history
+export HISTSIZE=1000000
+export SAVEHIST=1000000
+# The size of asking history
+export LISTMAX=50
 
 # Erlang
 export ERL_AFLAGS="-kernel shell_history enabled"
