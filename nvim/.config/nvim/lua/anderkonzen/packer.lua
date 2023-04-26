@@ -1,5 +1,10 @@
--- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
+-- Autocommand that reloads neovim whenever you save the packer.lua file
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost packer.lua source <afile> | PackerSync
+  augroup end
+]])
 
 return require('packer').startup(function(use)
   -- Packer can manage itself
@@ -45,6 +50,8 @@ return require('packer').startup(function(use)
 
   use('ThePrimeagen/harpoon')
 
+  use('mbbill/undotree')
+
   -- Git related plugins
   use('tpope/vim-fugitive')
   use('tpope/vim-rhubarb')
@@ -61,6 +68,13 @@ return require('packer').startup(function(use)
 
   -- Fancier statusline
   use('nvim-lualine/lualine.nvim')
+
+  use {
+    'nvim-tree/nvim-tree.lua',
+    config = function()
+      require("nvim-tree").setup {}
+    end
+  }
 
   -- Show white space in red
   use('ntpeters/vim-better-whitespace')
