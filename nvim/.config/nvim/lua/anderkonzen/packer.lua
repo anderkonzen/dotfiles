@@ -7,7 +7,7 @@ return require('packer').startup(function(use)
 
   -- Fuzzy Finder (files, lsp, etc)
   use({
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    'nvim-telescope/telescope.nvim', tag = '0.1.1',
     requires = { { 'nvim-lua/plenary.nvim' } }
   })
 
@@ -35,11 +35,15 @@ return require('packer').startup(function(use)
     end,
   }
 
+  use('nvim-treesitter/playground')
+
   -- Additional text objects via treesitter
   use {
     'nvim-treesitter/nvim-treesitter-textobjects',
     after = 'nvim-treesitter',
   }
+
+  use('ThePrimeagen/harpoon')
 
   -- Git related plugins
   use('tpope/vim-fugitive')
