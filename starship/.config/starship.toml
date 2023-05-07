@@ -1,0 +1,69 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+right_format = """${custom.colima}$kubernetes"""
+
+[character]
+success_symbol = "[λ](purple)"
+error_symbol = "[λ](red)"
+vimcmd_symbol = "[❮](green)"
+
+[directory]
+style = 'blue'
+
+[git_branch]
+format = "[$branch]($style)"
+style = "fg:242"
+
+[git_status]
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)](cyan) "
+conflicted = ""
+untracked = ""
+modified = ""
+staged = ""
+renamed = ""
+deleted = ""
+stashed = "≡"
+ahead = '⇡${count}'
+diverged = '⇡${ahead_count}⇣${behind_count}'
+behind = '⇣${count}'
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow"
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+[elixir]
+disabled = false
+
+[nodejs]
+disabled = true
+
+[battery]
+disabled = true
+
+[env_var.PROFILE]
+variable = 'PROFILE'
+format = 'with [\$PROFILE=$env_value](bold red) '
+default = '(not set)'
+
+[kubernetes]
+disabled = false
+format = '[$symbol$context( \($namespace\))]($style)'
+style = 'bold dimmed fg:yellow'
+
+[custom.colima]
+command = "echo '🐋 colima'"
+when = "test_colima.sh"
+style = 'green'
+
+[docker_context]
+disabled = true
+
+
