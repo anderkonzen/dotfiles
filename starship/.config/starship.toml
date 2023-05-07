@@ -59,7 +59,7 @@ format = '[$symbol$context( \($namespace\))]($style)'
 style = 'bold dimmed fg:yellow'
 
 [custom.colima]
-command = "echo '🐋 colima'"
+command = "echo '🐳 colima'"
 when = "test_colima.sh"
 style = 'green'
 
