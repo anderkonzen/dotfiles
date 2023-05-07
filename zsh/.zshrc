@@ -46,6 +46,8 @@ zplug "zsh-users/zsh-history-substring-search", defer:3
 zplug "zsh-users/zsh-autosuggestions"
 zplug 'zsh-users/zsh-completions', depth:1
 
+zplug 'chriskempson/base16-shell', from:github
+
 # Source plugins and add commands to $PATH
 zplug load
 
@@ -55,8 +57,8 @@ PURE_PROMPT_SYMBOL=λ
 
 # base16
 # https://github.com/chriskempson/base16-shell
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ] && source "$BASE16_SHELL/profile_helper.sh"
 
 # bat customization
 # https://github.com/sharkdp/bat
