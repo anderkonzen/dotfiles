@@ -22,38 +22,10 @@ then
   compinit
 fi
 
-# zplug
-export ZPLUG_HOME=/opt/homebrew/opt/zplug
-source $ZPLUG_HOME/init.zsh
-
-zplug "zplug/zplug", hook-build:"zplug --self-manage"
-
-zplug "plugins/brew", from:oh-my-zsh
-zplug "plugins/git", from:oh-my-zsh
-zplug "plugins/kubectl", from:oh-my-zsh
-
-zplug "lib/compfix", from:oh-my-zsh
-zplug "lib/completion", from:oh-my-zsh
-zplug "lib/directories", from:oh-my-zsh
-zplug "lib/git", from:oh-my-zsh
-zplug "lib/history", from:oh-my-zsh
-zplug "lib/key-bindings", from:oh-my-zsh
-
-# (defer:2 means syntax-highlighting gets loaded after completions)
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-# (defer:3 means history-substring search gets loaded after syntax-highlighting)
-zplug "zsh-users/zsh-history-substring-search", defer:3
-zplug "zsh-users/zsh-autosuggestions"
-zplug 'zsh-users/zsh-completions', depth:1
-
-zplug 'chriskempson/base16-shell', from:github
-
-# Source plugins and add commands to $PATH
-zplug load
-
-# pure customization
-# https://github.com/sindresorhus/pure
-PURE_PROMPT_SYMBOL=λ
+# antidote
+# https://getantidote.github.io/
+source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
+antidote load
 
 # base16
 # https://github.com/chriskempson/base16-shell

@@ -1,0 +1,17 @@
+ohmyzsh/ohmyzsh path:plugins/brew
+ohmyzsh/ohmyzsh path:plugins/git
+ohmyzsh/ohmyzsh path:plugins/kubectl
+
+ohmyzsh/ohmyzsh path:lib/compfix.zsh
+ohmyzsh/ohmyzsh path:lib/completion.zsh
+ohmyzsh/ohmyzsh path:lib/directories.zsh
+ohmyzsh/ohmyzsh path:lib/git.zsh
+ohmyzsh/ohmyzsh path:lib/history.zsh
+ohmyzsh/ohmyzsh path:lib/key-bindings.zsh
+
+zsh-users/zsh-syntax-highlighting kind:defer
+zsh-users/zsh-history-substring-search kind:defer
+# zsh-users/zsh-autosuggestions
+zsh-users/zsh-completions
+chriskempson/base16-shell
+
