@@ -13,6 +13,12 @@
 # https://zsh.sourceforge.io/Doc/Release/Files.html#Files
 #
 
+# asdf-vm
+# https://github.com/asdf-vm/asdf
+. $HOME/.asdf/asdf.sh
+# append completions to fpath, ensure compinit is below your sourcing of asdf.sh
+fpath=(${ASDF_DIR}/completions $fpath)
+
 # brew completion setup
 if type brew &>/dev/null
 then
@@ -46,10 +52,6 @@ eval "$(zoxide init zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND="rg --hidden"
 command -v bat > /dev/null && export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always {}'"
-
-# asdf-vm
-# https://github.com/asdf-vm/asdf
-. $HOME/.asdf/asdf.sh
 
 # go
 export GOPATH=$HOME/go
