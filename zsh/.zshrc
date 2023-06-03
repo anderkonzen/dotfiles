@@ -1,6 +1,3 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
-
 # .zshrc
 #   zshenv -> zprofile -> zshrc (current)
 #
@@ -11,7 +8,7 @@
 # | zlogout  : if login shell, after logout
 #
 # https://zsh.sourceforge.io/Doc/Release/Files.html#Files
-#
+
 
 # asdf-vm
 # https://github.com/asdf-vm/asdf
@@ -102,10 +99,5 @@ source "$DOTFILES/zsh/_functions.zsh"
 # direnv hooks
 eval "$(direnv hook zsh)"
 
-# starship.rs
-# https://starship.rs/
-eval "$(starship init zsh)"
-
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
-
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

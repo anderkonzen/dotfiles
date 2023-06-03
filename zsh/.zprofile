@@ -1,13 +1,9 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zprofile.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zprofile.pre.zsh"
-
 # LANGUAGE must be set by en_US
 export LANGUAGE="en_US.UTF-8"
 export LANG="${LANGUAGE}"
 export LC_ALL="${LANGUAGE}"
 export LC_CTYPE="${LANGUAGE}"
 
-# Editor
 # Editor
 export EDITOR=nvim
 export GIT_EDITOR="${EDITOR}"
@@ -48,6 +44,3 @@ export JAVA_HOME=`/usr/libexec/java_home -v 17`
 
 # brew
 eval "$(/opt/homebrew/bin/brew shellenv)"
-
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zprofile.post.zsh" ]] && builtin source "$HOME/.fig/shell/zprofile.post.zsh"
