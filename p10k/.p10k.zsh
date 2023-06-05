@@ -34,6 +34,7 @@
     # os_icon               # os identifier
     dir                     # current directory
     vcs                     # git status
+    command_execution_time  # duration of the last command
     # =========================[ Line #2 ]=========================
     newline                 # \n
     prompt_char             # prompt symbol
@@ -46,7 +47,7 @@
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
     status                  # exit code of the last command
-    command_execution_time  # duration of the last command
+    colima
     # background_jobs         # presence of background jobs
     # direnv                  # direnv status (https://direnv.net/)
     # asdf                    # asdf version manager (https://github.com/asdf-vm/asdf)
@@ -502,6 +503,17 @@
   typeset -g POWERLEVEL9K_VCS_CLEAN_FOREGROUND=2
   typeset -g POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND=2
   typeset -g POWERLEVEL9K_VCS_MODIFIED_FOREGROUND=3
+
+
+  #########################################[ colima ]###########################################
+  function prompt_colima() {
+    colima status 2>&1 | head -n 1 | grep -q 'colima is running' &> /dev/null
+    if [ $? != 0 ]; then
+      return
+    fi
+    p10k segment -i '🐳' -f green -t colima
+  }
+
 
   ##########################[ status: exit code of the last command ]###########################
   # Enable OK_PIPE, ERROR_PIPE and ERROR_SIGNAL status states to allow us to enable, disable and
