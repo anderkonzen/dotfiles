@@ -34,6 +34,7 @@
     # os_icon               # os identifier
     dir                     # current directory
     vcs                     # git status
+    arv_profile
     command_execution_time  # duration of the last command
     # =========================[ Line #2 ]=========================
     newline                 # \n
@@ -512,6 +513,15 @@
       return
     fi
     p10k segment -i '🐳' -f green -t colima
+  }
+
+  ########################################[ profile ]###########################################
+  function prompt_arv_profile() {
+    if [[ -v PROFILE ]]; then
+      p10k segment -i '󰭙' -f red -t "${PROFILE}"
+      return
+    fi
+    return
   }
 
 
