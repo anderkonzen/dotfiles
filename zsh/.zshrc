@@ -88,6 +88,7 @@ export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 # dotfiles and custom bin
 export DOTFILES=$HOME/dotfiles
 export PATH=$PATH:$DOTFILES/_bin
+export PATH=$PATH:$HOME/.local/bin
 
 # Source custom stuff
 if [ -f $HOME/.anderkonzen.zsh ]; then
