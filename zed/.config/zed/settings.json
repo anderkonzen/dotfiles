@@ -15,5 +15,15 @@
   "tab_size": 2,
   "terminal": {
     "copy_on_select": true
+  },
+  "tabs": {
+    "git_status": true
+  },
+  "preferred_line_length": 80,
+  "copilot": {
+    "disabled_globs": [
+      ".env",
+      ".env.*"
+    ]
   }
 }
