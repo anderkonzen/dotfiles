@@ -1,6 +1,7 @@
-elixir 1.14.4-otp-25
-erlang 25.3.2
+elixir 1.15.5-otp-26
+erlang 26.0.2
 golang 1.21.0
+kops v1.22.0
 kubectl 1.27.4
 maven 3.6.3
 ruby 3.2.2
