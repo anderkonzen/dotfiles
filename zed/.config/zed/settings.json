@@ -25,5 +25,13 @@
       ".env",
       ".env.*"
     ]
+  },
+  "languages": {
+    "Plain Text": {
+      "soft_wrap": "none"
+    },
+    "Markdown": {
+      "soft_wrap": "none"
+    }
   }
 }
