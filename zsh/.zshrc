@@ -20,10 +20,11 @@ fpath=(${ASDF_DIR}/completions $fpath)
 if type brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-
-  autoload -Uz compinit
-  compinit
 fi
+
+# Initialize compinit
+autoload -Uz compinit
+compinit
 
 # antidote
 # https://getantidote.github.io/
