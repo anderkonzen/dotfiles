@@ -12,6 +12,9 @@
   "buffer_font_family": "MesloLGS NF",
   "buffer_font_size": 15,
   "show_whitespaces": "all",
+  "wrap_guides": [
+    80
+  ],
   "tab_size": 2,
   "terminal": {
     "copy_on_select": true
@@ -25,6 +28,9 @@
       ".env",
       ".env.*"
     ]
+  },
+  "semantic_index": {
+    "enabled": true
   },
   "languages": {
     "Plain Text": {
