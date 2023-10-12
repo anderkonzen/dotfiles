@@ -38,6 +38,9 @@
     },
     "Markdown": {
       "soft_wrap": "none"
+    },
+    "JSON": {
+      "tab_size": 4
     }
   }
 }
