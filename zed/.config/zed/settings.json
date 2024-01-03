@@ -7,35 +7,36 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-    "theme": "Rosé Pine Moon",
-    "base_keymap": "VSCode",
-    "buffer_font_family": "Monaspace Argon",
-    "buffer_font_size": 15,
-    "show_whitespaces": "all",
-    "wrap_guides": [80],
-    "tab_size": 2,
-    "terminal": {
-        "copy_on_select": true
+  "theme": "Rosé Pine Moon",
+  "base_keymap": "VSCode",
+  "buffer_font_family": "Monaspace Argon",
+  "buffer_font_size": 13,
+  "ui_font_family": "Monaspace Argon",
+  "ui_font_size": 13,
+  "show_wrap_guides": true,
+  "wrap_guides": [80, 100],
+  "show_whitespaces": "all",
+  "extend_comment_on_newline": false,
+  "tab_size": 2,
+  "terminal": {
+    "copy_on_select": true
+  },
+  "tabs": {
+    "git_status": true
+  },
+  "preferred_line_length": 80,
+  "copilot": {
+    "disabled_globs": [".env", ".env.*", ".envrc", ".envrc.*"]
+  },
+  "semantic_index": {
+    "enabled": true
+  },
+  "languages": {
+    "Plain Text": {
+      "soft_wrap": "none"
     },
-    "tabs": {
-        "git_status": true
-    },
-    "preferred_line_length": 80,
-    "copilot": {
-        "disabled_globs": [".env", ".env.*"]
-    },
-    "semantic_index": {
-        "enabled": true
-    },
-    "languages": {
-        "Plain Text": {
-            "soft_wrap": "none"
-        },
-        "Markdown": {
-            "soft_wrap": "none"
-        },
-        "JSON": {
-            "tab_size": 4
-        }
+    "Markdown": {
+      "soft_wrap": "none"
     }
+  }
 }
