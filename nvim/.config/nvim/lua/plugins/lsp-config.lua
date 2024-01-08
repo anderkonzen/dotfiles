@@ -1,12 +1,14 @@
 return {
   {
     "williamboman/mason.nvim",
+    lazy = false,
     config = function()
       require("mason").setup()
     end,
   },
   {
     "williamboman/mason-lspconfig.nvim",
+    lazy = false,
     config = function()
       require("mason-lspconfig").setup({
         ensure_installed = { "lua_ls", "elixirls", "tsserver" },
@@ -15,13 +17,21 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
+    lazy = false,
     config = function()
+      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
       local lspconfig = require("lspconfig")
-      lspconfig.lua_ls.setup({})
+      lspconfig.lua_ls.setup({
+        capabilities = capabilities
+      })
       lspconfig.elixirls.setup({
         cmd = { "elixir-ls" },
+        capabilities = capabilities
       })
-      lspconfig.tsserver.setup({})
+      lspconfig.tsserver.setup({
+        capabilities = capabilities
+      })
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
       vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {})
