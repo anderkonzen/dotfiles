@@ -46,13 +46,12 @@ vim.opt.completeopt = "menuone,noselect"
 vim.opt.virtualedit = "block"
 
 -- Normal OS clipboard interaction
-vim.opt.clipboard:append({"unnamedplus"})
+vim.opt.clipboard:append({ "unnamedplus" })
 
-vim.opt.listchars = { tab = '▸\\', space = '∙', trail = '∙', extends = '#', eol = '¬', nbsp = '_' }
+vim.opt.listchars = { tab = '▸\\', space = '∙', trail = '∙', extends = '#', eol = '↩', nbsp = '_' }
 
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-
