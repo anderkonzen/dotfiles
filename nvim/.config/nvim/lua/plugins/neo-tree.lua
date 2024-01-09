@@ -1,5 +1,6 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
+  lazy = false,
   branch = "v3.x",
   cmd = "Neotree",
   dependencies = {
@@ -18,5 +19,7 @@ return {
   },
   config = function()
     vim.keymap.set("n", "<C-n>", "<cmd>Neotree filesystem reveal left<cr>")
+    vim.keymap.set("n", "<leader>fa", "<cmd>Neotree position=left dir=%:p:h:h reveal_file=%:p<cr>")
+    vim.keymap.set('n', '-', "<cmd>Neotree reveal_force_cwd<cr>")
   end,
 }
