@@ -11,3 +11,4 @@ helm 3.14.0
 minikube 1.32.0
 yarn 1.22.19
 direnv 2.33.0
+pnpm 8.15.2
