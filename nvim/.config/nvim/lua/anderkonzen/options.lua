@@ -1,3 +1,9 @@
+-- Set <space> as the leader key
+-- See `:help mapleader`
+--  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 -- Relative line numbers with number of current line
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -18,7 +24,7 @@ vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
 -- Search setup
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
 -- Enable true colors support
@@ -40,19 +46,13 @@ vim.opt.cmdheight = 2
 vim.opt.updatetime = 50
 
 -- Set completeopt to have a better completion experience
-vim.opt.completeopt = 'menuone,noselect'
+vim.opt.completeopt = "menuone,noselect"
 
 -- Allow the cursor to go into invalid places
-vim.opt.virtualedit = 'block'
+vim.opt.virtualedit = "block"
 
 -- Normal OS clipboard interaction
-vim.opt.clipboard:append({"unnamedplus"})
+vim.opt.clipboard:append({ "unnamedplus" })
 
-vim.opt.listchars = { tab = '▸\\', space = '∙', trail = '∙', extends = '#', eol = '¬', nbsp = '_' }
-
--- Set <space> as the leader key
--- See `:help mapleader`
---  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.opt.listchars = { tab = '▸\\', space = '∙', trail = '∙', extends = '#', eol = '↩', nbsp = '_' }
 

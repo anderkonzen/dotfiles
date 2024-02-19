@@ -1,13 +1,14 @@
-elixir 1.16.0-otp-26
-erlang 26.2.1
-golang 1.21.5
-kubectl 1.29.0
-ruby 3.2.2
-python 3.12.1 2.7.18
+elixir 1.16.1-otp-26
+erlang 26.2.2
+golang 1.22.0
+kubectl 1.29.1
+ruby 3.3.0
+python 3.12.2 2.7.18
 terraform 1.6.6
 terragrunt 0.54.10
-eksctl 0.167.0
-helm 3.13.3
+eksctl 0.171.0
+helm 3.14.0
 minikube 1.32.0
 yarn 1.22.19
 direnv 2.33.0
+pnpm 8.15.2
