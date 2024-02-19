@@ -75,6 +75,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# yarn
+export PATH="$PATH:$(yarn global bin)"
+
 # aws
 # https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-prompting.html
 export AWS_CLI_AUTO_PROMPT=on-partial
