@@ -11,6 +11,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Check for plugin updates (see lualine for segment)
+local lazyopts = { checker = { enabled = false } }
+
 require("user.options")
-require("lazy").setup("plugins")
+require("lazy").setup("plugins", lazyopts)
 require("user.keymaps")
+
