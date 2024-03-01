@@ -1,11 +1,37 @@
--- Disable Space bar since it'll be used as the Leader key
-vim.keymap.set("n", "<Space>", "<NOP>", { noremap = true})
+-- [[ Basic Keymaps ]]
+--  See `:help vim.keymap.set()`
 
--- Strip trailing whitespace
--- vim.keymap.set("n", "<Leader>ss", ":StripWhitespace<CR>")
+-- Clear search with <esc>
+vim.keymap.set("n", "<Esc>", "<Cmd>nohlsearch<CR>", { desc = "Clear search highlights" })
 
--- Toggles gitsigns
--- vim.keymap.set("n", "<Leader>gst", ":Gitsigns toggle_signs<CR>")
+-- Diagnostic keymaps
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+
+-- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
+-- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
+-- is not what someone will guess without a bit more experience.
+--
+-- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
+-- or just use <C-\><C-n> to exit terminal mode
+vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
+-- Disable arrow keys in normal mode
+vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
+vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
+vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
+vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+
+-- Keybinds to make split navigation easier.
+--  Use CTRL+<hjkl> to switch between windows
+--
+--  See `:help wincmd` for a list of all window commands
+vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- Save with Leader key or <C-s>
 vim.keymap.set("n", "<Leader>w", vim.cmd.update)
@@ -14,33 +40,12 @@ vim.keymap.set("n", "<C-s>", vim.cmd.update)
 -- Toggle show tabs and trailing spaces
 vim.keymap.set("n", "<Leader>tt", ":set nolist!<CR>", { desc = "Toggle tabs and trailing spaces on or off" })
 
--- Clear search with <esc>
-vim.keymap.set({ "i", "n" }, "<Esc>", "<Cmd>noh<CR><Esc>", { desc = "Escape and clear search highlights" })
-
 -- Yank from cursor to end of line
 vim.keymap.set("n", "Y", "y$", { desc = "Yank from cursor to end of line" })
-
--- Start a replace command using word under prompt
-vim.keymap.set("n", "<Leader>s", ":%s/<C-r><C-w>/<C-r><C-w>/gI<Left><Left><Left>")
-
--- Enforce purity
-vim.keymap.set("n", "<Left>", "<NOP>", { noremap = true })
-vim.keymap.set("n", "<Right>", "<NOP>", { noremap = true })
-vim.keymap.set("n", "<Up>", "<NOP>", { noremap = true })
-vim.keymap.set("n", "<Down>", "<NOP>", { noremap = true })
 
 -- Better up/down
 vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-
--- Move to window using the <ctrl> hjkl keys
-vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to left window"})
-vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to lower window"})
-vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to upper window"})
-vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to right window"})
-
--- <C-c> also exits insert mode
-vim.keymap.set("i", "<C-c>", "<Esc>")
 
 -- I'm too fast 
 vim.keymap.set("n", "Q", "<NOP>")
@@ -60,7 +65,9 @@ vim.keymap.set("i", "<S-Up>", "<Esc><cmd>m .-2<CR>==gi", { desc = "Move up" })
 vim.keymap.set("v", "<S-Down>", ":m '>+1<CR>gv=gv", { desc = "Move down" })
 vim.keymap.set("v", "<S-Up>", ":m '<-2<CR>gv=gv", { desc = "Move up" })
 
+-- Indenting with tab/shift-tab in visual mode
 vim.keymap.set("v", "<Tab>", ">gv", { noremap = true})
 vim.keymap.set("v", ">", ">gv", { noremap = true})
 vim.keymap.set("v", "<S-Tab>", "<gv", { noremap = true})
 vim.keymap.set("v", "<", "<gv", { noremap = true})
+
