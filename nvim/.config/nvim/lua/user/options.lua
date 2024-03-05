@@ -16,12 +16,17 @@ vim.opt.showmode = false
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.opt.clipboard = 'unnamedplus'
+vim.opt.clipboard = "unnamedplus"
 
 -- Enable auto indenting, break indent
 vim.opt.smartindent = true
-vim.opt.shiftwidth = 2
 vim.opt.breakindent = true
+
+-- Tab behaviour
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
 
 -- Swap files, backup, undo
 vim.opt.swapfile = false
@@ -52,22 +57,16 @@ vim.opt.splitbelow = true
 -- Sets how neovim will display certain whitespace in the editor.
 --  See :help 'list'
 --  and :help 'listchars'
-vim.opt.list = true
-vim.opt.listchars = { tab = '▸\\', space = '∙', trail = '∙', extends = '#', eol = '↩', nbsp = '_' }
+vim.opt.listchars = { tab = "▸\\", space = "∙", trail = "∙", extends = "#", eol = "↩", nbsp = "_" }
 
 -- Enable incremental searching
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 -- Preview substitutions live, as you type!
-vim.opt.inccommand = 'split'
+vim.opt.inccommand = "split"
 
 -- Show which line your cursor is on
 vim.opt.cursorline = true
-
--- Tab behaviour
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.expandtab = true
 
 -- Disable text wrap
 vim.opt.wrap = false
@@ -75,8 +74,8 @@ vim.opt.wrap = false
 -- Enable true colors support
 vim.opt.termguicolors = true
 
--- More space for displaying messages
-vim.opt.cmdheight = 2
+-- For more space for displaying messages, uncomment this
+-- vim.opt.cmdheight = 2
 
 -- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 -- delays and poor user experience. THE PRIMEAGEN
@@ -88,4 +87,3 @@ vim.opt.completeopt = { "menuone", "noselect" }
 
 -- Allow the cursor to go into invalid places
 vim.opt.virtualedit = "block"
-
