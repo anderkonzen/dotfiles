@@ -78,6 +78,13 @@ export NVM_DIR="$HOME/.nvm"
 # yarn
 export PATH="$PATH:$(yarn global bin)"
 
+# pnpm
+export PNPM_HOME="/Users/anderkonzen/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
 # aws
 # https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-prompting.html
 export AWS_CLI_AUTO_PROMPT=on-partial
@@ -106,3 +113,4 @@ eval "$(direnv hook zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
