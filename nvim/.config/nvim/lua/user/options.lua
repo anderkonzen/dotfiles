@@ -2,10 +2,12 @@
 --  See `:help vim.opt`
 --  For more options, you can see `:help option-list`
 
--- Make line numbers default
 vim.opt.number = true
--- Enable relative line numbers
 vim.opt.relativenumber = true
+vim.opt.updatetime = 50
+
+-- Decrease mapped sequence wait time, displays which-key popup sooner
+vim.opt.timeoutlen = 300
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = "a"
@@ -31,16 +33,18 @@ vim.opt.expandtab = true
 -- Swap files, backup, undo
 vim.opt.swapfile = false
 vim.opt.backup = false
+
 -- Save undo history
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
--- Case-insensitive searching UNLESS \C or capital in search
+-- Case-insensitive searching UNLESS \C or one or more capital letters in the
+-- search term
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Scroll, lines and columns behaviour
--- Always keep 8 lines above/below cursor unless at start/end of file
+--  Always keep 10 lines above/below cursor unless at start/end of file
 vim.opt.scrolloff = 10
 -- Enable cursor line highlight
 vim.opt.cursorline = true
@@ -55,8 +59,7 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 -- Sets how neovim will display certain whitespace in the editor.
---  See :help 'list'
---  and :help 'listchars'
+--  See `:help 'list'` and `:help 'listchars'`
 vim.opt.listchars = { tab = "▸\\", space = "∙", trail = "∙", extends = "#", eol = "↩", nbsp = "_" }
 
 -- Enable incremental searching
@@ -76,11 +79,6 @@ vim.opt.termguicolors = true
 
 -- For more space for displaying messages, uncomment this
 -- vim.opt.cmdheight = 2
-
--- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
--- delays and poor user experience. THE PRIMEAGEN
-vim.opt.updatetime = 50
-vim.opt.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
 vim.opt.completeopt = { "menuone", "noselect" }

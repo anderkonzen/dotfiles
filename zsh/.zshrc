@@ -47,7 +47,7 @@ eval "$(zoxide init zsh)"
 # fzf
 # https://github.com/junegunn/fzf
 # https://github.com/BurntSushi/ripgrep
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(fzf --zsh)"
 export FZF_DEFAULT_COMMAND="rg --hidden"
 command -v bat > /dev/null && export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always {}'"
 
