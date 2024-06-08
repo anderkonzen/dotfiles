@@ -1,12 +1,9 @@
 return {
-  -- NOTE: Plugins can also be added by using a table,
-  -- with the first argument being the link and the following
-  -- keys can be used to configure plugin behavior/loading/etc.
+  -- NOTE: Plugins can also be added by using a table, with the first argument
+  -- being the link and the following keys can be used to configure plugin
+  -- behavior/loading/etc.
   --
   -- Use `opts = {}` to force a plugin to be loaded.
-  --
-  --  This is equivalent to:
-  --    require('Comment').setup({})
 
   {
     -- "gc" to comment visual regions/lines
@@ -59,11 +56,11 @@ return {
       },
     },
     opts = {
-      notify_on_error = false,
+      notify_on_error = true,
       format_on_save = function(bufnr)
-        -- Disable "format_on_save lsp_fallback" for languages that don't
-        -- have a well standardized coding style. You can add additional
-        -- languages here or re-enable it for the disabled ones.
+        -- Disable "format_on_save lsp_fallback" for languages that don't have
+        -- a well standardized coding style. You can add additional languages
+        -- here or re-enable it for the disabled ones.
         local disable_filetypes = { c = true, cpp = true }
         return {
           timeout_ms = 500,
@@ -77,7 +74,17 @@ return {
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
-        -- javascript = { { "prettierd", "prettier" } },
+        javascript = { { "prettierd", "prettier" } },
+        typescript = { { "prettierd", "prettier" } },
+        javascriptreact = { { "prettierd", "prettier" } },
+        typescriptreact = { { "prettierd", "prettier" } },
+        svelte = { { "prettierd", "prettier" } },
+        css = { { "prettierd", "prettier" } },
+        html = { { "prettierd", "prettier" } },
+        json = { { "prettierd", "prettier" } },
+        yaml = { { "prettierd", "prettier" } },
+        markdown = { { "prettierd", "prettier" } },
+        graphql = { { "prettierd", "prettier" } },
       },
     },
   },
@@ -85,14 +92,20 @@ return {
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
-    -- Optional dependency
     dependencies = { "hrsh7th/nvim-cmp" },
     config = function()
       require("nvim-autopairs").setup({})
-      -- If you want to automatically add `(` after selecting a function or method
+      -- If you want to automatically add `(` after selecting a function or
+      -- method
       local cmp_autopairs = require("nvim-autopairs.completion.cmp")
       local cmp = require("cmp")
       cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
     end,
+  },
+
+  {
+    -- Automatically add closing tags
+    "windwp/nvim-ts-autotag",
+    opts = {},
   },
 }

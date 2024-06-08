@@ -4,14 +4,14 @@
 -- lazy loading plugins that don"t need to be loaded immediately at startup.
 --
 -- For example, in the following configuration, we use:
---  event = "VimEnter"
+--    event = "VimEnter"
 --
 -- which loads which-key before all the UI elements are loaded. Events can be
 -- normal autocommands events (`:help autocmd-events`).
 --
 -- Then, because we use the `config` key, the configuration only runs
 -- after the plugin has been loaded:
---  config = function() ... end
+--    config = function() ... end
 
 return {
   {
@@ -24,6 +24,7 @@ return {
       -- Document existing key chains
       require("which-key").register({
         ["<leader>c"] = { name = "[C]ode", _ = "which_key_ignore" },
+        ["<leader>x"] = { name = "Diagnostics (Trouble)", _ = "which_key_ignore" },
         ["<leader>d"] = { name = "[D]ocument", _ = "which_key_ignore" },
         ["<leader>r"] = { name = "[R]ename", _ = "which_key_ignore" },
         ["<leader>s"] = { name = "[S]earch", _ = "which_key_ignore" },

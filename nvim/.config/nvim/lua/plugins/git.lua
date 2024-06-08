@@ -50,6 +50,7 @@ return {
         map("v", "<leader>hs", function()
           gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
         end, { desc = "stage git hunk" })
+
         map("v", "<leader>hr", function()
           gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
         end, { desc = "reset git hunk" })
@@ -77,8 +78,8 @@ return {
   {
     -- NOTE: Needs lazygit to be installed in the system
     "kdheepak/lazygit.nvim",
-    -- Optional for floating window border decoration
     dependencies = {
+      -- Optional for floating window border decoration
       "nvim-lua/plenary.nvim",
     },
     cmd = {
