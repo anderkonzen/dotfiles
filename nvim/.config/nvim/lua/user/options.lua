@@ -1,6 +1,6 @@
 -- [[ Setting options ]]
---  See `:help vim.opt`
---  For more options, you can see `:help option-list`
+-- See `:help vim.opt`
+-- For more options, you can see `:help option-list`
 
 -- Always show line numbers
 vim.opt.number = true
@@ -16,8 +16,8 @@ vim.opt.mouse = "a"
 vim.opt.showmode = false
 
 -- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
+-- Remove this option if you want your OS clipboard to remain independent.
+-- See `:help 'clipboard'`
 vim.opt.clipboard = "unnamedplus"
 
 -- Enable auto indenting, break indent
@@ -59,7 +59,7 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 -- Sets how neovim will display certain whitespace in the editor.
---  See `:help 'list'` and `:help 'listchars'`
+-- See `:help 'list'` and `:help 'listchars'`
 vim.opt.listchars = { tab = "▸\\", space = "∙", trail = "∙", extends = "#", eol = "↩", nbsp = "_" }
 
 -- Enable incremental searching
@@ -85,4 +85,3 @@ vim.opt.completeopt = { "menuone", "noselect" }
 
 -- Allow the cursor to go into invalid places
 vim.opt.virtualedit = "block"
-

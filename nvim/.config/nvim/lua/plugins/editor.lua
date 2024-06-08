@@ -1,7 +1,7 @@
 return {
-  -- NOTE: Plugins can also be added by using a table,
-  -- with the first argument being the link and the following
-  -- keys can be used to configure plugin behavior/loading/etc.
+  -- NOTE: Plugins can also be added by using a table, with the first argument
+  -- being the link and the following keys can be used to configure plugin
+  -- behavior/loading/etc.
   --
   -- Use `opts = {}` to force a plugin to be loaded.
 
@@ -14,7 +14,7 @@ return {
 
   {
     -- Add indentation guides even on blank lines
-    --  See `:help ibl`
+    -- See `:help ibl`
     "lukas-reineke/indent-blankline.nvim",
     lazy = false,
     keys = {
@@ -58,9 +58,9 @@ return {
     opts = {
       notify_on_error = true,
       format_on_save = function(bufnr)
-        -- Disable "format_on_save lsp_fallback" for languages that don't
-        -- have a well standardized coding style. You can add additional
-        -- languages here or re-enable it for the disabled ones.
+        -- Disable "format_on_save lsp_fallback" for languages that don't have
+        -- a well standardized coding style. You can add additional languages
+        -- here or re-enable it for the disabled ones.
         local disable_filetypes = { c = true, cpp = true }
         return {
           timeout_ms = 500,
@@ -95,10 +95,17 @@ return {
     dependencies = { "hrsh7th/nvim-cmp" },
     config = function()
       require("nvim-autopairs").setup({})
-      -- If you want to automatically add `(` after selecting a function or method
+      -- If you want to automatically add `(` after selecting a function or
+      -- method
       local cmp_autopairs = require("nvim-autopairs.completion.cmp")
       local cmp = require("cmp")
       cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
     end,
+  },
+
+  {
+    -- Automatically add closing tags
+    "windwp/nvim-ts-autotag",
+    opts = {},
   },
 }

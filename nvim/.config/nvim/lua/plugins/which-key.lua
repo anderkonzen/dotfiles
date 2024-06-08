@@ -4,14 +4,14 @@
 -- lazy loading plugins that don"t need to be loaded immediately at startup.
 --
 -- For example, in the following configuration, we use:
---  event = "VimEnter"
+--    event = "VimEnter"
 --
 -- which loads which-key before all the UI elements are loaded. Events can be
 -- normal autocommands events (`:help autocmd-events`).
 --
 -- Then, because we use the `config` key, the configuration only runs
 -- after the plugin has been loaded:
---  config = function() ... end
+--    config = function() ... end
 
 return {
   {

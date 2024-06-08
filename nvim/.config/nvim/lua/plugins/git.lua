@@ -78,8 +78,8 @@ return {
   {
     -- NOTE: Needs lazygit to be installed in the system
     "kdheepak/lazygit.nvim",
-    -- Optional for floating window border decoration
     dependencies = {
+      -- Optional for floating window border decoration
       "nvim-lua/plenary.nvim",
     },
     cmd = {
