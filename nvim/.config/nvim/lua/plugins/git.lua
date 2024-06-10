@@ -20,62 +20,43 @@ return {
       },
       current_line_blame = true,
       current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> • <summary>",
-      on_attach = function(bufnr)
-        local gitsigns = require("gitsigns")
+      on_attach = function(buffer)
+        local gs = require("gitsigns")
 
-        local function map(mode, l, r, opts)
-          opts = opts or {}
-          opts.buffer = bufnr
-          vim.keymap.set(mode, l, r, opts)
+        local function map(mode, l, r, desc)
+          vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
         end
 
-        -- Navigation
-        map("n", "]c", function()
-          if vim.wo.diff then
-            vim.cmd.normal({ "]c", bang = true })
-          else
-            gitsigns.nav_hunk("next")
-          end
-        end, { desc = "Jump to next git [c]hange" })
+        -- stylua: ignore start
+        map("n", "]h", function() gs.nav_hunk("next") end, "Next Hunk")
+        map("n", "[h", function() gs.nav_hunk("prev") end, "Prev Hunk")
+        map("n", "]H", function() gs.nav_hunk("last") end, "Last Hunk")
+        map("n", "[H", function() gs.nav_hunk("first") end, "First Hunk")
 
-        map("n", "[c", function()
-          if vim.wo.diff then
-            vim.cmd.normal({ "[c", bang = true })
-          else
-            gitsigns.nav_hunk("prev")
-          end
-        end, { desc = "Jump to previous git [c]hange" })
+        map("n", "<Leader>ghs", gs.stage_hunk, "Stage Hunk")
+        map("v", "<Leader>ghs", function() gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") }) end, "Stage Hunk")
 
-        -- Actions: visual mode
-        map("v", "<leader>hs", function()
-          gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
-        end, { desc = "stage git hunk" })
+        map("n", "<Leader>ghr", gs.reset_hunk, "Reset Hunk")
+        map("v", "<Leader>ghr", function() gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") }) end, "Reset Hunk")
 
-        map("v", "<leader>hr", function()
-          gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
-        end, { desc = "reset git hunk" })
+        map("n", "<Leader>ghu", gs.undo_stage_hunk, "Undo Stage Hunk")
+        map("n", "<Leader>ghS", gs.stage_buffer, "Stage Buffer")
+        map("n", "<Leader>ghR", gs.reset_buffer, "Reset Buffer")
+        map("n", "<Leader>ghp", gs.preview_hunk_inline, "Preview Hunk Inline")
+        map("n", "<Leader>ghb", function() gs.blame_line({ full = true }) end, "Blame Line")
 
-        -- Actions: normal mode
-        map("n", "<leader>hs", gitsigns.stage_hunk, { desc = "git [s]tage hunk" })
-        map("n", "<leader>hr", gitsigns.reset_hunk, { desc = "git [r]eset hunk" })
-        map("n", "<leader>hS", gitsigns.stage_buffer, { desc = "git [S]tage buffer" })
-        map("n", "<leader>hu", gitsigns.undo_stage_hunk, { desc = "git [u]ndo stage hunk" })
-        map("n", "<leader>hR", gitsigns.reset_buffer, { desc = "git [R]eset buffer" })
-        map("n", "<leader>hp", gitsigns.preview_hunk, { desc = "git [p]review hunk" })
-        map("n", "<leader>hb", gitsigns.blame_line, { desc = "git [b]lame line" })
-        map("n", "<leader>hd", gitsigns.diffthis, { desc = "git [d]iff against index" })
-        map("n", "<leader>hD", function()
-          gitsigns.diffthis("@")
-        end, { desc = "git [D]iff against last commit" })
+        map("n", "<Leader>ghd", gs.diffthis, "Diff against index")
+        map("n", "<Leader>ghD", function() gs.diffthis("@") end, "Diff against last commit")
 
-        -- Toggles
-        map("n", "<leader>tb", gitsigns.toggle_current_line_blame, { desc = "[T]oggle git show [b]lame line" })
-        map("n", "<leader>tD", gitsigns.toggle_deleted, { desc = "[T]oggle git show [D]eleted" })
+        map("n", "<Leader>gb", gs.toggle_current_line_blame, "Toggle show blame line")
+        map("n", "<Leader>gD", gs.toggle_deleted, "Toggle show deleted")
+        -- stylua: ignore end
       end,
     },
   },
 
   {
+
     -- NOTE: Needs lazygit to be installed in the system
     "kdheepak/lazygit.nvim",
     dependencies = {
@@ -92,7 +73,7 @@ return {
     -- Setting the keybinding for LazyGit with 'keys' is recommended in
     -- order to load the plugin when the command is run for the first time
     keys = {
-      { "<Leader>l", "<Cmd>LazyGit<CR>", desc = "[l]azygit" },
+      { "<Leader>l", "<Cmd>LazyGit<CR>", desc = "Lazygit" },
     },
   },
 }

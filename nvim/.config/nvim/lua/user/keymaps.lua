@@ -40,7 +40,7 @@ vim.keymap.set("v", "<S-Up>", ":m '<-2<CR>gv=gv", { desc = "Move up" })
 vim.keymap.set("n", "<Esc>", "<Cmd>nohlsearch<CR>", { desc = "Clear search highlights" })
 
 -- Save <C-s>
-vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", vim.cmd.update)
+vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", vim.cmd.update, { desc = "Save file" })
 
 -- Better indenting in visual mode
 vim.keymap.set("v", ">", ">gv", { noremap = true })

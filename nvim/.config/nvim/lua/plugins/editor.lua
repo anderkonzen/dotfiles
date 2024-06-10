@@ -18,7 +18,7 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     lazy = false,
     keys = {
-      { "<Leader>ti", "<Cmd>IBLToggle<CR>", desc = "[T]oggle [i]ndentation lines" },
+      { "<Leader>ti", "<Cmd>IBLToggle<CR>", desc = "Toggle indentation lines" },
     },
     config = function()
       require("ibl").setup({
@@ -39,6 +39,16 @@ return {
     event = "VimEnter",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = { signs = false },
+    keys = {
+      -- stylua: ignore start
+      { "]t", function() require("todo-comments").jump_next() end, desc = "Next Todo Comment" },
+      { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous Todo Comment" },
+      { "<Leader>xt", "<Cmd>Trouble todo toggle<CR>", desc = "Todo (Trouble)" },
+      { "<Leader>xT", "<Cmd>Trouble todo toggle filter = {tag = {TODO,FIX,FIXME}}<CR>", desc = "Todo/Fix/Fixme (Trouble)" },
+      { "<Leader>st", "<Cmd>TodoTelescope<CR>", desc = "Todo" },
+      { "<Leader>sT", "<Cmd>TodoTelescope keywords=TODO,FIX,FIXME<CR>", desc = "Todo/Fix/Fixme" },
+      -- stylua: ignore end
+    },
   },
 
   {
@@ -47,12 +57,12 @@ return {
     lazy = false,
     keys = {
       {
-        "<leader>f",
+        "<Leader>f",
         function()
           require("conform").format({ async = true, lsp_fallback = true })
         end,
         mode = "",
-        desc = "[F]ormat buffer",
+        desc = "Format buffer",
       },
     },
     opts = {
