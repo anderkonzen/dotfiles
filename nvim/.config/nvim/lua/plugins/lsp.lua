@@ -231,6 +231,11 @@ return {
         function(server_name)
           lspconfig[server_name].setup({ capabilities = capabilities })
         end,
+        ["elixirls"] = function()
+          lspconfig["elixirls"].setup({
+            filetypes = { "elixir" },
+          })
+        end,
         ["svelte"] = function()
           -- configure svelte server
           lspconfig["svelte"].setup({
