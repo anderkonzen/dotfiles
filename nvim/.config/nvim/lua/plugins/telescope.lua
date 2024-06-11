@@ -98,18 +98,22 @@ return {
 
       -- See `:help telescope.builtin`
       local builtin = require("telescope.builtin")
-      vim.keymap.set("n", "<Leader>sa", builtin.autocommands, { desc = "Auto commands" })
+
+      -- Search
+      vim.keymap.set("n", "<Leader>sa", builtin.autocommands, { desc = "Auto Commands" })
+      vim.keymap.set("n", "<Leader>:", builtin.command_history, { desc = "Command History" })
+      vim.keymap.set("n", "<Leader>sC", builtin.commands, { desc = "Commands" })
       vim.keymap.set("n", "<Leader>sh", builtin.help_tags, { desc = "Help" })
       vim.keymap.set("n", "<Leader>sk", builtin.keymaps, { desc = "Keymaps" })
       vim.keymap.set("n", "<Leader>sf", builtin.find_files, { desc = "Files" })
       vim.keymap.set("n", "<Leader>sw", builtin.grep_string, { desc = "Search current word" })
       vim.keymap.set("n", "<Leader>sg", builtin.live_grep, { desc = "Grep" })
-      vim.keymap.set("n", "<Leader>sd", builtin.diagnostics, { desc = "Diagnostics" })
+      vim.keymap.set("n", "<Leader>sk", builtin.keymaps, { desc = "Key Maps" })
+      vim.keymap.set("n", "<Leader>xd", function()
+        builtin.diagnostics({ bufnr = 0 })
+      end, { desc = "Document Diagnostics" })
+      vim.keymap.set("n", "<Leader>xD", builtin.diagnostics, { desc = "Workspace Diagnostics" })
       vim.keymap.set("n", "<Leader>sr", builtin.resume, { desc = "Resume" })
-      vim.keymap.set("n", "<Leader>s.", builtin.oldfiles, { desc = "Recent files" })
-      vim.keymap.set("n", "<Leader><Leader>", function()
-        builtin.buffers({ sort_mru = true, sort_lastused = true })
-      end, { desc = "Buffers" })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set("n", "<Leader>/", function()
@@ -130,12 +134,18 @@ return {
         })
       end, { desc = "Search in open files" })
 
+      -- Find/files
+      vim.keymap.set("n", "<Leader><Leader>", function()
+        builtin.buffers({ sort_mru = true, sort_lastused = true })
+      end, { desc = "Buffers" })
+      vim.keymap.set("n", "<Leader>s.", builtin.oldfiles, { desc = "Recent Files" })
+      vim.keymap.set("n", "<Leader>gf", builtin.git_files, { desc = "Find Files (git-files)" })
       -- Shortcut for searching your Neovim configuration files
       vim.keymap.set("n", "<Leader>sn", function()
         builtin.find_files({ cwd = vim.fn.stdpath("config") })
-      end, { desc = "Neovim files" })
+      end, { desc = "Neovim Files" })
 
-      -- git
+      -- Git
       vim.keymap.set("n", "<Leader>gc", builtin.git_commits, { desc = "Commits" })
       vim.keymap.set("n", "<Leader>gs", builtin.git_status, { desc = "Status" })
     end,
