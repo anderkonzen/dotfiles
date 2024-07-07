@@ -109,6 +109,14 @@
   name = YOUR_NAME
   email = YOUR_EMAIL
 
+[gpg]
+
+  program = gpg
+
+[init]
+
+  defaultBranch = main
+
 [include]
 
   # Load local configs: https://git-scm.com/docs/git-config#_includes
@@ -118,10 +126,3 @@
   #     by the local ones
   path = ~/.gitconfig.local
 
-[gpg]
-
-  program = gpg
-
-[init]
-
-	defaultBranch = main
