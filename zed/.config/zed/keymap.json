@@ -3,7 +3,7 @@
     "context": "Pane",
     "bindings": {
       "cmd-f1": "pane::GoBack",
-      "cmd-f2": "pane::GoForward"
+      "cmd-f4": "pane::GoForward"
     }
   }
 ]
