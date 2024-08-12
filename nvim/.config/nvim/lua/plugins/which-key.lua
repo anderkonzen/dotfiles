@@ -20,37 +20,32 @@ return {
     event = "VimEnter", -- Sets the loading event to "VimEnter"
     opts = {
       plugins = { spelling = true },
-      defaults = {
-        mode = { "n", "v" },
-        ["g"] = { name = "+goto" },
-        -- ["gs"] = { name = "+surround" },
-        ["z"] = { name = "+fold" },
-        ["]"] = { name = "+next" },
-        ["["] = { name = "+prev" },
-        ["<leader>g"] = { name = "+git" },
-        ["<leader>gh"] = { name = "+hunks", _ = "which_key_ignore" },
-        -- ["<leader>q"] = { name = "+quit/session" },
-        -- ["<leader>u"] = { name = "+ui" },
-        -- ["<leader>w"] = { name = "+windows" },
-        ["<leader>c"] = { name = "+code" },
-        ["<leader>x"] = { name = "+diagnostics/quickfix" },
-        ["<leader>d"] = { name = "+document", _ = "which_key_ignore" },
-        ["<leader>r"] = { name = "+rename", _ = "which_key_ignore" },
-        ["<leader>s"] = { name = "+search" },
-        ["<leader>w"] = { name = "+workspace", _ = "which_key_ignore" },
-        ["<leader>t"] = { name = "+toggle" },
-      },
     },
     config = function(_, opts) -- This is the function that runs, AFTER loading
       local wk = require("which-key")
       wk.setup(opts)
 
-      -- Document existing key chains
-      wk.register(opts.defaults)
-      -- visual mode
-      wk.register({
-        ["<leader>h"] = { "Git [H]unk" },
-      }, { mode = "v" })
+      wk.add({
+        {
+          mode = { "n", "v" }, -- NORMAL and VISUAL mode
+          { "g", desc = "goto" },
+
+          { "z", desc = "fold" },
+          { "]", desc = "next" },
+          { "[", desc = "prev" },
+
+          { "<Leader>g", group = "git" },
+          { "<Leader>gh", group = "hunks" },
+          { "<Leader>f", group = "file" },
+          { "<Leader>c", group = "code" },
+          { "<Leader>x", group = "diagnostics/quickfix" },
+          { "<Leader>d", group = "document" },
+          { "<Leader>r", group = "rename" },
+          { "<Leader>s", group = "search" },
+          { "<Leader>w", group = "workspace" },
+          { "<Leader>t", group = "toggle" },
+        },
+      })
     end,
   },
 }

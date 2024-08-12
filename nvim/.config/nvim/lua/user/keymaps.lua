@@ -42,6 +42,9 @@ vim.keymap.set("n", "<Esc>", "<Cmd>nohlsearch<CR>", { desc = "Clear search highl
 -- Save <C-s>
 vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", vim.cmd.update, { desc = "Save file" })
 
+-- Substitute all instances of the word under the cursor
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
 -- Better indenting in visual mode
 vim.keymap.set("v", ">", ">gv", { noremap = true })
 vim.keymap.set("v", "<", "<gv", { noremap = true })

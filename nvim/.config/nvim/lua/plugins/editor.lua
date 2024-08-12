@@ -118,4 +118,13 @@ return {
     "windwp/nvim-ts-autotag",
     opts = {},
   },
+
+  {
+    "kylechui/nvim-surround",
+    version = "*",
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({})
+    end,
+  },
 }
