@@ -90,6 +90,25 @@ config.keys = {
 		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
 
+	-- Create new tab
+	{
+		key = "N",
+		mods = "LEADER",
+		action = wezterm.action.SpawnTab("CurrentPaneDomain"),
+	},
+
+	-- Move to tab
+	{
+		key = "h",
+		mods = "LEADER|CTRL",
+		action = wezterm.action.ActivateTabRelative(-1),
+	},
+	{
+		key = "l",
+		mods = "LEADER|CTRL",
+		action = wezterm.action.ActivateTabRelative(1),
+	},
+
 	move_pane("j", "Down"),
 	move_pane("k", "Up"),
 	move_pane("h", "Left"),
