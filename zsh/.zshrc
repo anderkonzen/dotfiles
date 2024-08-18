@@ -60,6 +60,9 @@ export PATH="$GOPATH/bin:$PATH"
 
 # MySQL
 # export PATH="/usr/local/opt/mysql@8.0/bin:$PATH"
+# The following is necessary because being a specific version, brew won't
+# export automatically
+export PATH="/opt/homebrew/opt/mysql@8.0/bin:$PATH"
 
 # kubectl completions
 source <(kubectl completion zsh)
@@ -113,4 +116,12 @@ eval "$(direnv hook zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# For wezterm
+# Usage: set_user_var KEY VALUE
+function set_user_var() {
+   printf "\033]1337;SetUserVar=%s=%s\007" $1 `echo -n $2 | base64`
+}
+
+set_user_var DOTFILES "$DOTFILES"
 
