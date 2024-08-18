@@ -33,6 +33,11 @@ config.window_background_opacity = 0.9
 config.macos_window_background_blur = 20
 config.text_background_opacity = 0.8
 
+config.inactive_pane_hsb = {
+	saturation = 0.9,
+	brightness = 0.3,
+}
+
 -- Font
 --
 config.font = wezterm.font({ family = "Hack Nerd Font Mono" })
@@ -107,6 +112,13 @@ config.keys = {
 		key = "l",
 		mods = "LEADER|CTRL",
 		action = wezterm.action.ActivateTabRelative(1),
+	},
+
+	-- Toggle pane zoom
+	{
+		key = "z",
+		mods = "LEADER",
+		action = wezterm.action.TogglePaneZoomState,
 	},
 
 	move_pane("j", "Down"),
@@ -194,6 +206,17 @@ wezterm.on("update-status", function(window, pane)
 	})
 
 	window:set_right_status(status)
+end)
+
+-- Tabs
+--
+wezterm.on("format-tab-title", function(tab, _, _, _, _, _)
+	local zoomed = ""
+	if tab.active_pane.is_zoomed then
+		zoomed = "🔍 "
+	end
+
+	return zoomed .. tab.active_pane.title
 end)
 
 -- and finally, return the configuration to wezterm
