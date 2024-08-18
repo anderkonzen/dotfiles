@@ -8,3 +8,5 @@ alias lsa='ls -lah --color=auto'
 alias l='ls -lah --color=auto'
 alias ll='ls -lh --color=auto'
 alias la='ls -lAh --color=auto'
+
+alias e='eza --all --color-scale=size --color-scale-mode=gradient --icons=always -l --time modified --time-style long-iso'
