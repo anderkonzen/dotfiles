@@ -45,22 +45,9 @@ config.font_size = 14
 
 -- Keys
 --
+local keys = require("keys")
+
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
-
-local function move_pane(key, direction)
-	return {
-		key = key,
-		mods = "LEADER",
-		action = wezterm.action.ActivatePaneDirection(direction),
-	}
-end
-
-local function resize_pane(key, direction)
-	return {
-		key = key,
-		action = wezterm.action.AdjustPaneSize({ direction, 3 }),
-	}
-end
 
 config.keys = {
 	-- Sends ESC + b and ESC + f sequence, which is used
@@ -121,10 +108,10 @@ config.keys = {
 		action = wezterm.action.TogglePaneZoomState,
 	},
 
-	move_pane("j", "Down"),
-	move_pane("k", "Up"),
-	move_pane("h", "Left"),
-	move_pane("l", "Right"),
+	keys.move_pane("j", "Down"),
+	keys.move_pane("k", "Up"),
+	keys.move_pane("h", "Left"),
+	keys.move_pane("l", "Right"),
 
 	{
 		-- When we push LEADER + R...
@@ -147,7 +134,7 @@ config.keys = {
 		mods = "LEADER",
 		action = wezterm.action.PromptInputLine({
 			description = "Enter new name for tab",
-			action = wezterm.action_callback(function(window, pane, line)
+			action = wezterm.action_callback(function(window, _, line)
 				-- line will be `nil` if they hit escape without entering anything
 				-- An empty string if they just hit enter
 				-- Or the actual line of text they wrote
@@ -161,10 +148,10 @@ config.keys = {
 
 config.key_tables = {
 	resize_panes = {
-		resize_pane("j", "Down"),
-		resize_pane("k", "Up"),
-		resize_pane("h", "Left"),
-		resize_pane("l", "Right"),
+		keys.resize_pane("j", "Down"),
+		keys.resize_pane("k", "Up"),
+		keys.resize_pane("h", "Left"),
+		keys.resize_pane("l", "Right"),
 
 		-- Cancel the mode by pressing escape
 		{ key = "Escape", action = "PopKeyTable" },
@@ -173,84 +160,20 @@ config.key_tables = {
 
 -- Status Bar
 --
-local function my_ip(pane)
-	local DOTFILES = pane:get_user_vars().DOTFILES
 
-	if DOTFILES then
-		local _, lan_ip, _ = wezterm.run_child_process({ DOTFILES .. "/_bin/lan_ip.sh" })
-		local _, public_ip, _ = wezterm.run_child_process({ "curl", "https://pppong.fly.dev" })
-		if lan_ip and public_ip then
-			return string.gsub(lan_ip, "%s+", "") .. " | " .. string.gsub(public_ip, "%s+", "")
-		else
-			return "N/A"
-		end
-	else
-		return "N/A"
-	end
-end
-
-local function tunes(pane)
-	local DOTFILES = pane:get_user_vars().DOTFILES
-
-	if DOTFILES then
-		local _, tune, _ = wezterm.run_child_process({ "osascript", DOTFILES .. "/_applescripts/tunes.scpt" })
-		if tune then
-			return string.gsub(tune, "[\n\r]", "")
-		else
-			return ""
-		end
-	else
-		return ""
-	end
-end
+local action_update_status = require("action_update_status")
 
 wezterm.on("update-status", function(window, pane)
-	local separator = "   "
-
-	local ip = my_ip(pane)
-	local tune = tunes(pane)
-
-	local status = wezterm.format({
-		"ResetAttributes",
-		{ Foreground = { Color = "#99cc99" } },
-		{ Text = tune },
-		{ Text = separator },
-		{ Foreground = { Color = "#f2777a" } },
-		{ Text = ip },
-		{ Text = separator },
-		{ Foreground = { Color = "#ffcc66" } },
-		{ Text = wezterm.strftime("%a %b %-d %H:%M") .. " " },
-	})
-
-	window:set_right_status(status)
+	action_update_status.handle(window, pane)
 end)
 
 -- Tabs
 --
 
--- This function returns the suggested title for a tab.
--- It prefers the title that was set via `tab:set_title()`
--- or `wezterm cli set-tab-title`, but falls back to the
--- title of the active pane in that tab.
-local function tab_title(tab_info)
-	local title = tab_info.tab_title
-	-- if the tab title is explicitly set, take that
-	if title and #title > 0 then
-		return title
-	end
-	-- Otherwise, use the title from the active pane
-	-- in that tab
-	return tab_info.active_pane.title
-end
+local action_format_tab_title = require("action_format_tab_title")
 
 wezterm.on("format-tab-title", function(tab, _, _, _, _, _)
-	local zoomed = ""
-	local space = "  "
-	if tab.active_pane.is_zoomed then
-		zoomed = "🔍 "
-	end
-
-	return zoomed .. tab.tab_index .. ": " .. tab_title(tab) .. space
+	action_format_tab_title.hadle(tab)
 end)
 
 -- and finally, return the configuration to wezterm
