@@ -140,6 +140,23 @@ config.keys = {
 			timeout_milliseconds = 1000,
 		}),
 	},
+
+	-- Rename current tab
+	{
+		key = "t",
+		mods = "LEADER",
+		action = wezterm.action.PromptInputLine({
+			description = "Enter new name for tab",
+			action = wezterm.action_callback(function(window, pane, line)
+				-- line will be `nil` if they hit escape without entering anything
+				-- An empty string if they just hit enter
+				-- Or the actual line of text they wrote
+				if line then
+					window:active_tab():set_title(line)
+				end
+			end),
+		}),
+	},
 }
 
 config.key_tables = {
@@ -210,13 +227,30 @@ end)
 
 -- Tabs
 --
+
+-- This function returns the suggested title for a tab.
+-- It prefers the title that was set via `tab:set_title()`
+-- or `wezterm cli set-tab-title`, but falls back to the
+-- title of the active pane in that tab.
+local function tab_title(tab_info)
+	local title = tab_info.tab_title
+	-- if the tab title is explicitly set, take that
+	if title and #title > 0 then
+		return title
+	end
+	-- Otherwise, use the title from the active pane
+	-- in that tab
+	return tab_info.active_pane.title
+end
+
 wezterm.on("format-tab-title", function(tab, _, _, _, _, _)
 	local zoomed = ""
+	local space = "  "
 	if tab.active_pane.is_zoomed then
 		zoomed = "🔍 "
 	end
 
-	return zoomed .. tab.active_pane.title
+	return zoomed .. tab.tab_index .. ": " .. tab_title(tab) .. space
 end)
 
 -- and finally, return the configuration to wezterm
