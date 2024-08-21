@@ -35,13 +35,13 @@ config.text_background_opacity = 0.8
 
 config.inactive_pane_hsb = {
 	saturation = 0.9,
-	brightness = 0.3,
+	brightness = 0.7,
 }
 
 -- Font
 --
 config.font = wezterm.font({ family = "Hack Nerd Font Mono" })
-config.font_size = 15
+config.font_size = 14
 
 -- Keys
 --
