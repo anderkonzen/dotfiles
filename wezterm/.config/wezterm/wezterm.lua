@@ -21,7 +21,6 @@ config.window_frame = {
 	font_size = 13.0,
 }
 
-config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 config.window_padding = {
 	left = "0.5cell",
 	right = "1cell",
@@ -32,6 +31,7 @@ config.window_padding = {
 config.window_background_opacity = 0.9
 config.macos_window_background_blur = 20
 config.text_background_opacity = 0.8
+config.tab_bar_at_bottom = true
 
 config.inactive_pane_hsb = {
 	saturation = 0.9,
