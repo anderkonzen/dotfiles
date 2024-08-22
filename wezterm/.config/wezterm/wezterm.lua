@@ -12,7 +12,12 @@ config.status_update_interval = 5000
 
 -- Theme
 --
-config.color_scheme = "Tomorrow Night Eighties"
+local color_scheme = wezterm.color.get_builtin_schemes()["Tomorrow Night Eighties"]
+color_scheme.selection_bg = "rgba(70% 50% 50% 50%)"
+config.color_schemes = {
+	["Custom"] = color_scheme,
+}
+config.color_scheme = "Custom"
 
 -- Window
 --
