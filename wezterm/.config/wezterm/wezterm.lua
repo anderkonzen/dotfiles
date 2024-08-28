@@ -169,7 +169,7 @@ config.key_tables = {
 local action_update_status = require("action_update_status")
 
 wezterm.on("update-status", function(window, pane)
-	action_update_status.handle(window, pane)
+	return action_update_status.handle(window, pane)
 end)
 
 -- Tabs
@@ -178,7 +178,7 @@ end)
 local action_format_tab_title = require("action_format_tab_title")
 
 wezterm.on("format-tab-title", function(tab, _, _, _, _, _)
-	action_format_tab_title.hadle(tab)
+	return action_format_tab_title.handle(tab)
 end)
 
 -- and finally, return the configuration to wezterm

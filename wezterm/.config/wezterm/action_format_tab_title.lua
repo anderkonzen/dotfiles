@@ -16,12 +16,11 @@ end
 
 function module.handle(tab)
 	local zoomed = ""
-	local space = "  "
 	if tab.active_pane.is_zoomed then
 		zoomed = "🔍 "
 	end
 
-	return zoomed .. tab.tab_index .. ": " .. tab_title(tab) .. space
+	return zoomed .. tab.tab_index .. ": " .. tab_title(tab)
 end
 
 return module
