@@ -98,6 +98,10 @@
   # Use `hexdump` to diff binary files
   textconv = hexdump -v -C
 
+[commit]
+
+  gpgsign = true
+
 [user]
 
   # Don't guess the user's identity.
