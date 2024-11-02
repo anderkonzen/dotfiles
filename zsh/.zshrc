@@ -51,6 +51,9 @@ eval "$(fzf --zsh)"
 export FZF_DEFAULT_COMMAND="rg --hidden"
 command -v bat > /dev/null && export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always {}'"
 
+# atuin
+eval "$(atuin init zsh --disable-up-arrow)"
+
 # go
 export GOPATH=$HOME/go
 export PATH="$GOPATH/bin:$PATH"
@@ -91,10 +94,6 @@ esac
 # aws
 # https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-prompting.html
 export AWS_CLI_AUTO_PROMPT=on-partial
-
-# assh
-# https://github.com/moul/assh
-alias ssh="assh wrapper ssh --"
 
 # Postres.app
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
