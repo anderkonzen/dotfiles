@@ -7,13 +7,27 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "features": {
+    "inline_completion_provider": "supermaven"
+  },
+  "assistant": {
+    "enable_experimental_live_diffs": true,
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-latest"
+    },
+    "version": "2"
+  },
   "theme": "Catppuccin Frappé",
-  "buffer_font_family": "Hack Nerd Font Mono",
-  "buffer_font_size": 13,
-  "ui_font_family": "Hack Nerd Font Mono",
+  // "buffer_font_family": "Hack Nerd Font Mono",
+  "buffer_font_family": "DM Mono",
+  "buffer_font_size": 14,
+  // "ui_font_family": "Hack Nerd Font Mono",
+  "ui_font_family": "DM Mono",
   "ui_font_size": 16,
   "show_wrap_guides": true,
   "wrap_guides": [80, 100],
+  "soft_wrap": "none",
   "show_whitespaces": "all",
   "extend_comment_on_newline": false,
   "tab_size": 2,
@@ -36,6 +50,9 @@
     },
     "Markdown": {
       "soft_wrap": "none"
+    },
+    "Ruby": {
+      "language_servers": ["ruby-lsp", "rubocop"]
     }
   }
 }
