@@ -33,7 +33,7 @@ export HISTFILE=~/.zsh_history
 export HISTSIZE=1000000
 export SAVEHIST=1000000
 # The size of asking history
-export LISTMAX=50
+export LISTMAX=1000
 
 # Erlang
 export ERL_AFLAGS="-kernel shell_history enabled"

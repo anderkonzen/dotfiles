@@ -58,6 +58,9 @@ eval "$(atuin init zsh --disable-up-arrow)"
 export GOPATH=$HOME/go
 export PATH="$GOPATH/bin:$PATH"
 
+# rebar3
+export PATH=$PATH:~/.cache/rebar3/bin
+
 # haskell
 # export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
 
