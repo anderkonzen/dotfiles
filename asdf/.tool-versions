@@ -1,5 +1,6 @@
-elixir 1.17.3-otp-27
-erlang 27.1.2
+elixir 1.18.0-otp-27
+erlang 27.2
+gleam 1.5.1
 golang 1.23.2
 kubectl 1.31.2
 ruby 3.3.5
@@ -12,3 +13,5 @@ minikube 1.34.0
 yarn 1.22.22
 direnv 2.33.0
 pnpm 9.12.3
+deno 2.1.4
+zig 0.13.0
