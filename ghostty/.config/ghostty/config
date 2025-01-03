@@ -6,6 +6,7 @@ theme = "Tomorrow Night Eighties"
 ### General
 unfocused-split-opacity = 0.3
 copy-on-select = true
+window-padding-x = 8
 
 ### Keybinds
 # New Splits
