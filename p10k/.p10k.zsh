@@ -518,7 +518,7 @@
   ########################################[ profile ]###########################################
   function prompt_arv_profile() {
     if [[ -v PROFILE ]]; then
-      p10k segment -i '󰭙' -f red -t "${PROFILE}"
+      p10k segment -i '🧉' -f red -t "${PROFILE}"
       return
     fi
     return
