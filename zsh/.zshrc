@@ -127,3 +127,6 @@ function set_user_var() {
 
 set_user_var DOTFILES "$DOTFILES"
 
+
+# Added by Windsurf
+export PATH="/Users/anderkonzen/.codeium/windsurf/bin:$PATH"

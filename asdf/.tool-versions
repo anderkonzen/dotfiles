@@ -1,7 +1,7 @@
-elixir 1.18.1-otp-27
-erlang 27.2
+elixir 1.18.2-otp-27
+erlang 27.2.1
 gleam 1.5.1
-golang 1.23.2
+golang 1.23.4
 kubectl 1.31.2
 ruby 3.3.5
 python 3.13.0 2.7.18
