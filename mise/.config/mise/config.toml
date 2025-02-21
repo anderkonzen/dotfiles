@@ -1,0 +1,10 @@
+[tools]
+direnv = "2.33.0"
+elixir = "1.18.2-otp-27"
+erlang = "27.2.3"
+gleam = "1.8.1"
+go = "1.24.0"
+kubectl = "1.32.2"
+node = "20.18.3"
+python = "3.13.2"
+ruby = "3.4.2"

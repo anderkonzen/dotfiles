@@ -8,7 +8,7 @@
 // from the command palette or from `Zed` application menu.
 {
   "features": {
-    "inline_completion_provider": "supermaven"
+    "edit_prediction_provider": "zed"
   },
   "assistant": {
     "enable_experimental_live_diffs": true,

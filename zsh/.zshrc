@@ -10,21 +10,13 @@
 # https://zsh.sourceforge.io/Doc/Release/Files.html#Files
 
 
-# asdf-vm
-# https://github.com/asdf-vm/asdf
-. $HOME/.asdf/asdf.sh
-# append completions to fpath, ensure compinit is below your sourcing of asdf.sh
-fpath=(${ASDF_DIR}/completions $fpath)
-
-# brew completion setup
-if type brew &>/dev/null
-then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-fi
-
 # Initialize compinit
 autoload -Uz compinit
 compinit
+
+# mise
+# https://github.com/jdx/mise
+eval "$(mise activate zsh)"
 
 # antidote
 # https://getantidote.github.io/
@@ -68,7 +60,7 @@ export PATH=$PATH:~/.cache/rebar3/bin
 # export PATH="/usr/local/opt/mysql@8.0/bin:$PATH"
 # The following is necessary because being a specific version, brew won't
 # export automatically
-export PATH="/opt/homebrew/opt/mysql@8.0/bin:$PATH"
+# export PATH="/opt/homebrew/opt/mysql@8.0/bin:$PATH"
 
 # kubectl completions
 source <(kubectl completion zsh)
@@ -78,21 +70,15 @@ if command -v kubecolor > /dev/null; then
   compdef kubecolor=kubectl
 fi
 
-# nvm/nodejs
-# https://github.com/nvm-sh/nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # yarn
-export PATH="$PATH:$(yarn global bin)"
+# export PATH="$PATH:$(yarn global bin)"
 
 # pnpm
-export PNPM_HOME="/Users/anderkonzen/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
+# export PNPM_HOME="/Users/anderkonzen/Library/pnpm"
+# case ":$PATH:" in
+#   *":$PNPM_HOME:"*) ;;
+#   *) export PATH="$PNPM_HOME:$PATH" ;;
+# esac
 
 # aws
 # https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-prompting.html
@@ -100,6 +86,10 @@ export AWS_CLI_AUTO_PROMPT=on-partial
 
 # Postres.app
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
+
+# exercism
+# https://exercism.org
+source <(exercism completion zsh)
 
 # dotfiles and custom bin
 export DOTFILES=$HOME/dotfiles
@@ -119,14 +109,3 @@ eval "$(direnv hook zsh)"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# For wezterm
-# Usage: set_user_var KEY VALUE
-function set_user_var() {
-   printf "\033]1337;SetUserVar=%s=%s\007" $1 `echo -n $2 | base64`
-}
-
-set_user_var DOTFILES "$DOTFILES"
-
-
-# Added by Windsurf
-export PATH="/Users/anderkonzen/.codeium/windsurf/bin:$PATH"

@@ -1,5 +1,5 @@
 These are my dotfiles and configurations for some of the programs I use.
-In general the configurations are optimized for a system running macOS, with iTerm2, neovim, git and Homebrew.
+In general the configurations are optimized for a system running macOS, with neovim, git and Homebrew.
 
 # Install
 
@@ -22,7 +22,7 @@ git submodule update
 3. Setup `stow`:
 
 ```shell
-cd .dotfiles
+cd dotfiles
 stow -t ~ stow
 ```
 
@@ -56,9 +56,7 @@ For instance:
 
 # TODO
 
-* nvim configuration and requirements
 * a list of common apps I use (to be in sync with stow)
-* antibody
 
 # Acknowledgements
 
@@ -68,6 +66,5 @@ Below you will find some of the people/repos I took ideas from to create my own 
 * https://github.com/Kraymer/F-dotfiles
 * http://dotfiles.github.io
 * https://github.com/webpro/awesome-dotfiles
-
 * https://github.com/ches/dotfiles
 * https://github.com/junegunn/dotfiles
