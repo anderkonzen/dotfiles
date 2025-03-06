@@ -1,7 +1,7 @@
 [tools]
 direnv = "2.33.0"
-elixir = "1.18.2-otp-27"
-erlang = "27.2.3"
+elixir = "1.18.3-otp-27"
+erlang = "27.3"
 gleam = "1.8.1"
 go = "1.24.0"
 kubectl = "1.32.2"
