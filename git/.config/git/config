@@ -90,17 +90,33 @@
 
 [diff]
 
-  # Detect copies as well as renames
-  renames = copies
+  renames = true
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
 
 [diff "bin"]
 
   # Use `hexdump` to diff binary files
   textconv = hexdump -v -C
 
+[column]
+
+  ui = auto
+
+[branch]
+
+  sort = -committerdate
+
 [commit]
 
   gpgsign = true
+  verbose = true
+
+[tag]
+
+  gpgSign = true
+  sort = version:refname
 
 [user]
 
@@ -112,10 +128,6 @@
   signingkey = YOUR_SIGNINKEY
   name = YOUR_NAME
   email = YOUR_EMAIL
-
-[gpg]
-
-  program = gpg
 
 [init]
 
@@ -130,3 +142,10 @@
   #     by the local ones
   path = ~/.gitconfig.local
 
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

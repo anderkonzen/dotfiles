@@ -13,7 +13,8 @@
       "ctrl-a ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
       "ctrl-a ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
       "ctrl-a ctrl-j": ["workspace::ActivatePaneInDirection", "Up"],
-      "ctrl-a ctrl-k": ["workspace::ActivatePaneInDirection", "Down"]
+      "ctrl-a ctrl-k": ["workspace::ActivatePaneInDirection", "Down"],
+      "ctrl-a q": "workspace::ClearAllNotifications"
     }
   }
 ]
