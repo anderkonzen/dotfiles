@@ -2,7 +2,7 @@
 deno = "2.2.10"
 direnv = "2.36.0"
 elixir = "1.18.3-otp-27"
-erlang = "27.3.2"
+erlang = "27.3.3"
 gleam = "1.10.0"
 go = "1.24.2"
 just = "1.40.0"
