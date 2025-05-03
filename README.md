@@ -1,9 +1,20 @@
 These are my dotfiles and configurations for some of the programs I use.
-In general the configurations are optimized for a system running macOS, with neovim, git and Homebrew.
+In general the configurations are optimized for a system running macOS.
+
+# Pre-requisites
+
+Some programs are required to be installed prior to issuing the stow commands.
+Make sure the following are installed:
+
+* git
+* [Homebrew](https://brew.sh/)
+* [stow](https://www.gnu.org/software/stow/) (`brew install stow`)
+
+Also, I recommend installing first the apps and then stow the configs.
 
 # Install
 
-The files are managed by [`stow`](https://www.gnu.org/software/stow/), so basically:
+The files are managed by `stow`, so basically:
 
 1. Clone the repository:
 
@@ -28,17 +39,17 @@ stow -t ~ stow
 
 The stow directory should be the first one so the stow configuration is installed properly (global ignore files, etc).
 
-4. Install the desired packages with `stow <dir>`
+4. Install the desired packages with `stow <dir>`:
+
+```shell
+stow mise
+stow p10k
+# etc...
+```
 
 # Conventions
 
 Directories starting with a `_` are not supposed to be *stowed*.
-
-# Requirements
-
-I use a few apps that not necessarily need to be installed prior to issuing the stow commands.
-
-zsh and other stuff will use the apps, so you'll need to install or adjust accordingly to your needs.
 
 # Configuring other apps
 
@@ -47,16 +58,44 @@ zsh and other stuff will use the apps, so you'll need to install or adjust accor
 Use `~/.gitconfig.local` to store sensitive data like git credentials and other local configurations.
 For instance:
 
-
 ```shell
 [user]
-    name = Anderson Konzen
-    email = anderkonzen@example.com
+    name = Foo Bar
+    email = foo.bar@example.com
 ```
 
-# TODO
+# Apps I like to use
 
-* a list of common apps I use (to be in sync with stow)
+* LuLu (https://objective-see.org/products/lulu.html)
+* Postgres.app (https://postgresapp.com/)
+* Grammarly
+* Ice (https://github.com/jordanbaird/Ice)
+* iStat Menus (https://bjango.com/mac/istatmenus/)
+* KeepingYouAwake (https://github.com/newmarcel/KeepingYouAwake)
+* CleanShot (https://cleanshot.com/)
+* AppCleaner (https://freemacsoft.net/appcleaner/)
+* Zed (https://zed.dev/)
+* Sublime Text (https://www.sublimetext.com/)
+* 1Password (https://1password.com/)
+* Time Out (https://dejal.com/timeout/)
+* Numi (https://numi.app/)
+* GPG Suite (https://gpgtools.org/)
+
+And for command line:
+
+* antidote (https://github.com/mattmc3/antidote)
+* atuin (https://atuin.sh/)
+* bat (https://github.com/sharkdp/bat)
+* colima (https://github.com/abiosoft/colima)
+* difftastic (https://github.com/Wilfred/difftastic)
+* eza (https://github.com/eza-community/eza)
+* fd (https://github.com/sharkdp/fd)
+* fzf (https://github.com/junegunn/fzf)
+* lazygit (https://github.com/jesseduffield/lazygit)
+* mise (https://github.com/jdx/mise)
+* neovim (https://neovim.io/)
+* ripgrep (https://github.com/BurntSushi/ripgrep)
+* zoxide (https://github.com/ajeetdsouza/zoxide)
 
 # Acknowledgements
 
