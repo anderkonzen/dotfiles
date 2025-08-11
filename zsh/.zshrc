@@ -91,6 +91,8 @@ export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 # https://exercism.org
 source <(exercism completion zsh)
 
+export JAVA_HOME=$(/usr/libexec/java_home)
+
 # dotfiles and custom bin
 export DOTFILES=$HOME/dotfiles
 export PATH=$PATH:$DOTFILES/_bin
@@ -108,7 +110,6 @@ eval "$(direnv hook zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/anderkonzen/.lmstudio/bin"
