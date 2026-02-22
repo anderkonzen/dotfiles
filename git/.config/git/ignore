@@ -148,6 +148,14 @@ web_modules/
 # Optional REPL history
 .node_repl_history
 
+
+# -----------------------------------
+# Shell history
+# -----------------------------------
+.zsh_history
+.bash_history
+.python_history
+
 # Output of 'npm pack'
 *.tgz
 

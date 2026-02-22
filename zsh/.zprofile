@@ -1,32 +1,35 @@
-# LANGUAGE must be set by en_US
-export LANGUAGE="en_US.UTF-8"
-export LANG="${LANGUAGE}"
-export LC_ALL="${LANGUAGE}"
-export LC_CTYPE="${LANGUAGE}"
+# .zprofile — loaded for login shells only
+# Use for PATH setup, brew, and env vars that only need to be set once.
 
-# Editor
-export EDITOR=nvim
-export GIT_EDITOR="${EDITOR}"
-
-# Pager
-export PAGER=less
-
-# less status line
+# less
 export LESSCHARSET='utf-8'
 
-# History file and its size
-export HISTFILE=~/.zsh_history
+# History
+export HISTFILE="$ZDOTDIR/.zsh_history"
 export HISTSIZE=5000000
 export SAVEHIST=5000000
-# The size of asking history
 export LISTMAX=1000
 
 # Erlang
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 # Java
-# Check installed versions with '/usr/libexec/java_home -V'
-# export JAVA_HOME=`/usr/libexec/java_home -v 17`
+export JAVA_HOME=$(/usr/libexec/java_home)
 
-# brew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# Go
+export GOPATH=$HOME/go
+export PATH="$GOPATH/bin:$PATH"
+
+# AWS
+export AWS_CLI_AUTO_PROMPT=on-partial
+
+# bat
+export BAT_THEME="base16"
+
+# dotfiles and custom bin
+export DOTFILES=$HOME/dotfiles
+export PATH="$PATH:$DOTFILES/_bin"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.lmstudio/bin"
+export PATH="$PATH:$HOME/.cache/rebar3/bin"
+export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
