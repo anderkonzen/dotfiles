@@ -12,10 +12,6 @@ eval "$(mise activate zsh)"
 source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
 antidote load
 
-# base16
-BASE16_SHELL=$(antidote path chriskempson/base16-shell)
-[[ -n "$PS1" && -s "$BASE16_SHELL/profile_helper.sh" ]] && source "$BASE16_SHELL/profile_helper.sh"
-
 # Load topic configs
 for config in "$ZDOTDIR/conf.d/"*.zsh; do
   source "$config"

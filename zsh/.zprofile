@@ -24,7 +24,7 @@ export PATH="$GOPATH/bin:$PATH"
 export AWS_CLI_AUTO_PROMPT=on-partial
 
 # bat
-export BAT_THEME="base16"
+export BAT_THEME="rose-pine"
 
 # dotfiles and custom bin
 export DOTFILES=$HOME/dotfiles
