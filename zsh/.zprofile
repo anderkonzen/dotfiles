@@ -18,7 +18,7 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 
 # Go
 export GOPATH=$HOME/go
-export PATH="$GOPATH/bin:$PATH"
+path=("$GOPATH/bin" $path)
 
 # AWS
 export AWS_CLI_AUTO_PROMPT=on-partial
@@ -28,8 +28,8 @@ export BAT_THEME="rose-pine"
 
 # dotfiles and custom bin
 export DOTFILES=$HOME/dotfiles
-export PATH="$PATH:$DOTFILES/_bin"
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/.lmstudio/bin"
-export PATH="$PATH:$HOME/.cache/rebar3/bin"
-export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
+path=($path "$DOTFILES/bin")
+path=($path "$HOME/.local/bin")
+path=($path "$HOME/.lmstudio/bin")
+path=($path "$HOME/.cache/rebar3/bin")
+path=($path "/Applications/Postgres.app/Contents/Versions/latest/bin")
