@@ -2,9 +2,6 @@
 
   editor = nvim
 
-  # Use the config below to override $HOME/.config/git/ignore
-  # excludesfile = ~/.gitignore_global
-
 [alias]
 
   # View abbreviated SHA, description, and history graph of the latest 20 commits
@@ -51,8 +48,8 @@
   # Find commits by commit message
   fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
 
-  # Remove branches that have already been merged with master
-  # a.k.a. ‘delete merged’
+  # Remove branches that have already been merged with main
+  # a.k.a. 'delete merged'
   dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 
   # List contributors with number of commits
@@ -124,10 +121,19 @@
   # https://github.com/git/git/blob/90f7b16b3adc78d4bbabbd426fb69aa78c714f71/Documentation/config.txt#L2847-L2855
   useConfigOnly = true
 
-  # Add the following to .gitconfig.local (see below)
-  signingkey = YOUR_SIGNINKEY
-  name = YOUR_NAME
-  email = YOUR_EMAIL
+  # Set name, email, and signingkey in ~/.gitconfig.local (never committed)
+
+[push]
+
+  autoSetupRemote = true
+
+[pull]
+
+  rebase = true
+
+[rerere]
+
+  enabled = true
 
 [init]
 
