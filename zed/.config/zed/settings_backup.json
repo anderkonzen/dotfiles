@@ -11,17 +11,10 @@
     "tree_view": true,
   },
   "context_servers": {
-    "atlassian": {
+    "Atlassian-MCP-Server": {
       "enabled": true,
-      "remote": false,
-      "command": "npx",
-      "args": [
-        "-y",
-        "mcp-remote",
-        "https://mcp.atlassian.com/v1/mcp"
-      ],
-      "env": {}
-    }
+      "url": "https://mcp.atlassian.com/v1/mcp",
+    },
   },
   "icon_theme": "Catppuccin Macchiato",
   "telemetry": {
@@ -39,8 +32,8 @@
   },
   "agent": {
     "inline_assistant_model": {
-      "provider": "copilot_chat",
-      "model": "gpt-4o",
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4-5-thinking",
     },
     "default_model": {
       "provider": "openai",
