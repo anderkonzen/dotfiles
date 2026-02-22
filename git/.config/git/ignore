@@ -156,6 +156,10 @@ web_modules/
 .bash_history
 .python_history
 
+# Zsh completion cache
+.zcompdump
+.zcompdump*
+
 # Output of 'npm pack'
 *.tgz
 
