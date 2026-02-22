@@ -160,6 +160,9 @@ web_modules/
 .zcompdump
 .zcompdump*
 
+# Antidote generated bundle
+.zsh_plugins.zsh
+
 # Output of 'npm pack'
 *.tgz
 
