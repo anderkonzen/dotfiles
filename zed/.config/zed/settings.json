@@ -7,38 +7,19 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "agent": {
-    "default_model": {
-      "provider": "anthropic",
-      "model": "claude-sonnet-4-6-thinking-latest",
-      "enable_thinking": false
-    },
-    "favorite_models": [],
-    "model_parameters": []
-  },
   "telemetry": {
     "metrics": false,
-    "diagnostics": false
+    "diagnostics": false,
   },
   "edit_predictions": {
-    "mode": "eager",
-    "copilot": {
-      "proxy": null,
-      "proxy_no_verify": null
-    },
-    "enabled_in_assistant": false
+    "disabled_globs": [".env", ".env.*", ".envrc", ".envrc.*"],
   },
-  "features": {
-    "edit_prediction_provider": "zed"
-  },
-  "assistant": {
+  "agent": {
     "default_profile": "ask",
-    "enable_experimental_live_diffs": true,
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-sonnet-4"
+      "model": "claude-sonnet-4",
     },
-    "version": "2"
   },
   "theme": "Catppuccin Frappé",
   "buffer_font_family": "Hack Nerd Font Mono",
@@ -54,32 +35,23 @@
   "extend_comment_on_newline": false,
   "tab_size": 2,
   "terminal": {
-    "copy_on_select": true
+    "copy_on_select": true,
   },
   "tabs": {
-    "git_status": true
+    "git_status": true,
   },
   "preferred_line_length": 80,
-  "copilot": {
-    "disabled_globs": [".env", ".env.*", ".envrc", ".envrc.*"]
-  },
-  "semantic_index": {
-    "enabled": true
-  },
   "languages": {
     "Plain Text": {
-      "soft_wrap": "none"
+      "soft_wrap": "none",
     },
     "Markdown": {
       "soft_wrap": "bounded",
-      "preferred_line_length": 100
-    },
-    "Ruby": {
-      "language_servers": ["ruby-lsp", "rubocop"]
+      "preferred_line_length": 100,
     },
     "HTML": {
       "soft_wrap": "none",
-      "preferred_line_length": 500
-    }
-  }
+      "preferred_line_length": 500,
+    },
+  },
 }

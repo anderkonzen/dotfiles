@@ -17,6 +17,8 @@ for config in "$ZDOTDIR/conf.d/"*.zsh; do
   source "$config"
 done
 
+path=($path "$HOME/.local/bin")
+
 # p10k prompt
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
