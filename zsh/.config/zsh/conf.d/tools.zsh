@@ -14,12 +14,5 @@ eval "$(atuin init zsh --disable-up-arrow)"
 # direnv — per-project env vars
 eval "$(direnv hook zsh)"
 
-# kubectl completions
-source <(kubectl completion zsh)
-if command -v kubecolor > /dev/null; then
-  alias kubectl="kubecolor"
-  compdef kubecolor=kubectl
-fi
-
 # exercism completions
 source <(exercism completion zsh)

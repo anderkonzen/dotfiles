@@ -30,9 +30,3 @@ function server() {
   open "http://localhost:${port}/"
   python3 -m http.server "$port"
 }
-
-# Switch AWS profile and reload direnv
-function arv_profile() {
-  export PROFILE="$@"
-  direnv reload
-}
