@@ -163,6 +163,9 @@ web_modules/
 # Antidote generated bundle
 .zsh_plugins.zsh
 
+# Ghostty auto-generated reference file
+config-default
+
 # Output of 'npm pack'
 *.tgz
 
