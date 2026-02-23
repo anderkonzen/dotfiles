@@ -55,25 +55,5 @@ return {
     },
   },
 
-  {
-
-    -- NOTE: Needs lazygit to be installed in the system
-    "kdheepak/lazygit.nvim",
-    dependencies = {
-      -- Optional for floating window border decoration
-      "nvim-lua/plenary.nvim",
-    },
-    cmd = {
-      "LazyGit",
-      "LazyGitConfig",
-      "LazyGitCurrentFile",
-      "LazyGitFilter",
-      "LazyGitFilterCurrentFile",
-    },
-    -- Setting the keybinding for LazyGit with 'keys' is recommended in
-    -- order to load the plugin when the command is run for the first time
-    keys = {
-      { "<Leader>l", "<Cmd>LazyGit<CR>", desc = "Lazygit" },
-    },
-  },
+  -- lazygit.nvim removed — using snacks.lazygit instead
 }

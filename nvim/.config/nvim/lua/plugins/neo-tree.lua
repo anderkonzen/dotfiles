@@ -7,7 +7,7 @@ return {
     cmd = "Neotree",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
+      "echasnovski/mini.icons",
       "MunifTanjim/nui.nvim",
     },
     -- Keymaps can also be configured with Lazy with the `keys` table.

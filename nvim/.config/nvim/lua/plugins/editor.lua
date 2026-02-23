@@ -1,35 +1,15 @@
 return {
-  -- NOTE: Plugins can also be added by using a table, with the first argument
-  -- being the link and the following keys can be used to configure plugin
-  -- behavior/loading/etc.
-  --
-  -- Use `opts = {}` to force a plugin to be loaded.
-
   {
-    -- "gc" to comment visual regions/lines
-    "numToStr/Comment.nvim",
-    lazy = false,
+    -- Icons (replaces nvim-web-devicons with better performance)
+    "echasnovski/mini.icons",
+    lazy = true,
     opts = {},
-  },
-
-  {
-    -- Add indentation guides even on blank lines
-    -- See `:help ibl`
-    "lukas-reineke/indent-blankline.nvim",
-    lazy = false,
-    keys = {
-      { "<Leader>ti", "<Cmd>IBLToggle<CR>", desc = "Toggle indentation lines" },
-    },
-    config = function()
-      require("ibl").setup({
-        debounce = 100,
-        indent = { char = "┊" },
-        scope = {
-          enabled = false,
-          show_start = false,
-          show_end = false,
-        },
-      })
+    init = function()
+      -- Provide backward-compat mock so plugins that require nvim-web-devicons still work
+      package.preload["nvim-web-devicons"] = function()
+        require("mini.icons").mock_nvim_web_devicons()
+        return package.loaded["nvim-web-devicons"]
+      end
     end,
   },
 
@@ -45,8 +25,8 @@ return {
       { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous Todo Comment" },
       { "<Leader>xt", "<Cmd>Trouble todo toggle<CR>", desc = "Todo (Trouble)" },
       { "<Leader>xT", "<Cmd>Trouble todo toggle filter = {tag = {TODO,FIX,FIXME}}<CR>", desc = "Todo/Fix/Fixme (Trouble)" },
-      { "<Leader>st", "<Cmd>TodoTelescope<CR>", desc = "Todo" },
-      { "<Leader>sT", "<Cmd>TodoTelescope keywords=TODO,FIX,FIXME<CR>", desc = "Todo/Fix/Fixme" },
+      { "<Leader>st", "<Cmd>TodoFzfLua<CR>", desc = "Todo" },
+      { "<Leader>sT", "<Cmd>TodoFzfLua keywords=TODO,FIX,FIXME<CR>", desc = "Todo/Fix/Fixme" },
       -- stylua: ignore end
     },
   },
@@ -102,15 +82,7 @@ return {
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
-    dependencies = { "hrsh7th/nvim-cmp" },
-    config = function()
-      require("nvim-autopairs").setup({})
-      -- If you want to automatically add `(` after selecting a function or
-      -- method
-      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-      local cmp = require("cmp")
-      cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-    end,
+    opts = {},
   },
 
   {
