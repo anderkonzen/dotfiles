@@ -8,12 +8,7 @@ return {
       library = {
         -- Only load luvit types when the `vim.uv` word is found
         { path = "luvit-meta/library", words = { "vim%.uv" } },
-        { path = "lazy.nvim", words = { "LazyVim" } },
       },
-      -- disable when a .luarc.json file is found
-      enabled = function(root_dir)
-        return not vim.uv.fs_stat(root_dir .. "/.luarc.json")
-      end,
     },
   },
   -- optional `vim.uv` typings
