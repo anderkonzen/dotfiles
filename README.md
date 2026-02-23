@@ -32,20 +32,7 @@ stow nvim
 # etc.
 ```
 
-## Packages
-
-| Package    | Description                           |
-|------------|---------------------------------------|
-| `bin`      | Custom shell scripts and utilities    |
-| `eza`      | eza file listing theme (Catppuccin)   |
-| `ghostty`  | Ghostty terminal emulator config      |
-| `git`      | Git config, aliases, and global ignore|
-| `mise`     | Developer tool version management     |
-| `nvim`     | Neovim editor (lazy.nvim)             |
-| `p10k`     | Powerlevel10k prompt theme            |
-| `stow`     | Stow global config (install first)    |
-| `zed`      | Zed editor settings and keybindings   |
-| `zsh`      | Zsh shell configuration               |
+Note: `mise` is ignored by stow on purpose. See the `Mise` section below for more info.
 
 ## Zsh
 
@@ -71,11 +58,7 @@ Both are sourced at the end of their respective files and are not tracked by git
 
 Mise is activated early in `.zshrc` so managed tools are on PATH before plugins and completions load.
 
-After stowing, install all tools with:
-
-```shell
-mise install
-```
+ Copy the `mise` directory to `~/.config/mise` manually, and adjust the tools to your liking. This gives you some flexibility in managing your tool versions (for instance, having a personal versus a work config).
 
 ## Git
 
@@ -137,11 +120,3 @@ These are expected to be installed via Homebrew:
 - [Postgres.app](https://postgresapp.com/)
 - [Time Out](https://dejal.com/timeout/)
 - [Zed](https://zed.dev/)
-
-## Acknowledgements
-
-- https://github.com/Kraymer/F-dotfiles
-- http://dotfiles.github.io
-- https://github.com/webpro/awesome-dotfiles
-- https://github.com/ches/dotfiles
-- https://github.com/junegunn/dotfiles
