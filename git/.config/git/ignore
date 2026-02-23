@@ -14,7 +14,6 @@
 # Icon must end with two \r
 Icon
 
-
 # Thumbnails
 ._*
 
@@ -148,6 +147,25 @@ web_modules/
 # Optional REPL history
 .node_repl_history
 
+
+# -----------------------------------
+# Shell history
+# -----------------------------------
+
+.zsh_history
+.bash_history
+.python_history
+
+# Zsh completion cache
+.zcompdump
+.zcompdump*
+
+# Antidote generated bundle
+.zsh_plugins.zsh
+
+# Ghostty auto-generated reference file
+config-default
+
 # Output of 'npm pack'
 *.tgz
 
@@ -210,4 +228,3 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
-

@@ -22,7 +22,7 @@ return {
     config = function()
       require("mason-lspconfig").setup({
         ensure_installed = {
-          "ts_ls",
+          "vtsls",
           "html",
           "cssls",
           "tailwindcss",
@@ -55,30 +55,59 @@ return {
   },
 
   {
+    -- Completion engine (replaces nvim-cmp)
+    "saghen/blink.cmp",
+    version = "*",
+    dependencies = {
+      "folke/lazydev.nvim",
+    },
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts = {
+      keymap = { preset = "default" },
+      appearance = {
+        use_nvim_cmp_as_default = false,
+        nerd_font_variant = "mono",
+      },
+      sources = {
+        default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+        providers = {
+          lazydev = {
+            name = "LazyDev",
+            module = "lazydev.integrations.blink",
+            score_offset = 100,
+          },
+        },
+      },
+    },
+    opts_extend = { "sources.default" },
+  },
+
+  {
     "neovim/nvim-lspconfig",
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      { "j-hui/fidget.nvim", opts = {} },
+      "saghen/blink.cmp",
       { "antosha417/nvim-lsp-file-operations", config = true },
     },
     config = function()
       -------------------------------------------------
       -- Capabilities
       -------------------------------------------------
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      local ok, cmp = pcall(require, "cmp_nvim_lsp")
-      if ok then
-        capabilities = vim.tbl_deep_extend("force", capabilities, cmp.default_capabilities())
-      end
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
 
       -------------------------------------------------
       -- Diagnostic Signs
       -------------------------------------------------
-      local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-      for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-      end
+      vim.diagnostic.config({
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = "",
+            [vim.diagnostic.severity.WARN] = "",
+            [vim.diagnostic.severity.HINT] = "",
+            [vim.diagnostic.severity.INFO] = "",
+          },
+        },
+      })
 
       -------------------------------------------------
       -- LspAttach Keymaps
@@ -93,14 +122,14 @@ return {
             })
           end
 
-          local tb = require("telescope.builtin")
+          local fzf = require("fzf-lua")
 
-          map("gd", tb.lsp_definitions, "Goto Definition")
-          map("gr", tb.lsp_references, "Goto References")
-          map("gI", tb.lsp_implementations, "Goto Implementation")
-          map("<leader>D", tb.lsp_type_definitions, "Type Definition")
-          map("<leader>ds", tb.lsp_document_symbols, "Document Symbols")
-          map("<leader>ws", tb.lsp_dynamic_workspace_symbols, "Workspace Symbols")
+          map("gd", fzf.lsp_definitions, "Goto Definition")
+          map("gr", fzf.lsp_references, "Goto References")
+          map("gI", fzf.lsp_implementations, "Goto Implementation")
+          map("<leader>D", fzf.lsp_typedefs, "Type Definition")
+          map("<leader>ds", fzf.lsp_document_symbols, "Document Symbols")
+          map("<leader>ws", fzf.lsp_live_workspace_symbols, "Workspace Symbols")
 
           map("<leader>rn", vim.lsp.buf.rename, "Rename")
           map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
@@ -154,7 +183,7 @@ return {
 
       -- Default servers without overrides
       local default_servers = {
-        "ts_ls",
+        "vtsls",
         "html",
         "cssls",
         "tailwindcss",
@@ -204,9 +233,6 @@ return {
       setup("lua_ls", {
         settings = {
           Lua = {
-            diagnostics = {
-              globals = { "vim" },
-            },
             completion = {
               callSnippet = "Replace",
             },

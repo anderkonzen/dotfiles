@@ -1,6 +1,5 @@
 ohmyzsh/ohmyzsh path:plugins/brew
 ohmyzsh/ohmyzsh path:plugins/git
-ohmyzsh/ohmyzsh path:plugins/kubectl
 
 ohmyzsh/ohmyzsh path:lib/compfix.zsh
 ohmyzsh/ohmyzsh path:lib/completion.zsh
@@ -12,8 +11,5 @@ ohmyzsh/ohmyzsh path:lib/key-bindings.zsh
 romkatv/powerlevel10k
 
 zsh-users/zsh-syntax-highlighting kind:defer
-zsh-users/zsh-history-substring-search kind:defer
-# zsh-users/zsh-autosuggestions
+# history-substring-search not needed — omz key-bindings.zsh provides up-line-or-beginning-search
 zsh-users/zsh-completions
-chriskempson/base16-shell
-
