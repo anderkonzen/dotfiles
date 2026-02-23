@@ -11,5 +11,5 @@ ohmyzsh/ohmyzsh path:lib/key-bindings.zsh
 romkatv/powerlevel10k
 
 zsh-users/zsh-syntax-highlighting kind:defer
-zsh-users/zsh-history-substring-search kind:defer
+# history-substring-search not needed — omz key-bindings.zsh provides up-line-or-beginning-search
 zsh-users/zsh-completions
