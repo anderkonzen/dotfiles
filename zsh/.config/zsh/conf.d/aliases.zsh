@@ -10,3 +10,6 @@ alias l='eza --all --icons=always -l --time-style long-iso'
 alias ll='eza -l --icons=always --time-style long-iso'
 alias la='eza --all -l --icons=always --time-style long-iso'
 alias e='eza --all --color-scale=size --color-scale-mode=gradient --icons=always -l --time modified --time-style long-iso'
+
+# git
+alias cb='gba | fzf | xargs git checkout'
