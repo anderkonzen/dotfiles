@@ -17,6 +17,10 @@ compinit
 # https://github.com/jdx/mise
 eval "$(mise activate zsh)"
 
+# worktrunk
+# https://github.com/max-sixty/worktrunk
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+
 # antidote
 # https://getantidote.github.io
 source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
