@@ -15,4 +15,4 @@ eval "$(atuin init zsh --disable-up-arrow)"
 eval "$(direnv hook zsh)"
 
 # exercism completions
-source <(exercism completion zsh)
+command -v exercism >/dev/null && source <(exercism completion zsh)
