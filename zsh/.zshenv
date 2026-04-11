@@ -24,28 +24,20 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 # Java
 # Check installed versions with '/usr/libexec/java_home -V'
 # export JAVA_HOME=`/usr/libexec/java_home -v 17`
-if /usr/libexec/java_home &>/dev/null; then
+if [[ -x /usr/libexec/java_home ]] && /usr/libexec/java_home &>/dev/null; then
   export JAVA_HOME=$(/usr/libexec/java_home)
 fi
 
 # Go
 export GOPATH=$HOME/go
 
-# AWS
-export AWS_CLI_AUTO_PROMPT=on-partial
-
-# bat
-export BAT_THEME="Catppuccin Mocha"
-
-# eza
-export EZA_CONFIG_DIR="$HOME/.config/eza"
-
-# PATH
+# PATH — deduplicate entries
+typeset -U path
 path=(
-  $path
   "$DOTFILES/bin"
   "$HOME/.local/bin"
   "$GOPATH/bin"
+  $path
 )
 
 # Local overrides — machine-specific config, not committed

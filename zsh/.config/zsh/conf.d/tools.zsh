@@ -1,5 +1,14 @@
 # tools.zsh — third-party tool integrations
 
+# AWS
+export AWS_CLI_AUTO_PROMPT=on-partial
+
+# bat
+export BAT_THEME="Catppuccin Mocha"
+
+# eza
+export EZA_CONFIG_DIR="$HOME/.config/eza"
+
 # zoxide — smarter cd
 eval "$(zoxide init zsh)"
 
