@@ -9,6 +9,12 @@
 #
 # https://zsh.sourceforge.io/Doc/Release/Files.html#Files
 
+# History
+export HISTFILE="$ZDOTDIR/.zsh_history"
+export HISTSIZE=5000000
+export SAVEHIST=5000000
+export LISTMAX=1000
+
 # compinit must run before antidote so plugins that call compdef find it ready
 autoload -Uz compinit
 compinit
