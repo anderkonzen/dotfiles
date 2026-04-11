@@ -15,10 +15,6 @@ export HISTSIZE=5000000
 export SAVEHIST=5000000
 export LISTMAX=1000
 
-# compinit must run before antidote so plugins that call compdef find it ready
-autoload -Uz compinit
-compinit
-
 # mise (early, so managed tools are on PATH before plugins/completions)
 # https://github.com/jdx/mise
 eval "$(mise activate zsh)"
@@ -30,6 +26,14 @@ if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)
 # antidote
 # https://getantidote.github.io
 source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
+
+# Add zsh-completions to fpath before compinit
+fpath+=($(antidote path zsh-users/zsh-completions)/src)
+
+autoload -Uz compinit
+compinit
+
+# Load remaining plugins (they can now call compdef freely)
 antidote load
 
 # Load topic configs

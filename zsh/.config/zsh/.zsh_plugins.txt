@@ -12,4 +12,4 @@ romkatv/powerlevel10k
 
 zsh-users/zsh-syntax-highlighting kind:defer
 # history-substring-search not needed — omz key-bindings.zsh provides up-line-or-beginning-search
-zsh-users/zsh-completions
+zsh-users/zsh-completions path:src kind:fpath
