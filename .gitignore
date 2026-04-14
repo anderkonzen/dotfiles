@@ -1,0 +1,4 @@
+# Zsh runtime files (written into repo via stow folder symlink)
+zsh/.config/zsh/.zsh_history
+zsh/.config/zsh/.zcompdump*
+zsh/.config/zsh/.zsh_plugins.zsh
