@@ -13,7 +13,7 @@ local config = function()
       },
     },
     options = {
-      theme = "catppuccin",
+      theme = "catppuccin-nvim",
       globalstatus = true,
       component_separators = "|",
       section_separators = "",
