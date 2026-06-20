@@ -1,3 +1,6 @@
+# Neovim plugin lockfile (frequently changing, not versioned)
+nvim/.config/nvim/lazy-lock.json
+
 # Zsh runtime files (written into repo via stow folder symlink)
 zsh/.config/zsh/.zsh_history
 zsh/.config/zsh/.zcompdump*
