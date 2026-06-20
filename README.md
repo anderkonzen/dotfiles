@@ -29,6 +29,7 @@ Then install any package:
 stow zsh
 stow git
 stow nvim
+stow claude
 # etc.
 ```
 
@@ -87,6 +88,31 @@ nvim/.config/nvim/
   lua/user/           -- globals, options, keymaps, autocmds
   lua/plugins/        -- one file per plugin or plugin group
 ```
+
+## Claude Code
+
+Config for [Claude Code](https://claude.com/claude-code) lives under `~/.claude/`,
+which is mostly runtime state and secrets. Only the hand-authored files are tracked
+here; stow folds them into the existing `~/.claude/` directory as individual symlinks.
+
+Tracked (`claude/.claude/`):
+
+- `settings.json` -- model, theme, statusline, tui (no secrets)
+- `statusline-command.sh` -- custom status line script
+
+When you add custom slash commands, subagents, skills, hooks, global instructions, or
+keybindings, track those too by moving them into `claude/.claude/`:
+
+- `commands/`, `agents/`, `skills/`, `hooks/`, `CLAUDE.md`, `keybindings.json`
+
+Never track (account data, secrets, caches, session/runtime state):
+
+- `~/.claude.json`, `.credentials.json`, `settings.local.json`
+- `sessions/`, `projects/`, `history.jsonl`, `shell-snapshots/`, `session-env/`,
+  `daemon/`, `cache/`, `file-history/`, `backups/`, `plans/`, `plugins/`
+
+Project-level config (`.claude/settings.json`, `.mcp.json`, `CLAUDE.md`, project
+commands/agents/skills) belongs in each project's own repo, not here.
 
 ## CLI tools
 
